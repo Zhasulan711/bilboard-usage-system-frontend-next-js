@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        "mcb-pro-16": "1728px", // MacBook Pro 16
+        "mcb-pro-16-max": {'max': '1728px'}, // MacBook Pro 16
+        "mcb-pro-16-min": {'min': '1728px'}, // MacBook Pro 16
       },
     },
   },
