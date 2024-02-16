@@ -7,12 +7,10 @@ import Header from "../components/Header/Header";
 export default function Home() {
   return (
     <div className="relative">
-      <div className="flex flex-row absolute h-screen">
+      <div className="flex flex-row h-screen">
         <MenuSidebar />
-
         <Header />
       </div>
-
       <main className="absolute">
         <div className="flex flex-col">
           <div className="flex flex-row">
