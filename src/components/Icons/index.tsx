@@ -5,3 +5,6 @@ export * from "./MessagesIcon";
 export * from "./SettingsIcon";
 export * from "./SearchIcon";
 export * from "./BellIcon";
+export * from "./ContactWithUsIcon";
+export * from "./LogOutIcon";
+export * from "./NightModeIcon";
