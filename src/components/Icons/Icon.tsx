@@ -6,6 +6,8 @@ import { MessagesIcon } from "./MessagesIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SettingsIcon } from "./SettingsIcon";
 import { TransactionIcon } from "./TransactionIcon";
+import { ContactWithUsIcon } from "./ContactWithUsIcon";
+import { LogOutIcon } from "./LogOutIcon";
 
 const Icons = {
   bell: BellIcon,
@@ -15,6 +17,8 @@ const Icons = {
   transaction: TransactionIcon,
   messages: MessagesIcon,
   settings: SettingsIcon,
+  contacts: ContactWithUsIcon,
+  logOut: LogOutIcon,
 };
 
 export type Icons = keyof typeof Icons;

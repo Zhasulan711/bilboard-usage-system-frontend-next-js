@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, ChangeEvent } from "react";
 import Image from "next/image";
+import { useState, useRef, ChangeEvent } from "react";
 import { BellIcon, SearchIcon } from "../Icons";
 
 export default function Header() {
