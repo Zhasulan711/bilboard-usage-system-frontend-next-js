@@ -23,10 +23,10 @@ export default function Home() {
               </h1>
               <div className="flex flex-row space-x-[45px]">
                 <DistrictMapIcon />
-                <div className="flex flex-col space-y-[25px]">
+                <div className="flex flex-col space-y-[25px] mt-[10px]">
                   {DISTRICT_MAP_LIST.map(({ title, colorClass }) => {
                     return (
-                      <div key={title} className="flex flex-row space-x-[4px] h-[24px] items-center">
+                      <div key={title} className="flex flex-row space-x-[7px] h-[24px] items-center">
                         <div className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}></div>
                         <h2 className="text-white text-xl font-normal">
                           {title}
