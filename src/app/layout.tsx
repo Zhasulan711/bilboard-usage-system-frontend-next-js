@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="mcb-pro-16:block">
+    <html lang="en" className="hidden mcb-pro-16:block">
       <body>{children}</body>
     </html>
   );

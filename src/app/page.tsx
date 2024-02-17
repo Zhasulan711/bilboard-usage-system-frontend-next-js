@@ -7,12 +7,12 @@ import Header from "../components/Header/Header";
 export default function Home() {
   return (
     <div className="relative">
-      <div className="flex flex-row h-screen">
+      <div className="flex flex-row h-screen absolute">
         <MenuSidebar />
         <Header />
       </div>
-      <main className="absolute">
-        <div className="flex flex-col">
+      <main className="">
+        <div className="flex flex-col -mt-[0px]">
           <div className="flex flex-row">
             {/* The number of your ads in district */}
             <div className="bg-[#0F1623] ml-[362px] mt-[88px] w-[663px] h-[600px] rounded-lg"></div>
