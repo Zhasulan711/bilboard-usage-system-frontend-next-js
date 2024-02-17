@@ -1,1 +1,1 @@
-export * from "./NavbarList";
+export * from "./navbarList";

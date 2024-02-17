@@ -29,8 +29,7 @@ export default function Header() {
           <SearchIcon handleSVGClick={() => handleSVGClick(inputRef.current)} />
           <input
             ref={inputRef}
-            className="placeholder-[#6E7581] text-sm font-normal bg-[#182235] text-[#6E7581]
-            focus:outline-none"
+            className="placeholder-[#6E7581] text-sm font-normal bg-[#182235] text-[#6E7581] focus:outline-none"
             type="search"
             placeholder="Search"
             value={searchText}
