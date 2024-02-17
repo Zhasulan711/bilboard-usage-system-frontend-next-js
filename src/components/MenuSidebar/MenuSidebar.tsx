@@ -14,6 +14,7 @@ export default function MenuSidebar() {
           const href = "/" + title.toLowerCase();
           return (
             <div
+              key={title}
               className="flex flex-row gap-[10px] items-center pl-2 w-[286px] h-[46px] rounded-lg
               hover:bg-[#182235] focus:bg-[#182235] transition duration-300 ease-in-out"
             >
