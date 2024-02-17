@@ -3,7 +3,11 @@ import Link from "next/link";
 
 import MenuSidebar from "../components/MenuSidebar/MenuSidebar";
 import Header from "../components/Header/Header";
-import { DistrictMapIcon } from "../components/Icons";
+import {
+  DistrictMapIcon,
+  TengeLargeCurrencyIcon,
+  TengeSmallCurrencyIcon,
+} from "../components/Icons";
 import { DISTRICT_MAP_LIST } from "@/constants";
 
 export default function Home() {
@@ -17,7 +21,7 @@ export default function Home() {
         <div className="flex flex-col">
           <div className="flex flex-row">
             {/* The number of your ads in district */}
-            <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[30px] flex flex-col space-y-[20px]">
+            <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[30px] flex flex-col space-y-[20px] pt-[10px]">
               <h1 className="text-white text-[28px] font-medium">
                 The number of your ads in district
               </h1>
@@ -26,8 +30,13 @@ export default function Home() {
                 <div className="flex flex-col space-y-[25px] mt-[10px]">
                   {DISTRICT_MAP_LIST.map(({ title, colorClass }) => {
                     return (
-                      <div key={title} className="flex flex-row space-x-[7px] h-[24px] items-center">
-                        <div className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}></div>
+                      <div
+                        key={title}
+                        className="flex flex-row space-x-[7px] h-[24px] items-center"
+                      >
+                        <div
+                          className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}
+                        ></div>
                         <h2 className="text-white text-xl font-normal">
                           {title}
                         </h2>
@@ -39,7 +48,39 @@ export default function Home() {
             </div>
             <div className="flex flex-col">
               {/* Your budget */}
-              <div className="bg-[#0F1623] ml-[20px] w-[321px] h-[160px] rounded-lg"></div>
+              <div className="bg-[#0F1623] ml-[20px] w-[321px] h-[160px] rounded-lg flex flex-col pl-[30px] pt-[10px]">
+                <h1 className="text-white text-[28px] font-medium">
+                  Your budget
+                </h1>
+                <div className="flex flex-row items-center space-x-[3px]">
+                  <h1 className="text-white text-5xl font-normal">1,120,448</h1>
+                  <TengeLargeCurrencyIcon />
+                </div>
+                <div className="flex flex-row space-x-[45px] pt-[5px]">
+                  <div className="flex flex-col">
+                    <h3 className="text-[#696D76] text-xs font-normal">
+                      Spent this month
+                    </h3>
+                    <div className="flex flex-row items-center space-x-[3px]">
+                      <h3 className="text-[#CFD0D3] text-xl font-normal">
+                        534,234
+                      </h3>
+                      <TengeSmallCurrencyIcon />
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="text-[#696D76] text-xs font-normal">
+                      Spent last month
+                    </h3>
+                    <div className="flex flex-row items-center space-x-[3px]">
+                      <h3 className="text-[#CFD0D3] text-xl font-normal">
+                        413,323
+                      </h3>
+                      <TengeSmallCurrencyIcon />
+                    </div>
+                  </div>
+                </div>
+              </div>
               {/* Calendar */}
               <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg"></div>
             </div>
