@@ -9,3 +9,5 @@ export * from "./ContactWithUsIcon";
 export * from "./LogOutIcon";
 export * from "./NightModeIcon";
 export * from "./DistrictMapIcon";
+export * from "./TengeLargeCurrencyIcon";
+export * from "./TengeSmallCurrencyIcon";
