@@ -26,3 +26,9 @@ body {
 .bg-color-nauryzbay { background-color: #857EFD; }
 .bg-color-turksib { background-color: #DD55D7; }
 .bg-color-zhetysu { background-color: #63DEC7; }
+
+/* Colors for Loose billboards */
+.bg-color-yellowBillboard { background-color: #FAD577; }
+.bg-color-greenBillboard { background-color: #89D563; }
+.bg-color-blueBillboard { background-color: #71A2D6; }
+.bg-color-pinkBillboard { background-color: #DD55D7; }

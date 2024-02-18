@@ -7,8 +7,11 @@ import {
   DistrictMapIcon,
   TengeLargeCurrencyIcon,
   TengeSmallCurrencyIcon,
+  CompassIcon,
+  ShoppingBagIcon,
 } from "../components/Icons";
 import { DISTRICT_MAP_LIST } from "@/constants";
+import { LOOSE_BILLBOARDS_LISt } from "@/constants";
 
 export default function Home() {
   return (
@@ -28,10 +31,10 @@ export default function Home() {
               <div className="flex flex-row space-x-[45px]">
                 <DistrictMapIcon />
                 <div className="flex flex-col space-y-[25px] mt-[10px]">
-                  {DISTRICT_MAP_LIST.map(({ title, colorClass }) => {
+                  {DISTRICT_MAP_LIST.map(({ title, colorClass }, index) => {
                     return (
                       <div
-                        key={title}
+                        key={index}
                         className="flex flex-row space-x-[7px] h-[24px] items-center"
                       >
                         <div
@@ -81,13 +84,49 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
               {/* Calendar */}
               <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg"></div>
             </div>
 
             <div className="flex flex-col">
               {/* Loose billboards */}
-              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg"></div>
+              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[30px] pt-[10px]">
+                <h1 className="text-white text-[28px] font-medium">
+                  Loose billboards
+                </h1>
+                <div className="flex flex-col pt-[20px] space-y-[10px] overflow-y-scroll overflow-x-hidden">
+                  {/* add DRY */}
+                  {LOOSE_BILLBOARDS_LISt.map(
+                    ({ title, colorClass, id }, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="w-[270px] h-[32px] flex flex-row items-center space-x-[80px]"
+                        >
+                          <div className="flex flex-row space-x-[10px] items-center w-[160px]">
+                            <div
+                              className={`bg-color-${colorClass} rounded-[5px] w-[32px] h-[32px] justify-center flex items-center`}
+                            >
+                              <CompassIcon />
+                            </div>
+                            <div className="flex flex-col">
+                              <h2 className="text-white text-[12px] font-normal whitespace-nowrap">
+                                {title}
+                              </h2>
+                              <h3 className="text-[#3C424C] text-[11px] font-normal">
+                                {id}
+                              </h3>
+                            </div>
+                          </div>
+                          <ShoppingBagIcon />
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
+
               {/* Your personal manager */}
               <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[322px] h-[160px] rounded-lg"></div>
             </div>

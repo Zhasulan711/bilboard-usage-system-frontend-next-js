@@ -11,3 +11,5 @@ export * from "./NightModeIcon";
 export * from "./DistrictMapIcon";
 export * from "./TengeLargeCurrencyIcon";
 export * from "./TengeSmallCurrencyIcon";
+export * from "./ShoppingBagIcon";
+export * from "./CompassIcon";
