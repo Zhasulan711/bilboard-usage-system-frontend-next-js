@@ -17,7 +17,7 @@ export const TengeSmallCurrencyIcon: FC<DefaultIconComponentProps> = ({
       <path
         d="M0 0H10V1.44444H0V0ZM0 2.16667H10V3.61111H5.71429V13H4.28571V3.61111H0V2.16667Z"
         fill="#FFB13D"
-        fill-opacity="0.8"
+        fillOpacity="0.8"
       />
     </svg>
   );
