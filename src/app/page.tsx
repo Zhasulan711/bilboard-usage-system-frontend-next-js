@@ -91,11 +91,11 @@ export default function Home() {
 
             <div className="flex flex-col">
               {/* Loose billboards */}
-              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[30px] pt-[10px]">
+              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[30px] pt-[10px] overflow-auto">
                 <h1 className="text-white text-[28px] font-medium">
                   Loose billboards
                 </h1>
-                <div className="flex flex-col pt-[20px] space-y-[10px] overflow-y-scroll overflow-x-hidden">
+                <div className="flex flex-col pt-[20px] space-y-[10px]">
                   {/* add DRY */}
                   {LOOSE_BILLBOARDS_LISt.map(
                     ({ title, colorClass, id }, index) => {
