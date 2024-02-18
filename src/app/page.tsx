@@ -9,9 +9,14 @@ import {
   TengeSmallCurrencyIcon,
   CompassIcon,
   ShoppingBagIcon,
+  MessageCircleMoreIcon,
+  ChevronDownIcon,
 } from "../components/Icons";
-import { DISTRICT_MAP_LIST } from "@/constants";
-import { LOOSE_BILLBOARDS_LISt } from "@/constants";
+import {
+  DISTRICT_MAP_LIST,
+  LOOSE_BILLBOARDS_LISt,
+  CALENDAR_LIST,
+} from "@/constants";
 
 export default function Home() {
   return (
@@ -86,7 +91,67 @@ export default function Home() {
               </div>
 
               {/* Calendar */}
-              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg"></div>
+              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg pl-[15px] pt-[10px]">
+                <div className="flex flex-row space-x-[50px]">
+                  <h1 className="text-white text-2xl font-normal">Calendar</h1>
+                  <div className="flex flex-row items-center">
+                    <h2 className="text-[#B7B9BE] text-base font-normal">
+                      September
+                    </h2>
+                    <ChevronDownIcon />
+                  </div>
+                </div>
+                <div className="gap gap-y-[15px] grid-cols-7 grid mt-[20px]">
+                  {CALENDAR_LIST.map(({ title, colorClass }, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`bg-color-${colorClass} w-[31px] h-[31px] rounded-full text-white text-lg flex justify-center font-normal items-center`}
+                      >
+                        {title}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex flex-col space-y-[10px] mt-[20px]">
+                  <div className="flex flex-row space-x-[30px]">
+                    <div className="flex flex-row items-center space-x-[5px]">
+                      <div className="w-2 h-2 bg-color-brownCircle rounded-full"></div>
+                      <h3 className="text-white text-xl font-normal">0</h3>
+                    </div>
+                    <div className="flex flex-row items-center space-x-[5px]">
+                      <div className="w-2 h-2 bg-color-brightBrownCircle rounded-full"></div>
+                      <h3 className="text-white text-xl font-normal">
+                        200k-300k
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row space-x-[30px]">
+                    <div className="flex flex-row items-center space-x-[5px]">
+                      <div className="w-2 h-2 bg-color-beigeCircle rounded-full"></div>
+                      <h3 className="text-white text-xl font-normal">
+                        300k-500k
+                      </h3>
+                    </div>
+                    <div className="flex flex-row items-center space-x-[5px]">
+                      <div className="w-2 h-2 bg-color-orangeCircle rounded-full"></div>
+                      <h3 className="text-white text-xl font-normal">
+                        500k-800k
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row space-x-[30px]">
+                    <div className="flex flex-row items-center space-x-[5px]">
+                      <div className="w-2 h-2 bg-color-yellowCircle rounded-full"></div>
+                      <h3 className="text-white text-xl font-normal">
+                        Above 800k
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-col">
@@ -128,7 +193,31 @@ export default function Home() {
               </div>
 
               {/* Your personal manager */}
-              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[322px] h-[160px] rounded-lg"></div>
+              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[322px] h-[160px] rounded-lg pl-[30px] pt-[10px]">
+                <h1 className="text-white text-2xl font-medium">
+                  Your personal manager
+                </h1>
+                <div className="flex flex-row mt-[30px] space-x-[60px] items-center">
+                  <div className="flex flex-row space-x-[10px]">
+                    <Image
+                      src="/images/manager-logo.png"
+                      alt="Manager logo"
+                      width={47}
+                      height={47}
+                      className="rounded-full h-[47px]"
+                    />
+                    <div className="flex flex-col -space-y-[5px]">
+                      <h2 className="text-white text-xl font-normal">
+                        Dmitry Ivanov
+                      </h2>
+                      <h3 className="text-[#3F454F] text-base font-normal">
+                        Manager
+                      </h3>
+                    </div>
+                  </div>
+                  <MessageCircleMoreIcon />
+                </div>
+              </div>
             </div>
           </div>
 
