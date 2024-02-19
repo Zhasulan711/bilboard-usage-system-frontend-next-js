@@ -1,9 +1,9 @@
-export type districtMapList = {
+export type DistrictMapList = {
     title: string;
     colorClass: string;
 }
 
-export const DISTRICT_MAP_LIST: districtMapList[] = [
+export const DISTRICT_MAP_LIST: DistrictMapList[] = [
     {
         title: "Alatau district",
         colorClass: "alatau",

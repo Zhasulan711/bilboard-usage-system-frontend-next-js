@@ -1,9 +1,9 @@
-export type calendarList = {
+export type CalendarList = {
   title: number;
   colorClass: string;
 };
 
-export const CALENDAR_LIST: calendarList[] = [
+export const CALENDAR_LIST: CalendarList[] = [
   {
     title: 29,
     colorClass: "brownCircle",
