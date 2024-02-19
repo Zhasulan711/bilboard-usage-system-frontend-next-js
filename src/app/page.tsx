@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import MenuSidebar from "../components/MenuSidebar/MenuSidebar";
 import Header from "../components/Header/Header";
@@ -10,7 +9,9 @@ import {
   CompassIcon,
   ShoppingBagIcon,
   MessageCircleMoreIcon,
-  ChevronDownIcon,
+  ChevronDownCalendarIcon,
+  CalendarDaysIcon,
+  ChevronDownAddIcon,
 } from "../components/Icons";
 import {
   DISTRICT_MAP_LIST,
@@ -98,7 +99,7 @@ export default function Home() {
                     <h2 className="text-[#B7B9BE] text-base font-normal">
                       September
                     </h2>
-                    <ChevronDownIcon />
+                    <ChevronDownCalendarIcon />
                   </div>
                 </div>
                 <div className="gap gap-y-[15px] grid-cols-7 grid mt-[20px]">
@@ -222,7 +223,28 @@ export default function Home() {
           </div>
 
           {/* Information about your add */}
-          <div className="bg-[#0F1623] mt-[20px] w-[1346px] h-[380px] rounded-lg"></div>
+          <div className="bg-[#0F1623] mt-[20px] w-[1346px] h-[380px] rounded-lg pl-[30px] pt-[10px]">
+            <div className="flex flex-row space-x-[516px]">
+              <h1 className="text-white text-[28px] font-medium">
+                Information about your add
+              </h1>
+              <div className="flex flex-row space-x-[60px] mt-[10px]">
+                <div className="flex flex-row space-x-[10px] items-center">
+                  <CalendarDaysIcon />
+                  <h2 className="text-white text-xl font-normal">
+                    01 Aug. - 01 Sep.
+                  </h2>
+                  <ChevronDownAddIcon />
+                </div>
+                <div className="flex flex-row space-x-[10px] items-center">
+                  <h2 className="text-white text-xl font-normal">
+                    Almalinsk district
+                  </h2>
+                  <ChevronDownAddIcon />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>

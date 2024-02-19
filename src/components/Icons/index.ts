@@ -3,15 +3,19 @@ export * from "./AnalyticsIcon";
 export * from "./TransactionIcon";
 export * from "./MessagesIcon";
 export * from "./SettingsIcon";
-export * from "./SearchIcon";
-export * from "./BellIcon";
 export * from "./ContactWithUsIcon";
 export * from "./LogOutIcon";
 export * from "./NightModeIcon";
+
+export * from "./SearchIcon";
+export * from "./BellIcon";
+
 export * from "./DistrictAdsMap";
 export * from "./TengeLargeCurrencyIcon";
 export * from "./TengeSmallCurrencyIcon";
 export * from "./ShoppingBagIcon";
 export * from "./CompassIcon";
 export * from "./MessageCircleMoreIcon";
-export * from "./ChevronDownIcon";
+export * from "./ChevronDownCalendarIcon";
+export * from "./CalendarDaysIcon";
+export * from "./ChevronDownAddIcon";

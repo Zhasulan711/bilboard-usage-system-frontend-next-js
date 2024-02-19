@@ -1,10 +1,10 @@
-export type LooseBillboardsList = {
+export type LooseBillboardList = {
   title: string;
   colorClass: string;
   id: number | string;
 };
 
-export const LOOSE_BILLBOARDS_LISt: LooseBillboardsList[] = [
+export const LOOSE_BILLBOARDS_LISt: LooseBillboardList[] = [
   {
     title: "Abay - Abylai Khan",
     colorClass: "yellowBillboard",
