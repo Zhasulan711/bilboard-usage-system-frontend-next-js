@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { NAVBAR_LIST } from "@/constants";
 import { Icon } from "../Icons/Icon";
-
 import NightModeButton from "../NightModeButton/NightModeButton";
 
 export default function MenuSidebar() {

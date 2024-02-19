@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { DefaultIconComponentProps } from "./types";
 
-export const ChevronDownIcon: FC<DefaultIconComponentProps> = ({
+export const ChevronDownCalendarIcon: FC<DefaultIconComponentProps> = ({
   width = 18,
   height = 18,
 }) => {
