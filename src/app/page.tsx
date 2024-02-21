@@ -17,6 +17,7 @@ import {
   DISTRICT_MAP_LIST,
   LOOSE_BILLBOARDS_LISt,
   CALENDAR_LIST,
+  INFORMATION_ADD_TABLE_LIST
 } from "@/constants";
 
 export default function Home() {
@@ -244,6 +245,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            <div className="flex flex-row"></div>
           </div>
         </div>
       </main>
