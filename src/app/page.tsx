@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import MenuSidebar from "../components/MenuSidebar/MenuSidebar";
 import Header from "../components/Header/Header";
+import SmallAddInformationTable from "@/components/SmallAddInformationTable/SmallAddInformationTable";
 import {
   DistrictMapIcon,
   TengeLargeCurrencyIcon,
@@ -17,7 +18,6 @@ import {
   DISTRICT_MAP_LIST,
   LOOSE_BILLBOARDS_LISt,
   CALENDAR_LIST,
-  INFORMATION_ADD_TABLE_LIST
 } from "@/constants";
 
 export default function Home() {
@@ -31,7 +31,7 @@ export default function Home() {
         <div className="flex flex-col">
           <div className="flex flex-row">
             {/* The number of your ads in district */}
-            <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[30px] flex flex-col space-y-[20px] pt-[10px]">
+            <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[14px]">
               <h1 className="text-white text-[28px] font-medium">
                 The number of your ads in district
               </h1>
@@ -58,7 +58,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col">
               {/* Your budget */}
-              <div className="bg-[#0F1623] ml-[20px] w-[321px] h-[160px] rounded-lg flex flex-col pl-[30px] pt-[10px]">
+              <div className="bg-[#0F1623] ml-[20px] w-[321px] h-[160px] rounded-lg flex flex-col pl-[26px] pt-[14px]">
                 <h1 className="text-white text-[28px] font-medium">
                   Your budget
                 </h1>
@@ -158,7 +158,7 @@ export default function Home() {
 
             <div className="flex flex-col">
               {/* Loose billboards */}
-              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[30px] pt-[10px] overflow-auto">
+              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[14px] overflow-auto">
                 <h1 className="text-white text-[28px] font-medium">
                   Loose billboards
                 </h1>
@@ -195,7 +195,7 @@ export default function Home() {
               </div>
 
               {/* Your personal manager */}
-              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[322px] h-[160px] rounded-lg pl-[30px] pt-[10px]">
+              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[322px] h-[160px] rounded-lg pl-[26px] pt-[14px]">
                 <h1 className="text-white text-2xl font-medium">
                   Your personal manager
                 </h1>
@@ -224,7 +224,7 @@ export default function Home() {
           </div>
 
           {/* Information about your add */}
-          <div className="bg-[#0F1623] mt-[20px] w-[1346px] h-[380px] rounded-lg pl-[30px] pt-[10px]">
+          <div className="bg-[#0F1623] mt-[20px] w-[1346px] h-[380px] rounded-lg pl-[26px] pt-[14px]">
             <div className="flex flex-row space-x-[516px]">
               <h1 className="text-white text-[28px] font-medium">
                 Information about your add
@@ -246,7 +246,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-row"></div>
+            <div className="text-left">
+              <SmallAddInformationTable />
+            </div>
           </div>
         </div>
       </main>
