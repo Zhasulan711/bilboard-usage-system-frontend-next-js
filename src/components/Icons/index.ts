@@ -32,3 +32,11 @@ export * from "./ChevronDownAddIcon";
 // main
 export * from "./ChevronDownParametersIcon";
 export * from "./LargeShoppingBagIcon";
+
+/***
+ * sign-in page
+ */
+// main
+export * from "./AppleLogoIcon";
+export * from "./FacebookLogoIcon";
+export * from "./GoogleLogoIcon";
