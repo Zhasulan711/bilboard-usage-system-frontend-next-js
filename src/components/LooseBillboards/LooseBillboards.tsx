@@ -1,4 +1,4 @@
-import { CompassIcon, ShoppingBagIcon } from "@/components/Icons";
+import { CompassIcon, SmallShoppingBagIcon } from "@/components/Icons";
 import { LOOSE_BILLBOARDS_LISt } from "@/constants";
 
 export default function LooseBillboards() {
@@ -28,7 +28,7 @@ export default function LooseBillboards() {
                   </h3>
                 </div>
               </div>
-              <ShoppingBagIcon />
+              <SmallShoppingBagIcon />
             </div>
           );
         })}
