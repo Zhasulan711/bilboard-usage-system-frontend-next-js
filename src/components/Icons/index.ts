@@ -9,6 +9,7 @@ export * from "./MessagesIcon";
 export * from "./SettingsIcon";
 export * from "./ContactWithUsIcon";
 export * from "./LogOutIcon";
+export * from "./PlusIcon";
 
 // header
 export * from "./SearchIcon";

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import MenuSidebar from "@/components/MenuSidebar/MenuSidebar";
 import Header from "@/components/Header/Header";
 import { SearchIcon } from "@/components/Icons";
