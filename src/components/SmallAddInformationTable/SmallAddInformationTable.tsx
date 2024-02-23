@@ -5,21 +5,28 @@ import { INFORMATION_ADD_TABLE_LIST } from "@/constants";
 
 export default function SmallAddInformationTable() {
   //   const [isShow, setIsShow] = useState(true);
+  const headerTable = [
+    "Address",
+    "Price",
+    "GRP",
+    "Time",
+    "Place number",
+    "Size",
+    "Category",
+  ];
 
   return (
-    <table className="w-full table-auto border-separate border-spacing-[15px]">
+    <table className="w-full table-auto divide-y-[3px] divide-[#182235]">
       <thead className="text-[#6F737B] text-base font-normal">
         <tr>
-          <th>Address</th>
-          <th>Price, tg</th>
-          <th>GRP</th>
-          <th>Time</th>
-          <th>Place number</th>
-          <th>Size, m</th>
-          <th>Category</th>
+          {headerTable.map((item, index) => (
+            <th key={index}
+            scope="col"
+            className="px-[10px] py-[10px] text-left">{item}</th>
+          ))}
         </tr>
       </thead>
-      <tbody className="text-white text-lg font-normal">
+      <tbody className="text-white text-lg font-normal divide-y-[3px] divide-[#182235]">
         {INFORMATION_ADD_TABLE_LIST.map(
           (
             { address, price, grp, time, placeNumber, size, category },
@@ -27,13 +34,13 @@ export default function SmallAddInformationTable() {
           ) => {
             return (
               <tr key={index}>
-                <td>{address}</td>
-                <td>{price}</td>
-                <td>{grp}</td>
-                <td>{time}</td>
-                <td>{placeNumber}</td>
-                <td>{size}</td>
-                <td>{category}</td>
+                <td className="px-[10px] py-[10px]">{address}</td>
+                <td className="px-[10px] py-[10px]">{price}</td>
+                <td className="px-[10px] py-[10px]">{grp}</td>
+                <td className="px-[10px] py-[10px]">{time}</td>
+                <td className="px-[10px] py-[10px]">{placeNumber}</td>
+                <td className="px-[10px] py-[10px]">{size}</td>
+                <td className="px-[10px] py-[10px]">{category}</td>
               </tr>
             );
           }

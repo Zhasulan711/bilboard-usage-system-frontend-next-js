@@ -15,7 +15,7 @@ export default function Home() {
     { name: "Date", width: "72px" },
     { name: "Status", width: "86px" },
   ];
-  
+
   const navTable = [
     "Address",
     "Price, tg",
@@ -62,18 +62,18 @@ export default function Home() {
           <table className="table-fixed divide-y-[32px] divide-[#010714] border rounded-lg">
             <thead className="text-[#B7B9BE] font-normal rounded-xl bg-[#0F1623]">
               <tr className="">
-                {navTable.map((item) => (
+                {navTable.map((item, index) => (
                   <th
                     scope="col"
                     className="px-[26px] py-[18px] text-left"
-                    key={item}
+                    key={index}
                   >
                     {item}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="text-white text-lg font-normal text-left bg-[#0F1623] divide-y-[16px] divide-[#010714]">
+            <tbody className="text-white text-lg font-normal bg-[#0F1623] divide-y-[16px] divide-[#010714]">
               {TRANSACTION_TABLE_LIST.map(
                 (
                   {
@@ -90,7 +90,7 @@ export default function Home() {
                   index
                 ) => {
                   return (
-                    <tr key={index} className="rounded-lg">
+                    <tr key={index}>
                       <td className="px-6 py-4">{address}</td>
                       <td className="px-6 py-4">{price}</td>
                       <td className="px-6 py-4">{grp}</td>

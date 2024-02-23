@@ -27,11 +27,12 @@ export default function Home() {
         <MenuSidebar />
         <Header />
       </div>
+
       <main className="absolute inset-0 left-[362px] top-[88px]">
         <div className="flex flex-col">
           <div className="flex flex-row">
             {/* The number of your ads in district */}
-            <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[14px]">
+            <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[12px]">
               <h1 className="text-white text-[28px] font-medium">
                 The number of your ads in district
               </h1>
@@ -56,9 +57,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
             <div className="flex flex-col">
               {/* Your budget */}
-              <div className="bg-[#0F1623] ml-[20px] w-[321px] h-[160px] rounded-lg flex flex-col pl-[26px] pt-[14px]">
+              <div className="bg-[#0F1623] ml-[20px] w-[321px] h-[160px] rounded-lg flex flex-col pl-[26px] pt-[12px]">
                 <h1 className="text-white text-[28px] font-medium">
                   Your budget
                 </h1>
@@ -93,8 +95,8 @@ export default function Home() {
               </div>
 
               {/* Calendar */}
-              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg pl-[15px] pt-[10px]">
-                <div className="flex flex-row space-x-[50px]">
+              <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg pl-[15px] pt-[16px]">
+                <div className="flex flex-row space-x-[110px]">
                   <h1 className="text-white text-2xl font-normal">Calendar</h1>
                   <div className="flex flex-row items-center">
                     <h2 className="text-[#B7B9BE] text-base font-normal">
@@ -158,7 +160,7 @@ export default function Home() {
 
             <div className="flex flex-col">
               {/* Loose billboards */}
-              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[14px] overflow-auto">
+              <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[12px] overflow-auto">
                 <h1 className="text-white text-[28px] font-medium">
                   Loose billboards
                 </h1>
@@ -224,9 +226,9 @@ export default function Home() {
           </div>
 
           {/* Information about your add */}
-          <div className="bg-[#0F1623] mt-[20px] w-[1346px] h-[380px] rounded-lg pl-[26px] pt-[14px]">
-            <div className="flex flex-row space-x-[516px]">
-              <h1 className="text-white text-[28px] font-medium">
+          <div className="bg-[#0F1623] mt-[20px] w-[1346px] h-[365px] rounded-lg pl-[26px] pt-[14px]">
+            <div className="flex flex-row space-x-[475px]">
+              <h1 className="text-white text-[28px] font-medium ml-[10px]">
                 Information about your add
               </h1>
               <div className="flex flex-row space-x-[60px] mt-[10px]">
@@ -246,7 +248,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="text-left">
+            {/* table */}
+            <div className="overflow-auto h-[300px] mt-[10px]">
               <SmallAddInformationTable />
             </div>
           </div>
