@@ -19,7 +19,7 @@ export * from "./BellIcon";
 export * from "./DistrictAdsMap";
 export * from "./TengeLargeCurrencyIcon";
 export * from "./TengeSmallCurrencyIcon";
-export * from "./ShoppingBagIcon";
+export * from "./SmallShoppingBagIcon";
 export * from "./CompassIcon";
 export * from "./MessageCircleMoreIcon";
 export * from "./ChevronDownCalendarIcon";
@@ -31,4 +31,4 @@ export * from "./ChevronDownAddIcon";
  */
 // main
 export * from "./ChevronDownParametersIcon";
-
+export * from "./LargeShoppingBagIcon";

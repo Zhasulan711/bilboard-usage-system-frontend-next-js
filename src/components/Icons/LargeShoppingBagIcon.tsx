@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { DefaultIconComponentProps } from "./types";
 
-export const ShoppingBagIcon: FC<DefaultIconComponentProps> = ({
-  width = 24,
-  height = 24,
+export const LargeShoppingBagIcon: FC<DefaultIconComponentProps> = ({
+  width = 32,
+  height = 32,
 }) => {
   const viewBox = `0 0 ${width} ${height}`;
   return (
@@ -15,25 +15,22 @@ export const ShoppingBagIcon: FC<DefaultIconComponentProps> = ({
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z"
+        d="M8 2.66675L4 8.00008V26.6667C4 27.374 4.28095 28.0523 4.78105 28.5524C5.28115 29.0525 5.95942 29.3334 6.66667 29.3334H25.3333C26.0406 29.3334 26.7189 29.0525 27.219 28.5524C27.719 28.0523 28 27.374 28 26.6667V8.00008L24 2.66675H8Z"
         stroke="white"
-        strokeOpacity="0.8"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M3 6H21"
+        d="M4 8H28"
         stroke="white"
-        strokeOpacity="0.8"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10"
+        d="M21.3327 13.3333C21.3327 14.7477 20.7708 16.1043 19.7706 17.1045C18.7704 18.1047 17.4138 18.6666 15.9993 18.6666C14.5849 18.6666 13.2283 18.1047 12.2281 17.1045C11.2279 16.1043 10.666 14.7477 10.666 13.3333"
         stroke="white"
-        strokeOpacity="0.8"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
