@@ -26,12 +26,4 @@ export const NAVBAR_LIST: NavbarList[] = [
     title: "Settings",
     icon: "settings",
   },
-  {
-    title: "Contact with us",
-    icon: "contacts",
-  },
-  {
-    title: "Log out",
-    icon: "logOut",
-  }
 ];
