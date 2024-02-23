@@ -59,19 +59,20 @@ body {
   background-color: #dd55d7;
 }
 
-/* Colors for Calendar */
+/* Colors for Calendar */ 
+// RENAME COLORS!!!
 .bg-color-brownCircle {
-  background-color: #614318;
+  background-color: #243253;
 }
 .bg-color-brightBrownCircle {
-  background-color: #8a6021;
+  background-color: #2C3E63;
 }
 .bg-color-beigeCircle {
-  background-color: #b37c2b;
+  background-color: #364B77;
 }
 .bg-color-orangeCircle {
-  background-color: #db9935;
+  background-color: #45619B;
 }
 .bg-color-yellowCircle {
-  background-color: #F9B13C;
+  background-color: #5174B9;
 }

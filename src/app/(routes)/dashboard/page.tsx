@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import MenuSidebar from "../components/MenuSidebar/MenuSidebar";
-import Header from "../components/Header/Header";
+import MenuSidebar from "@/components/MenuSidebar/MenuSidebar";
+import Header from "@/components/Header/Header";
 import SmallAddInformationTable from "@/components/SmallAddInformationTable/SmallAddInformationTable";
 import {
   DistrictMapIcon,
@@ -13,7 +13,7 @@ import {
   ChevronDownCalendarIcon,
   CalendarDaysIcon,
   ChevronDownAddIcon,
-} from "../components/Icons";
+} from "@/components/Icons";
 import {
   DISTRICT_MAP_LIST,
   LOOSE_BILLBOARDS_LISt,
