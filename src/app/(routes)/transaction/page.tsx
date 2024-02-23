@@ -43,13 +43,13 @@ export default function Home() {
 
           {/* navbars */}
           <div className="flex flex-row space-x-[10px]">
-            {navItems.map((item) => (
+            {navItems.map(({name, width}, index) => (
               <div
                 className="h-[40px] flex items-center justify-center bg-[#0B101F] text-xl font-normal text-white rounded-lg"
-                style={{ width: item.width }}
-                key={item.name}
+                style={{ width: width }}
+                key={index}
               >
-                {item.name}
+                {name}
               </div>
             ))}
           </div>
