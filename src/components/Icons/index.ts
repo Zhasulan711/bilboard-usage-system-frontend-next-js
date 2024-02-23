@@ -25,3 +25,10 @@ export * from "./MessageCircleMoreIcon";
 export * from "./ChevronDownCalendarIcon";
 export * from "./CalendarDaysIcon";
 export * from "./ChevronDownAddIcon";
+
+/***
+ * 6-Post Add page
+ */
+// main
+export * from "./ChevronDownParametersIcon";
+
