@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react";
 
 import "@/styles/globals.css";
 
-export default function SignUpLayout({
+export default function UserSignUpLayout({
   children,
 }: PropsWithChildren<unknown>) {
   return (

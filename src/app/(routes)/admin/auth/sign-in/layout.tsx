@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react";
 
 import "@/styles/globals.css";
 
-export default function SignInLayout({
+export default function AdminSignInLayout({
   children,
 }: PropsWithChildren<unknown>) {
   return (

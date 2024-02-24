@@ -40,3 +40,15 @@ export * from "./LargeShoppingBagIcon";
 export * from "./AppleLogoIcon";
 export * from "./FacebookLogoIcon";
 export * from "./GoogleLogoIcon";
+
+/***
+ * analytics page
+ */
+// main
+export * from "./GraphsIcon";
+export * from "./GraphsSecondIcon";
+
+/***
+ * 7-Transaction page
+ */
+export * from "./TransactionIcon";
