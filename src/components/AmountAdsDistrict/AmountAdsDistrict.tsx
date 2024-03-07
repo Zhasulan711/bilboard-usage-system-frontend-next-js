@@ -5,7 +5,7 @@ export default function AmountAdsDistrict() {
   return (
     <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[12px]">
       <h1 className="text-white text-[28px] font-medium">
-        The number of your ads in district
+        The amount of your ads in district
       </h1>
       <div className="flex flex-row space-x-[45px]">
         <DistrictMapIcon />
