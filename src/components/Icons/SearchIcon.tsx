@@ -25,9 +25,9 @@ export const SearchIcon: FC<SearchIconProps> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...SVGProps}
+      className="header-searchBar"
     >
       <path
-        className="hover:stroke-[#6E7581]"
         d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
         stroke="white"
         strokeOpacity="0.5"
@@ -36,7 +36,6 @@ export const SearchIcon: FC<SearchIconProps> = ({
         strokeLinejoin="round"
       />
       <path
-        className="hover:stroke-[#6E7581]"
         d="M21 21L16.7 16.7"
         stroke="white"
         strokeOpacity="0.5"
