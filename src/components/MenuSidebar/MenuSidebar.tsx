@@ -51,11 +51,12 @@ export default function MenuSidebar() {
               `}
                 onClick={(event) => handleClick(event, index, href)}
               >
-                <Icon type={icon} />
+                <Icon type={icon} isClicked={isClicked}/>
                 <Link
                   href={href}
-                  className="text-[#3F454F] text-[19px] font-normal 
-                hover:text-[#F9B13C] transition duration-300 ease-in-out"
+                  className={`text-[#3F454F] text-[19px] font-normal 
+                hover:text-[#F9B13C] target:text-[#F9B13C] transition duration-[2000ms] ease-in-out
+                ${isClicked ? "text-[#F9B13C]" : "text-[#3F454F]"}`}
                 >
                   {title}
                 </Link>

@@ -26,9 +26,13 @@ export type Icons = keyof typeof Icons;
 export type IconProps = {
   type: Icons;
   handleSVGClick?: IconProps["type"] extends "search" ? () => void : undefined;
+  isClicked: boolean;
 };
 
-export const Icon: FC<IconProps> = ({ type, ...props }) => {
+export const Icon: FC<IconProps> = ({ type, isClicked, ...props }) => {
   const IconComponent = Icons[type];
-  return <IconComponent {...props} />;
+  const additionalProps = {
+    stroke: isClicked ? "#FFB13D" : "#4F5664",
+  };
+  return <IconComponent {...props} {...additionalProps} />;
 };

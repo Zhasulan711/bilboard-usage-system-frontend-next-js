@@ -76,3 +76,8 @@ body {
 .bg-color-yellowCircle {
   background-color: #5174B9;
 }
+
+.navBars-icon:hover path {
+  stroke: #FFB13D; /* Цвет при наведении */
+  transition: all 2000ms ease-in-out;
+}

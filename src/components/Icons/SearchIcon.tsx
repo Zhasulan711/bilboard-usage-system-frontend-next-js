@@ -3,6 +3,7 @@ import { DefaultIconComponentProps } from "./types";
 
 export interface SearchIconProps extends DefaultIconComponentProps {
   handleSVGClick?: () => void;
+  fill?: string;
 }
 
 export const SearchIcon: FC<SearchIconProps> = ({
