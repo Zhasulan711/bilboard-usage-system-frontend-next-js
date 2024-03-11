@@ -81,3 +81,8 @@ body {
   stroke: #FFB13D; /* Цвет при наведении */
   transition: all 2000ms ease-in-out;
 }
+
+.header-searchBar:hover path {
+  stroke: #6E7581;
+  transition: all 1000ms ease-in-out;
+}
