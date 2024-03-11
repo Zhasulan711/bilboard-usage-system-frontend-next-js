@@ -16,7 +16,7 @@ export * from "./SearchIcon";
 export * from "./BellIcon";
 
 // main
-export * from "./DistrictAdsMap";
+export * from "./DistrictAdsMapIcon";
 export * from "./TengeLargeCurrencyIcon";
 export * from "./TengeSmallCurrencyIcon";
 export * from "./SmallShoppingBagIcon";
