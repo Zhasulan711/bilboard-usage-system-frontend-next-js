@@ -10,7 +10,7 @@ export default function AmountAdsDistrict() {
 
   const handleClick = (event: any, index: number) => {
     event.preventDefault();
-    setClickedIndex(index);
+    setClickedIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
@@ -19,15 +19,15 @@ export default function AmountAdsDistrict() {
         The amount of your ads in district
       </h1>
       <div className="flex flex-row space-x-[45px]">
-        <DistrictMapIcon activeIndex={clickedIndex}/>
+        <DistrictMapIcon activeIndex={clickedIndex} />
         <div className="flex flex-col space-y-[10px] mt-[10px]">
           {DISTRICT_MAP_LIST.map(({ title, colorClass }, index) => {
-            const lol = clickedIndex === index;
+            const isClicked = clickedIndex === index;
             return (
               <React.Fragment key={index}>
                 <div
                   className={`flex flex-row space-x-[7px] h-[40px] w-[185px] items-center transition duration-[2000ms] ease-in-out rounded-lg pl-[10px]
-                ${lol ? "bg-[#182235]" : ""}`}
+                ${isClicked ? "bg-[#182235]" : ""}`}
                   onClick={(event) => handleClick(event, index)}
                 >
                   <div
