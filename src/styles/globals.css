@@ -61,27 +61,29 @@ body {
 
 /* Colors for Calendar RENAME COLORS!*/ 
 
-.bg-color-brownCircle {
+.bg-color-midnightCircle {
   background-color: #243253;
 }
-.bg-color-brightBrownCircle {
+.bg-color-denimCircle {
   background-color: #2C3E63;
 }
-.bg-color-beigeCircle {
+.bg-color-cobaltCircle {
   background-color: #364B77;
 }
-.bg-color-orangeCircle {
+.bg-color-blueCircle {
   background-color: #45619B;
 }
-.bg-color-yellowCircle {
+.bg-color-oceanCircle {
   background-color: #5174B9;
 }
 
+// hover for MenuSideBar NavBars
 .navBars-icon:hover path {
   stroke: #FFB13D; /* Цвет при наведении */
   transition: all 2000ms ease-in-out;
 }
 
+// hover for HeaderSearchBar
 .header-searchBar:hover path {
   stroke: #6E7581;
   transition: all 1000ms ease-in-out;

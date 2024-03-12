@@ -41,7 +41,7 @@ export default function HeaderNavBars() {
         return (
           <React.Fragment key={index}>
             {index === 5 && (
-              <div className="border-t-2 border-[#182235] mt-[18px] pt-[8px]"></div>
+              <div className="border-t-2 border-[#182235] mt-[8px] pt-[8px]"></div>
             )}
             <button
               className={`flex flex-row gap-[10px] items-center pl-2 w-[286px] h-[46px] rounded-lg
