@@ -1,5 +1,5 @@
-import MenuSidebar from "@/components/MenuSidebar/MenuSidebar";
-import Header from "@/components/Header/Header";
+import { MenuSidebar } from "@/components/menu-side-bar/MenuSidebar";
+import { Header } from "@/components/header/Header";
 import { SearchIcon } from "@/components/Icons";
 import { TRANSACTION_TABLE_LIST } from "@/constants/transactionTableList";
 
@@ -43,7 +43,7 @@ export default function Home() {
 
           {/* navbars */}
           <div className="flex flex-row space-x-[10px]">
-            {navItems.map(({name, width}, index) => (
+            {navItems.map(({ name, width }, index) => (
               <div
                 className="h-[40px] flex items-center justify-center bg-[#0B101F] text-xl font-normal text-white rounded-lg"
                 style={{ width: width }}
