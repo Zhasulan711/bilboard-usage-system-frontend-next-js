@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PlusIcon } from "../Icons/PlusIcon";
+import { PlusIcon } from "@/components/Icons";
 
 export const PostNewAds = () => {
   return (
