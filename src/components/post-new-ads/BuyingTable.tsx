@@ -1,5 +1,5 @@
 import { BUYING_TABLE_LIST } from "@/constants/buyingTableList";
-import { LargeShoppingBagIcon } from "../Icons";
+import { LargeShoppingBagIcon } from "@/components/Icons";
 export const BuyingTable = () => {
   const navTable = [
     "Address",
