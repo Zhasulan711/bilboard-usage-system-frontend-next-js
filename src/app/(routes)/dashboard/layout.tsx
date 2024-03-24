@@ -6,7 +6,7 @@ export default function DashboardLayout({
   children,
 }: PropsWithChildren<unknown>) {
   return (
-    <html lang="en" className="hidden mcb-pro-16:block">
+    <html lang="en" className="">
       <body>{children}</body>
     </html>
   );
