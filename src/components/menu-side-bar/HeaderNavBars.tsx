@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 
 import { NAVBAR_LIST } from "@/constants";
 import { Icon } from "@/components/Icons/Icon";
+import { LogoutButton } from "@/components/auth//logout-button";
+import { logout } from "@/actions/logout";
 
 import { useEffect, useState } from "react";
 import React from "react";
@@ -25,7 +27,7 @@ export const HeaderNavBars = () => {
     if (index === 6) {
       localStorage.removeItem("clickedIndex");
       setClickedIndex(null);
-      router.push("/");
+      logout();
     } else {
       localStorage.setItem("clickedIndex", index.toString());
       setClickedIndex(index);
