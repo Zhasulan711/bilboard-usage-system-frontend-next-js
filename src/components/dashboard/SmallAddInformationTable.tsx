@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import { INFORMATION_ADD_TABLE_LIST } from "@/constants";
 
 export const SmallAddInformationTable = () => {

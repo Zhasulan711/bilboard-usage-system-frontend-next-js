@@ -1,4 +1,4 @@
-import { TengeSmallCurrencyIcon } from "../Icons";
+import { TengeSmallCurrencyIcon } from "@/components/Icons";
 
 export const BiggestSpenders = () => {
   return (

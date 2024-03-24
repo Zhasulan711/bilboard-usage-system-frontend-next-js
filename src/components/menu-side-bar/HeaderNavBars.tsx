@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { NAVBAR_LIST } from "@/constants";
-import { Icon } from "../Icons/Icon";
+import { Icon } from "@/components/Icons/Icon";
 
 import { useEffect, useState } from "react";
 import React from "react";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, ChangeEvent } from "react";
-import { SearchIcon } from "../Icons";
+import { SearchIcon } from "@/components/Icons";
 import { useRouter } from "next/navigation";
 
 export const HeaderSearchBar = () => {
