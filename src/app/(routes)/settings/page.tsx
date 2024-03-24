@@ -1,11 +1,11 @@
-import MenuSidebar from "@/components/MenuSidebar/MenuSidebar";
-import Header from "@/components/Header/Header";
-import SmallAddInformation from "@/components/SmallAddInformation/SmallAddInformation";
-import YourPersonalManager from "@/components/YourPersonalManager/YourPersonalManager";
-import LooseBillboards from "@/components/LooseBillboards/LooseBillboards";
-import Calendar from "@/components/Calendar/Calendar";
-import YourBudget from "@/components/YourBudget/YourBudget";
-import AmountAdsDistrict from "@/components/AmountAdsDistrict/AmountAdsDistrict";
+import { MenuSidebar } from "@/components/menu-side-bar/MenuSidebar";
+import { Header } from "@/components/header/Header";
+import { SmallAddInformation } from "@/components/dashboard/SmallAddInformation";
+import { YourPersonalManager } from "@/components/dashboard/YourPersonalManager";
+import { LooseBillboards } from "@/components/LooseBillboards";
+import { Calendar } from "@/components/dashboard/Calendar";
+import { YourBudget } from "@/components/dashboard/YourBudget";
+import { AmountAdsDistrict } from "@/components/dashboard/AmountAdsDistrict";
 
 export default function Home() {
   return (
