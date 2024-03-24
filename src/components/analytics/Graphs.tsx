@@ -4,6 +4,7 @@ import {
   GraphsSecondIcon,
 } from "@/components/Icons";
 // import SmallAddInformation from "@/components/dashboard/SmallAddInformation";
+
 export const Graphs = () => {
   const navBars = [
     "Alatau",

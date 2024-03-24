@@ -1,4 +1,4 @@
-import { ChevronDownParametersIcon } from "../Icons";
+import { ChevronDownParametersIcon } from "@/components/Icons";
 
 export const Parameters = () => {
   const places = [

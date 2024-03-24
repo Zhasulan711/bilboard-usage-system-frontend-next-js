@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { BellIcon } from "../Icons";
-import { HeaderSearchBar } from "./HeaderSearchBar";
+import { BellIcon } from "@/components/Icons";
+import { HeaderSearchBar } from "@/components/header/HeaderSearchBar";
 
 export const Header = () => {
   return (
