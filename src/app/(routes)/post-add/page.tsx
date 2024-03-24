@@ -1,7 +1,7 @@
-import MenuSidebar from "@/components/MenuSidebar/MenuSidebar";
-import Header from "@/components/Header/Header";
-import Parameters from "@/components/Parameters/Parameters";
-import Buying from "@/components/Buying/Buying";
+import { MenuSidebar } from "@/components/menu-side-bar/MenuSidebar";
+import { Header } from "@/components/header/Header";
+import { Parameters } from "@/components/post-new-ads/Parameters";
+import { Buying } from "@/components/post-new-ads/Buying";
 
 export default function PostAddPage() {
   return (

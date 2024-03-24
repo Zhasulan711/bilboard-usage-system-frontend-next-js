@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { BellIcon } from "../Icons";
-import HeaderSearchBar from "../HeaderSearchBar/HeaderSearchBar";
+import { HeaderSearchBar } from "./HeaderSearchBar";
 
-export default function Header() {
+export const Header = () => {
   return (
     <header className="w-[1386px] bg-[#0F1623] h-[68px] ml-auto flex border-l-2 border-[#010714]">
       <div className="flex flex-row pl-[20px] space-x-[820px] items-center">
@@ -39,4 +39,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};

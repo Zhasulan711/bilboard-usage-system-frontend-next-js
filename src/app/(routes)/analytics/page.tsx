@@ -1,17 +1,17 @@
-import MenuSidebar from "@/components/MenuSidebar/MenuSidebar";
-import Header from "@/components/Header/Header";
-import TotalSpending from "@/components/TotalSpending/TotalSpending";
-import BiggestSpenders from "@/components/BiggestSpenders/BiggestSpenders";
-import Diagram from "@/components/Diagram/Diagram";
-import Recommendation from "@/components/Recommendation/Recommendation";
-import LooseBillboards from "@/components/LooseBillboards/LooseBillboards";
-import LargeInformationAddTable from "@/components/LargeInformationAddTable/LargeInformationAddTable";
-import Graphs from "@/components/Graphs/Graphs";
-import {
-  ChevronDownAddIcon,
-  GraphsIcon,
-  GraphsSecondIcon,
-} from "@/components/Icons";
+import { MenuSidebar } from "@/components/menu-side-bar/MenuSidebar";
+import { Header } from "@/components/header/Header";
+import { TotalSpending } from "@/components/analytics/TotalSpending";
+import { BiggestSpenders } from "@/components/analytics/BiggestSpenders";
+import { Diagram } from "@/components/analytics/Diagram";
+import { Recommendation } from "@/components/analytics/Recommendation";
+import { LooseBillboards } from "@/components/LooseBillboards";
+import { LargeInformationAddTable } from "@/components/analytics/LargeInformationAddTable";
+import { Graphs } from "@/components/analytics/Graphs";
+// import {
+//   ChevronDownAddIcon,
+//   GraphsIcon,
+//   GraphsSecondIcon,
+// } from "@/components/Icons";
 
 export default function AnalyticsPage() {
   return (
@@ -36,13 +36,12 @@ export default function AnalyticsPage() {
               </div>
             </div>
           </div>
-          
         </div>
         {/* Graphs */}
         <div className="w-[1004px] h-[600px] overflow-y-auto overflow-x-hidden -mt-[580px]">
-            <Graphs />
-            <LargeInformationAddTable />
-          </div>
+          <Graphs />
+          <LargeInformationAddTable />
+        </div>
       </main>
     </div>
   );
