@@ -18,6 +18,72 @@ body {
   overflow-x: hidden;
 }
 
+/* Colors of District Ads Map */
+.bg-color-alatau {
+  background-color: #d46a6e;
+}
+.bg-color-almalinsk {
+  background-color: #fad577;
+}
+.bg-color-auezov {
+  background-color: #f9fc74;
+}
+.bg-color-bostandyk {
+  background-color: #89d563;
+}
+.bg-color-zhetysu {
+  background-color: #fad577;
+}
+.bg-color-medeu {
+  background-color: #71a2d6;
+}
+.bg-color-nauryzbay {
+  background-color: #857efd;
+}
+.bg-color-turksib {
+  background-color: #dd55d7;
+}
+.bg-color-zhetysu {
+  background-color: #63dec7;
+}
+
+/* Colors for Loose billboards */
+.bg-color-yellowBillboard {
+  background-color: #fad577;
+}
+.bg-color-greenBillboard {
+  background-color: #89d563;
+}
+.bg-color-blueBillboard {
+  background-color: #71a2d6;
+}
+.bg-color-pinkBillboard {
+  background-color: #dd55d7;
+}
+
+/* Colors for Calendar RENAME COLORS!*/
+
+.bg-color-midnightCircle {
+  background-color: #243253;
+}
+.bg-color-denimCircle {
+  background-color: #2c3e63;
+}
+.bg-color-cobaltCircle {
+  background-color: #364b77;
+}
+.bg-color-blueCircle {
+  background-color: #45619b;
+}
+.bg-color-oceanCircle {
+  background-color: #5174b9;
+}
+
+.navBars-icon:hover path {
+  stroke: #ffb13d; /* Цвет при наведении */
+  transition: all 2000ms ease-in-out;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -90,4 +156,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
