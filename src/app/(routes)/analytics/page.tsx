@@ -7,11 +7,6 @@ import { Recommendation } from "@/components/analytics/Recommendation";
 import { LooseBillboards } from "@/components/LooseBillboards";
 import { LargeInformationAddTable } from "@/components/analytics/LargeInformationAddTable";
 import { Graphs } from "@/components/analytics/Graphs";
-// import {
-//   ChevronDownAddIcon,
-//   GraphsIcon,
-//   GraphsSecondIcon,
-// } from "@/components/Icons";
 
 export default function AnalyticsPage() {
   return (
@@ -25,10 +20,21 @@ export default function AnalyticsPage() {
         <div className="flex flex-col space-y-[20px]">
           <div className="flex flex-row space-x-[20px]">
             <div className="flex flex-col space-y-[20px]">
-              <TotalSpending />
-              <BiggestSpenders />
+              <div className="flex flex-row space-x-[20px]">
+                {/* Total and Biggest Spenders */}
+                <div className="flex flex-col space-y-[20px]">
+                  <TotalSpending />
+                  <BiggestSpenders />
+                </div>
+                <Diagram />
+              </div>
+
+              {/* Graphs */}
+              <div className="w-[1004px] h-[600px] overflow-y-auto overflow-x-hidden -mt-[580px]">
+                <Graphs />
+              </div>
             </div>
-            <Diagram />
+            {/* Rec and LooseBillboards */}
             <div className="flex flex-col">
               <Recommendation />
               <div className="-ml-[20px]">
@@ -36,10 +42,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
           </div>
-        </div>
-        {/* Graphs */}
-        <div className="w-[1004px] h-[600px] overflow-y-auto overflow-x-hidden -mt-[580px]">
-          <Graphs />
+          {/* Table */}
           <LargeInformationAddTable />
         </div>
       </main>
