@@ -14,7 +14,7 @@ export const TransactionIcon: FC<DefaultIconComponentProps & {stroke?:string}> =
       viewBox={viewBox}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="transition-all duration-[2000ms] ease-in-out navBars-icon"
+      className="transition-all duration-2000 ease-in-out navBars-icon"
       style={{ color: stroke }}
     >
       <path

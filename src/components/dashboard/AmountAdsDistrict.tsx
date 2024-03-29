@@ -26,7 +26,7 @@ export const AmountAdsDistrict = () => {
             return (
               <React.Fragment key={index}>
                 <div
-                  className={`flex flex-row space-x-[7px] h-[40px] w-[185px] items-center transition duration-[2000ms] ease-in-out rounded-lg pl-[10px]
+                  className={`flex flex-row space-x-[7px] h-[40px] w-[185px] items-center transition duration-2000 ease-in-out rounded-lg pl-[10px]
                 ${isClicked ? "bg-[#182235]" : ""}`}
                   onClick={(event) => handleClick(event, index)}
                 >

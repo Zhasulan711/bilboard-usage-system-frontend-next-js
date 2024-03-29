@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { NAVBAR_LIST } from "@/constants";
 import { Icon } from "@/components/Icons/Icon";
-import { LogoutButton } from "@/components/auth//logout-button";
+// import { LogoutButton } from "@/components/auth//logout-button";
 import { logout } from "@/actions/logout";
 
 import { useEffect, useState } from "react";
@@ -47,7 +47,7 @@ export const HeaderNavBars = () => {
             )}
             <button
               className={`flex flex-row gap-[10px] items-center pl-2 w-[286px] h-[46px] rounded-lg
-              hover:bg-[#182235] transition duration-[2000ms] ease-in-out
+              hover:bg-[#182235] transition duration-2000 ease-in-out
               ${isClicked ? "bg-[#182235]" : "bg-[#0F1623]"} 
               `}
               onClick={(event) => handleClick(event, index, href)}
@@ -56,7 +56,7 @@ export const HeaderNavBars = () => {
               <Link
                 href={href}
                 className={`text-[#3F454F] text-[19px] font-normal 
-                hover:text-[#F9B13C] target:text-[#F9B13C] transition duration-[2000ms] ease-in-out
+                hover:text-[#F9B13C] target:text-[#F9B13C] transition duration-2000 ease-in-out
                 ${isClicked ? "text-[#F9B13C]" : "text-[#3F454F]"}`}
               >
                 {title}
