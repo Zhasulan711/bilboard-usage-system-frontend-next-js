@@ -11,7 +11,7 @@ import { logout } from "@/actions/logout";
 import { useEffect, useState } from "react";
 import React from "react";
 
-export const HeaderNavBars = () => {
+export const MenuSideNavBars = () => {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const router = useRouter();
 

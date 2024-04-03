@@ -19,12 +19,23 @@ export const UserButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar>
-          <AvatarImage src={user?.image || ""} />
-          <AvatarFallback className="bg-sky-500">
-            <FaUser className="text-white" />
-          </AvatarFallback>
-        </Avatar>
+        <div className="flex flex-row space-x-[10px]">
+          <Avatar>
+            <AvatarImage src={user?.image || ""} />
+            <AvatarFallback className="bg-sky-500">
+              <FaUser className="text-white" />
+            </AvatarFallback>
+          </Avatar>
+
+          <div className="flex flex-col">
+            <span className="text-[#FFFFFF] text-sm font-normal">
+              {user?.name}
+            </span>
+            <span className="text-[#6F737B] text-sm font-normal truncate max-w-[50px]">
+              #{user?.id}
+            </span>
+          </div>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="end">
         <LogoutButton>
