@@ -9,31 +9,30 @@ import { AmountAdsDistrict } from "@/components/dashboard/AmountAdsDistrict";
 
 export default function Home() {
   return (
-    <div className="relative">
-      <div className="flex flex-row absolute">
-        <MenuSidebar />
+    <div className="flex flex-row">
+      <MenuSidebar />
+      <div className="flex flex-col space-y-[20px]">
         <Header />
-      </div>
+        <main className="ml-[20px]">
+          <div className="flex flex-col">
+            <div className="flex flex-row">
+              <AmountAdsDistrict />
 
-      <main className="absolute inset-0 left-[362px] top-[88px]">
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <AmountAdsDistrict />
+              <div className="flex flex-col">
+                <YourBudget />
+                <Calendar />
+              </div>
 
-            <div className="flex flex-col">
-              <YourBudget />
-              <Calendar />
+              <div className="flex flex-col">
+                <LooseBillboards />
+                <YourPersonalManager />
+              </div>
             </div>
 
-            <div className="flex flex-col">
-              <LooseBillboards />
-              <YourPersonalManager />
-            </div>
+            <SmallAddInformation />
           </div>
-
-          <SmallAddInformation />
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
