@@ -15,11 +15,11 @@ export const HeaderSearchBar = () => {
   const routes: { [key: string]: string } = {
     dashboard: "/dashboard",
     transaction: "/transaction",
-    messages: "/messages",
     analytics: "/analytics",
     settings: "/settings",
     contactWithUs: "/contactWithUs",
     logout: "/",
+    postAdd: "/post-add",
   };
 
   const findFullRouteName = (inputText: string) => {
