@@ -16,7 +16,7 @@ export const SmallAddInformationTable = () => {
   ];
 
   return (
-    <div className="overflow-auto h-[300px] mt-[10px]">
+    <div className="overflow-y-auto h-[300px] mt-[10px] scroll-hidden">
       <table className="w-full table-auto divide-y-[3px] divide-[#182235]">
         <thead className="text-[#6F737B] text-base font-normal">
           <tr>

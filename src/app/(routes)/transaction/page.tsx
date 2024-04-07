@@ -49,7 +49,7 @@ export default function Home() {
       </div>
 
       {/* table */}
-      <div className="overflow-y-auto max-h-[930px] border rounded-lg mt-[16px] border-transparent">
+      <div className="overflow-y-auto scroll-hidden max-h-[930px] border rounded-lg mt-[16px] border-transparent">
         <table className="table-fixed divide-y-[32px] divide-[#010714]">
           <thead className="text-[#B7B9BE] font-normal bg-[#0F1623]">
             <tr className="">

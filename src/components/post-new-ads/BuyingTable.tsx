@@ -12,7 +12,7 @@ export const BuyingTable = () => {
   ];
 
   return (
-    <div className="h-[895px] overflow-y-auto overflow-x-hidden">
+    <div className="h-[895px] overflow-y-auto overflow-x-hidden scroll-hidden">
       <table className="table-auto divide-y-[20px] divide-[#010714]">
         <thead className="text-[#575C65] text-base font-normal">
           <tr>

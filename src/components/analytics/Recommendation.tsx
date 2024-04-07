@@ -5,7 +5,7 @@ export const Recommendation = () => {
   return (
     <div className="bg-[#0F1623] w-[322px] h-[501px] rounded-lg pl-[26px] pt-[16px] flex flex-col space-y-[3px] mb-[20px]">
       <h1 className="text-white text-2xl font-medium">Recommendation</h1>
-      <div className="h-[425px] overflow-y-auto overflow-x-hidden flex flex-col space-y-[12px]">
+      <div className="h-[425px] overflow-y-auto overflow-x-hidden scroll-hidden flex flex-col space-y-[12px]">
         {LOOSE_BILLBOARDS_LISt.map(({ title, colorClass, id }, index) => {
           return (
             <div
