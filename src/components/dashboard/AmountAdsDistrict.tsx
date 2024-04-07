@@ -33,7 +33,7 @@ export const AmountAdsDistrict = () => {
                   <div
                     className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}
                   ></div>
-                  <h2 className="text-white text-xl font-normal">{title}</h2>
+                  <h2 className="text-white text-xl font-normal cursor-pointer">{title}</h2>
                 </div>
               </React.Fragment>
             );

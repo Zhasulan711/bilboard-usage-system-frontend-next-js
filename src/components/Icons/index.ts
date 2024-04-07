@@ -14,6 +14,7 @@ export * from "./PlusIcon";
  */
 export * from "./SearchIcon";
 export * from "./BellIcon";
+export * from "./ShoppingBasketIcon";
 
 /***
  * Main
@@ -23,7 +24,6 @@ export * from "./TengeLargeCurrencyIcon";
 export * from "./TengeSmallCurrencyIcon";
 export * from "./SmallShoppingBagIcon";
 export * from "./CompassIcon";
-export * from "./MessageCircleMoreIcon";
 export * from "./ChevronDownCalendarIcon";
 export * from "./CalendarDaysIcon";
 export * from "./ChevronDownAddIcon";
@@ -44,3 +44,7 @@ export * from "./GraphsSecondIcon";
  * Transaction page
  */
 export * from "./TransactionIcon";
+
+/***
+ * Buying page
+ */
