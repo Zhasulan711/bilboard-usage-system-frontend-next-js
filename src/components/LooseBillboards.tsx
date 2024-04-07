@@ -5,7 +5,7 @@ export const LooseBillboards = () => {
   return (
     <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[12px]">
       <h1 className="text-white text-[28px] font-medium">Loose billboards</h1>
-      <div className="flex flex-col pt-[20px] space-y-[10px] h-[360px] overflow-y-auto">
+      <div className="flex flex-col pt-[20px] space-y-[10px] h-[360px] overflow-y-auto scroll-hidden">
         {/* add DRY */}
         {LOOSE_BILLBOARDS_LISt.map(({ title, colorClass, id }, index) => {
           return (

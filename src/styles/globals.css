@@ -18,6 +18,10 @@ body {
   overflow-x: hidden;
 }
 
+.scroll-hidden::-webkit-scrollbar {
+  display: none; /* Для Safari и Chrome */
+}
+
 /* Colors of District Ads Map */
 .bg-color-alatau {
   background-color: #d46a6e;
