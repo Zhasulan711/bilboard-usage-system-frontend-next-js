@@ -81,7 +81,7 @@ export const Parameters = () => {
   }
 
   return (
-    <div className="h-[980px] overflow-y-auto w-[451px] rounded-[14px] bg-[#0F1623]">
+    <div className="h-[980px] overflow-y-auto w-[451px] scroll-hidden rounded-[14px] bg-[#0F1623]">
       <div className="h-[1266px] py-[12px] px-[26px]">
         {/* Places choose */}
         <h1 className="text-[28px] font-medium text-white">Parameters</h1>
