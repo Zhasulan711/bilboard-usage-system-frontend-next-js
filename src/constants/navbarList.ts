@@ -15,10 +15,6 @@ export const NAVBAR_LIST: NavbarList[] = [
     icon: "transaction",
   },
   {
-    title: "Messages",
-    icon: "messages",
-  },
-  {
     title: "Analytics",
     icon: "analytics",
   },

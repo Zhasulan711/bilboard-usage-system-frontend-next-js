@@ -42,7 +42,7 @@ export const MenuSideNavBars = () => {
         const isClicked = clickedIndex === index;
         return (
           <React.Fragment key={index}>
-            {index === 5 && (
+            {index === 4 && (
               <div className="border-t-2 border-[#182235] mt-[8px] pt-[8px]"></div>
             )}
             <button

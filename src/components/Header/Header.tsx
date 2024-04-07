@@ -3,7 +3,6 @@
 import { BellIcon } from "@/components/Icons";
 import { HeaderSearchBar } from "@/components/header/HeaderSearchBar";
 import { HeaderAccount } from "./HeaderAccount";
-import { currentUser } from "@/lib/auth";
 
 export const Header = () => {
 
