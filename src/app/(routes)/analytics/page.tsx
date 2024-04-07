@@ -8,7 +8,7 @@ import { Graphs } from "@/components/analytics/Graphs";
 
 export default function AnalyticsPage() {
   return (
-    <div className="flex flex-col space-y-[20px] overflow-y-auto scroll-hidden max-h-[970px]">
+    <div className="flex flex-col space-y-[20px] overflow-y-auto scroll-hidden max-h-[980px]">
       <div className="flex flex-row space-x-[20px]">
         <div className="flex flex-col space-y-[20px]">
           <div className="flex flex-row space-x-[20px]">
