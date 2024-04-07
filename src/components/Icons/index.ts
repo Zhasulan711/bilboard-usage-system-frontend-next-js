@@ -1,7 +1,6 @@
 /***
- * 1-Dashboard page
+ * SideBar
  */
-// sidebar
 export * from "./DashboardIcon";
 export * from "./AnalyticsIcon";
 export * from "./TransactionIcon";
@@ -11,11 +10,15 @@ export * from "./ContactWithUsIcon";
 export * from "./LogOutIcon";
 export * from "./PlusIcon";
 
-// header
+/***
+ * Header
+ */
 export * from "./SearchIcon";
 export * from "./BellIcon";
 
-// main
+/***
+ * Main
+ */
 export * from "./DistrictAdsMapIcon";
 export * from "./TengeLargeCurrencyIcon";
 export * from "./TengeSmallCurrencyIcon";
@@ -27,28 +30,18 @@ export * from "./CalendarDaysIcon";
 export * from "./ChevronDownAddIcon";
 
 /***
- * 6-Post Add page
+ * Post Add page
  */
-// main
 export * from "./ChevronDownParametersIcon";
 export * from "./LargeShoppingBagIcon";
 
 /***
- * sign-in page
+ * Analytics page
  */
-// main
-export * from "./AppleLogoIcon";
-export * from "./FacebookLogoIcon";
-export * from "./GoogleLogoIcon";
-
-/***
- * analytics page
- */
-// main
 export * from "./GraphsIcon";
 export * from "./GraphsSecondIcon";
 
 /***
- * 7-Transaction page
+ * Transaction page
  */
 export * from "./TransactionIcon";
