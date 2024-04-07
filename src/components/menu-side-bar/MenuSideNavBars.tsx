@@ -24,7 +24,7 @@ export const MenuSideNavBars = () => {
 
   const handleClick = (event: any, index: number, href: string) => {
     event.preventDefault();
-    if (index === 6) {
+    if (index === 5) {
       localStorage.removeItem("clickedIndex");
       setClickedIndex(null);
       logout();
