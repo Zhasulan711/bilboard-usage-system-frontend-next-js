@@ -2,7 +2,6 @@ import { FC } from "react";
 import { AnalyticsIcon } from "./AnalyticsIcon";
 import { BellIcon } from "./BellIcon";
 import { DashboardIcon } from "./DashboardIcon";
-import { MessagesIcon } from "./MessagesIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SettingsIcon } from "./SettingsIcon";
 import { TransactionIcon } from "./TransactionIcon";
@@ -15,7 +14,6 @@ const Icons = {
   dashboard: DashboardIcon,
   analytics: AnalyticsIcon,
   transaction: TransactionIcon,
-  messages: MessagesIcon,
   settings: SettingsIcon,
   contactWithUs: ContactWithUsIcon,
   logOutIcon: LogOutIcon,

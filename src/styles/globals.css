@@ -19,7 +19,7 @@ body {
 }
 
 .scroll-hidden::-webkit-scrollbar {
-  display: none; /* Для Safari и Chrome */
+  display: none; 
 }
 
 /* Colors of District Ads Map */
