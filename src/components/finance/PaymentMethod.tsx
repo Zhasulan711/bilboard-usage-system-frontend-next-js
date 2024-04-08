@@ -27,8 +27,8 @@ import { FormSuccess } from "@/components/form-success";
 export const PaymentMethod = () => {
   const [isPending, startTransition] = useTransition();
   const user = useCurrentUser();
-  const [error, setError] = useState<string | undefined>();
-  const [success, setSuccess] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const { update } = useSession();
   const form = useForm<z.infer<typeof PaymentSchema>>({
     resolver: zodResolver(PaymentSchema),
