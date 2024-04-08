@@ -10,8 +10,8 @@ import { FormSuccess } from "@/components/form-success";
 import { newVerification } from "@/actions/new-verification";
 
 export const NewVerificationForm = () => {
-  const [error, setError] = useState<string | undefined>();
-  const [success, setSuccess] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
 
   const searchParams = useSearchParams();
 
