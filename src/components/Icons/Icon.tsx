@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { AnalyticsIcon } from "./AnalyticsIcon";
-import { BellIcon } from "./BellIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SettingsIcon } from "./SettingsIcon";
@@ -9,7 +8,6 @@ import { ContactWithUsIcon } from "./ContactWithUsIcon";
 import { LogOutIcon } from "./LogOutIcon";
 
 const Icons = {
-  bell: BellIcon,
   search: SearchIcon,
   dashboard: DashboardIcon,
   analytics: AnalyticsIcon,

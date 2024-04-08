@@ -68,3 +68,7 @@ export const RegisterSchema = z.object({
     message: "Name is required",
   }),
 });
+
+export const PaymentSchema = z.object({
+  balance: z.optional(z.string())
+});
