@@ -13,7 +13,6 @@ export * from "./PlusIcon";
  * Header
  */
 export * from "./SearchIcon";
-export * from "./BellIcon";
 export * from "./ShoppingBasketIcon";
 
 /***
@@ -46,5 +45,6 @@ export * from "./GraphsSecondIcon";
 export * from "./TransactionIcon";
 
 /***
- * Buying page
+ * Finance page
  */
+export * from "./RedTrashIcon";
