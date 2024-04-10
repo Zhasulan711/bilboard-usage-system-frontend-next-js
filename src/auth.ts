@@ -69,7 +69,9 @@ export const {
       // if(session.user) {
       //   session.user.customField = "anything";
       // }
-
+      if (session.user && token.balance) {
+        session.user.balance = token.balance.toString();
+      }
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
@@ -92,6 +94,7 @@ export const {
     },
 
     async jwt({ token }) {
+      
       // console.log({ token });
       // token.customField = "test";
       // console.log("I AM BEING CALLED AGAIN!");
@@ -101,6 +104,10 @@ export const {
       }
 
       const existingUser = await getUserById(token.sub);
+      if (existingUser) {
+        // Добавление информации о балансе в токен
+        token.balance = existingUser.balance;
+      }
 
       if (!existingUser) {
         return token;
