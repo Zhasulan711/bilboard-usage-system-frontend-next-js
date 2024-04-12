@@ -70,5 +70,9 @@ export const RegisterSchema = z.object({
 });
 
 export const PaymentSchema = z.object({
-  balance: z.optional(z.string())
+  balance: z.optional(z.string()),
+});
+
+export const BillboardSchema = z.object({
+  billboard: z.optional(z.string()),
 });
