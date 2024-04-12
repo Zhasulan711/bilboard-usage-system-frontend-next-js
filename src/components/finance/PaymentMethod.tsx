@@ -57,7 +57,7 @@ export const PaymentMethod = () => {
   };
 
   return (
-    <Card className="w-[821px] h-[472px] bg-[#0F1623] border-transparent">
+    <Card className="w-[821px] h-[472px] bg-[#0F1623] border-transparent p-[20px]">
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -65,7 +65,7 @@ export const PaymentMethod = () => {
             name="balance"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>balance</FormLabel>
+                <FormLabel className="text-white text-[26px]">Payment method</FormLabel>
 
                 <FormControl>
                   <Input

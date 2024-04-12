@@ -88,7 +88,7 @@ export default function Home() {
                     <td className="px-6 py-4">{size}</td>
                     <td className="px-6 py-4">{category}</td>
                     <td className="px-6 py-4">{date}</td>
-                    <td className="px-6 py-4">{status}</td>
+                    <td className="px-6 py-4 text-orange-400">{status}</td>
                   </tr>
                 );
               }

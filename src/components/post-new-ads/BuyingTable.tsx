@@ -1,15 +1,44 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
-import { LargeShoppingBagIcon } from "@/components/Icons";
-export const BuyingTable = () => {
-  const navTable = [
-    "Address",
-    "Region",
-    "Price",
-    "GRP",
-    "Time",
-    "Category",
-    "Buy",
-  ];
+// import { LargeShoppingBagIcon } from "@/components/Icons";
+import { BillboardTableList } from "@/constants/billboardTableList";
+
+const navTable = [
+  "Address",
+  "Region",
+  "Price",
+  "GRP",
+  "Date",
+  "Category",
+  "Buy",
+];
+
+export const BuyingTable: React.FC = () => {
+  const [processedIndex, setProcessedIndex] = useState<string[]>([]);
+
+  useEffect(() => {
+    const items = JSON.parse(
+      localStorage.getItem("processingItems") || "[]"
+    ) as BillboardTableList[];
+    setProcessedIndex(items.map((item) => item.id));
+  }, []);
+
+  const handleBuy = (item: BillboardTableList): void => {
+    if (!processedIndex.includes(item.id)) {
+      const currentProcessingItems = JSON.parse(
+        localStorage.getItem("processingItems") || "[]"
+      ) as BillboardTableList[];
+      currentProcessingItems.push(item);
+      localStorage.setItem(
+        "processingItems",
+        JSON.stringify(currentProcessingItems)
+      );
+      setProcessedIndex((prev) => [...prev, item.id]); // Update the purchasedIds state
+    }
+  };
 
   return (
     <div className="h-[895px] overflow-y-auto overflow-x-hidden scroll-hidden">
@@ -24,21 +53,27 @@ export const BuyingTable = () => {
           </tr>
         </thead>
         <tbody className="divide-y-[12px] divide-[#010714] text-white text-base font-normal whitespace-nowrap">
-          {BILLBOARD_TABLE_LIST.map(
-            ({ address, region, price, grp, time, category }, index) => (
-              <tr key={index}>
-                <td className="py-[20px] px-[26px]">{address}</td>
-                <td className="py-[20px] px-[26px]">{region}</td>
-                <td className="py-[20px] px-[26px]">{price}</td>
-                <td className="py-[20px] px-[26px]">{grp}</td>
-                <td className="py-[20px] px-[26px]">{time}</td>
-                <td className="py-[20px] px-[26px]">{category}</td>
-                <td className="py-[20px] px-[26px]">
-                  <LargeShoppingBagIcon />
-                </td>
-              </tr>
-            )
-          )}
+          {BILLBOARD_TABLE_LIST.map((item, index) => (
+            <tr key={index}>
+              <td className="py-[20px] px-[26px]">{item.address}</td>
+              <td className="py-[20px] px-[26px]">{item.region}</td>
+              <td className="py-[20px] px-[26px]">{item.price}</td>
+              <td className="py-[20px] px-[26px]">{item.grp}</td>
+              <td className="py-[20px] px-[26px]">{item.date}</td>
+              <td className="py-[20px] px-[26px]">{item.category}</td>
+              <td className="py-[20px] px-[26px]">
+                <button
+                  className="text-white"
+                  onClick={() => handleBuy(item)}
+                  disabled={processedIndex.includes(item.id)}
+                >
+                  {" "}
+                  Buy
+                </button>
+                {/* <LargeShoppingBagIcon /> */}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

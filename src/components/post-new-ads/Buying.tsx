@@ -17,8 +17,8 @@ export const Buying = () => {
   ];
 
   return (
-    <div className="h-[980px] rounded-[14px] bg-[#0F1623] w-[875px]">
-      <div className="flex flex-row space-x-[520px] px-[26px] py-[13px] items-center border-b-[12px] border-[#010714]">
+    <div className="h-[980px] rounded-[14px] bg-[#0F1623] w-[1005px]">
+      <div className="flex flex-row space-x-[620px] px-[26px] py-[13px] items-center border-b-[12px] border-[#010714]">
         {/* Buying navBars */}
         <h1 className="text-[28px] font-medium text-white">Buying</h1>
         <div className="flex flex-row space-x-[10px] mt-[5px]">
