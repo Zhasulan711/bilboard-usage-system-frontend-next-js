@@ -9,11 +9,11 @@ import { BillboardTableList } from "@/constants/billboardTableList";
 const navTable = [
   "Address",
   "Region",
-  "Price",
+  "Price, tg",
   "GRP",
   "Date",
   "Category",
-  "Buy",
+  "Purchasing",
 ];
 
 export const BuyingTable: React.FC = () => {

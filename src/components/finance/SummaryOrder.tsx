@@ -5,6 +5,7 @@ import React, { useEffect, useState, useTransition } from "react";
 // import { RedTrashIcon } from "@/components/Icons";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { BillboardTableList } from "@/constants/billboardTableList";
+import { CompassIcon } from "@/components/Icons";
 
 export const SummaryOrder = () => {
   const [processingItems, setProcessingItems] = useState<BillboardTableList[]>(
@@ -41,11 +42,12 @@ export const SummaryOrder = () => {
       </CardHeader>
       <CardContent className="flex flex-col space-y-[18px] overflow-y-auto h-[320px] scroll-hidden overflow-x-hidden">
         {processingItems.map((item, index) => (
-          <div key={index} className="flex flex-row -space-x-[16px]">
-            <div className="w-[500px] flex flex-row space-x-[16px]">
+          <div key={index} className="flex flex-row -space-x-[16px] items-center">
+            <div className="w-[500px] flex flex-row space-x-[16px] items-center">
               <div
-                className={`w-[90px] h-[90px] bg-color-${item.colorClass} rounded-[10px]`}
+                className={`w-[90px] h-[90px] bg-color-${item.colorClass} rounded-[10px] justify-center flex items-center`}
               >
+                <CompassIcon />
                 {/* <img src={order.image} alt="order" /> */}
               </div>
               <div className="flex flex-col">
@@ -68,7 +70,7 @@ export const SummaryOrder = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-[19px] items-end w-[150px] ">
+            <div className="flex flex-col space-y-[19px] items-end w-[150px]">
               <button
                 className="text-red-500"
                 onClick={() => handleRemove(index)}
