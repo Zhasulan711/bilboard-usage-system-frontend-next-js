@@ -22,6 +22,11 @@ export const SummaryOrder = () => {
     const updatedItems = processingItems.filter((_, i) => i !== index);
     setProcessingItems(updatedItems);
     localStorage.setItem("processingItems", JSON.stringify(updatedItems));
+    const canceledItems = JSON.parse(
+      localStorage.getItem("canceledItems") || "[]"
+    );
+    const newCanceledItems = canceledItems.concat(processingItems);
+    localStorage.setItem("canceledItems", JSON.stringify(newCanceledItems));
   };
 
   return (
@@ -59,7 +64,12 @@ export const SummaryOrder = () => {
               </div>
             </div>
             <div className="flex flex-col space-y-[19px] items-end w-[150px] ">
-              <button className="text-red-500" onClick={() => handleRemove(index)}>Remove</button>
+              <button
+                className="text-red-500"
+                onClick={() => handleRemove(index)}
+              >
+                Remove
+              </button>
               {/* <RedTrashIcon /> */}
               <h1 className="text-white text-4xl font-normal">{item.price}</h1>
             </div>
