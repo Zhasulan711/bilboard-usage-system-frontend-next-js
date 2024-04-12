@@ -1,5 +1,6 @@
-export type TransactionTableList = {
+export type BillboardTableList = {
   address: string;
+  region: string;
   price: number | string;
   grp: number | string;
   time: number | string;
@@ -8,11 +9,14 @@ export type TransactionTableList = {
   category: string;
   date: number | string;
   status: string;
+  id: string;
+  colorClass: string;
 };
 
-export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
+export const BILLBOARD_TABLE_LIST: BillboardTableList[] = [
   {
     address: "Abaya - Muratbayeva",
+    region: "Almaty",
     price: "265,500",
     grp: "550,000",
     time: "12:00-14:00",
@@ -21,9 +25,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "26 August, 2024",
     status: "Process",
+    colorClass: "yellowBillboard",
+    id: "#1219",
   },
   {
     address: "Shevchenko - Nauryzbay Batyr",
+    region: "Almaty",
     price: "252,512",
     grp: "620,000",
     time: "11:00-13:00",
@@ -32,9 +39,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "26 August, 2024",
     status: "Success",
+    colorClass: "greenBillboard",
+    id: "#1361",
   },
   {
     address: "Tolebi - Nauryzbay Batyr",
+    region: "Almaty",
     price: "265,500",
     grp: "790,800",
     time: "13:00-15:00",
@@ -43,9 +53,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "25 August, 2024",
     status: "Canceled",
+    colorClass: "yellowBillboard",
+    id: "#1259",
   },
   {
     address: "Raiymbeka - Tlendieva",
+    region: "Almaty",
     price: "105,500",
     grp: "650,400",
     time: "18:30-19:30",
@@ -54,9 +67,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Restaurant",
     date: "24 August, 2024",
     status: "Success",
+    colorClass: "greenBillboard",
+    id: "#1213",
   },
   {
     address: "Tole bi - Tlendieva",
+    region: "Almaty",
     price: "105,500",
     grp: "810,300",
     time: "20:10-21:10",
@@ -65,9 +81,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Restaurant",
     date: "23 August, 2024",
     status: "Process",
+    colorClass: "pinkBillboard",
+    id: "#1657",
   },
   {
     address: "Tole bi St. - Prokoliev St.",
+    region: "Almaty",
     price: "225,500",
     grp: "623,100",
     time: "14:00-16:00",
@@ -76,9 +95,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "21 August, 2024",
     status: "Canceled",
+    colorClass: "greenBillboard",
+    id: "#1388",
   },
   {
     address: "Shevchenko - Nauryzbay Batyr",
+    region: "Almaty",
     price: "252,512",
     grp: "620,000",
     time: "11:00-13:00",
@@ -87,9 +109,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "20 August, 2024",
     status: "Success",
+    colorClass: "yellowBillboard",
+    id: "#1357",
   },
   {
     address: "Shevchenko - Nauryzbay Batyr",
+    region: "Almaty",
     price: "252,512",
     grp: "620,000",
     time: "11:00-13:00",
@@ -98,9 +123,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "19 August, 2024",
     status: "Success",
+    colorClass: "yellowBillboard",
+    id: "#1515",
   },
   {
     address: "Shevchenko - Nauryzbay Batyr",
+    region: "Almaty",
     price: "252,512",
     grp: "620,000",
     time: "11:00-13:00",
@@ -109,9 +137,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "19 August, 2024",
     status: "Success",
+    colorClass: "yellowBillboard",
+    id: "#1219",
   },
   {
     address: "Abaya - Muratbayeva",
+    region: "Almaty",
     price: "265,500",
     grp: "550,000",
     time: "12:00-14:00",
@@ -120,9 +151,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "26 August, 2024",
     status: "Process",
+    colorClass: "pinkBillboard",
+    id: "#1219",
   },
   {
     address: "Abaya - Muratbayeva",
+    region: "Almaty",
     price: "265,500",
     grp: "550,000",
     time: "12:00-14:00",
@@ -131,9 +165,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "26 August, 2024",
     status: "Process",
+    colorClass: "pinkBillboard",
+    id: "#1219",
   },
   {
     address: "Abaya - Muratbayeva",
+    region: "Almaty",
     price: "265,500",
     grp: "550,000",
     time: "12:00-14:00",
@@ -142,9 +179,12 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "26 August, 2024",
     status: "Process",
+    colorClass: "yellowBillboard",
+    id: "#1219",
   },
   {
     address: "Abaya - Muratbayeva",
+    region: "Almaty",
     price: "265,500",
     grp: "550,000",
     time: "12:00-14:00",
@@ -153,5 +193,7 @@ export const TRANSACTION_TABLE_LIST: TransactionTableList[] = [
     category: "Food",
     date: "26 August, 2024",
     status: "Process",
+    colorClass: "pinkBillboard",
+    id: "#1219",
   },
 ];

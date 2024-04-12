@@ -1,7 +1,7 @@
 "use client";
 
 // import { useState } from "react";
-import { INFORMATION_ADD_TABLE_LIST } from "@/constants";
+import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
 
 export const SmallAddInformationTable = () => {
   //   const [isShow, setIsShow] = useState(true);
@@ -32,7 +32,7 @@ export const SmallAddInformationTable = () => {
           </tr>
         </thead>
         <tbody className="text-white text-lg font-normal divide-y-[3px] divide-[#182235]">
-          {INFORMATION_ADD_TABLE_LIST.map(
+          {BILLBOARD_TABLE_LIST.map(
             (
               { address, price, grp, time, placeNumber, size, category },
               index
