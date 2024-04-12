@@ -1,19 +1,28 @@
 "use client";
 
-// import { useState } from "react";
-import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
+import { useState, useEffect } from "react";
+import { BillboardTableList } from "@/constants/billboardTableList";
+
+const headerTable = [
+  "Address",
+  "Price",
+  "GRP",
+  "Time",
+  "Place number",
+  "Size",
+  "Category",
+];
 
 export const SmallAddInformationTable = () => {
-  //   const [isShow, setIsShow] = useState(true);
-  const headerTable = [
-    "Address",
-    "Price",
-    "GRP",
-    "Time",
-    "Place number",
-    "Size",
-    "Category",
-  ];
+  const [purchasedItems, setPurchasedItems] = useState<BillboardTableList[]>(
+    []
+  );
+
+  useEffect(() => {
+    setPurchasedItems(
+      JSON.parse(localStorage.getItem("purchasedItems") || "[]")
+    );
+  }, []);
 
   return (
     <div className="overflow-y-auto h-[300px] mt-[10px] scroll-hidden">
@@ -32,7 +41,7 @@ export const SmallAddInformationTable = () => {
           </tr>
         </thead>
         <tbody className="text-white text-lg font-normal divide-y-[3px] divide-[#182235]">
-          {BILLBOARD_TABLE_LIST.map(
+          {purchasedItems.map(
             (
               { address, price, grp, time, placeNumber, size, category },
               index

@@ -18,25 +18,38 @@ const navTable = [
 
 export const BuyingTable: React.FC = () => {
   const [processedIndex, setProcessedIndex] = useState<string[]>([]);
+  const [purchasedIndex, setPurchasedItems] = useState<string[]>([]);
 
   useEffect(() => {
     const items = JSON.parse(
       localStorage.getItem("processingItems") || "[]"
     ) as BillboardTableList[];
+    const purchasedItems = JSON.parse(
+      localStorage.getItem("purchasedItems") || "[]"
+    ) as BillboardTableList[];
+
     setProcessedIndex(items.map((item) => item.id));
+    setPurchasedItems(purchasedItems.map((item) => item.id));
   }, []);
 
   const handleBuy = (item: BillboardTableList): void => {
-    if (!processedIndex.includes(item.id)) {
+    const itemId = item.id.toString();
+
+    if (
+      !processedIndex.includes(itemId) &&
+      !purchasedIndex.includes(itemId)
+    ) {
       const currentProcessingItems = JSON.parse(
         localStorage.getItem("processingItems") || "[]"
       ) as BillboardTableList[];
+
       currentProcessingItems.push(item);
+      
       localStorage.setItem(
         "processingItems",
         JSON.stringify(currentProcessingItems)
       );
-      setProcessedIndex((prev) => [...prev, item.id]); // Update the purchasedIds state
+      setProcessedIndex((prev) => [...prev, itemId]); // Update the purchasedIds state
     }
   };
 
@@ -65,7 +78,7 @@ export const BuyingTable: React.FC = () => {
                 <button
                   className="text-white"
                   onClick={() => handleBuy(item)}
-                  disabled={processedIndex.includes(item.id)}
+                  disabled={processedIndex.includes(item.id.toString()) || purchasedIndex.includes(item.id.toString())}
                 >
                   {" "}
                   Buy
