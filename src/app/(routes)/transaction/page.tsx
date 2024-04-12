@@ -1,7 +1,5 @@
-import { MenuSidebar } from "@/components/menu-side-bar/MenuSidebar";
-import { Header } from "@/components/header/Header";
 import { SearchIcon } from "@/components/Icons";
-import { TRANSACTION_TABLE_LIST } from "@/constants/transactionTableList";
+import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
 
 export default function Home() {
   const navItems = [
@@ -65,7 +63,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody className="text-white text-lg font-normal bg-[#0F1623] divide-y-[16px] divide-[#010714]">
-            {TRANSACTION_TABLE_LIST.map(
+            {BILLBOARD_TABLE_LIST.map(
               (
                 {
                   address,

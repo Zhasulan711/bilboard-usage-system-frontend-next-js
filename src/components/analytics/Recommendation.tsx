@@ -1,4 +1,4 @@
-import { LOOSE_BILLBOARDS_LISt } from "@/constants";
+import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
 import { CompassIcon, SmallShoppingBagIcon } from "@/components/Icons";
 
 export const Recommendation = () => {
@@ -6,7 +6,7 @@ export const Recommendation = () => {
     <div className="bg-[#0F1623] w-[322px] h-[501px] rounded-lg pl-[26px] pt-[16px] flex flex-col space-y-[3px] mb-[20px]">
       <h1 className="text-white text-2xl font-medium">Recommendation</h1>
       <div className="h-[425px] overflow-y-auto overflow-x-hidden scroll-hidden flex flex-col space-y-[12px]">
-        {LOOSE_BILLBOARDS_LISt.map(({ title, colorClass, id }, index) => {
+        {BILLBOARD_TABLE_LIST.map(({ address, colorClass, id }, index) => {
           return (
             <div
               key={index}
@@ -19,8 +19,8 @@ export const Recommendation = () => {
                   <CompassIcon />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-white text-[12px] font-normal whitespace-nowrap">
-                    {title}
+                  <h2 className="text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px]">
+                    {address}
                   </h2>
                   <h3 className="text-[#3C424C] text-[11px] font-normal">
                     {id}

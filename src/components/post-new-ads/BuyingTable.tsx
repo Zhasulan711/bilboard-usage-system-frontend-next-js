@@ -1,4 +1,4 @@
-import { BUYING_TABLE_LIST } from "@/constants/buyingTableList";
+import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
 import { LargeShoppingBagIcon } from "@/components/Icons";
 export const BuyingTable = () => {
   const navTable = [
@@ -24,7 +24,7 @@ export const BuyingTable = () => {
           </tr>
         </thead>
         <tbody className="divide-y-[12px] divide-[#010714] text-white text-base font-normal whitespace-nowrap">
-          {BUYING_TABLE_LIST.map(
+          {BILLBOARD_TABLE_LIST.map(
             ({ address, region, price, grp, time, category }, index) => (
               <tr key={index}>
                 <td className="py-[20px] px-[26px]">{address}</td>

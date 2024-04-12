@@ -1,5 +1,8 @@
+"use client";
+
 import { CompassIcon, SmallShoppingBagIcon } from "@/components/Icons";
-import { LOOSE_BILLBOARDS_LISt } from "@/constants";
+import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
+import React from "react";
 
 export const LooseBillboards = () => {
   return (
@@ -7,7 +10,7 @@ export const LooseBillboards = () => {
       <h1 className="text-white text-[28px] font-medium">Loose billboards</h1>
       <div className="flex flex-col pt-[20px] space-y-[10px] h-[360px] overflow-y-auto scroll-hidden">
         {/* add DRY */}
-        {LOOSE_BILLBOARDS_LISt.map(({ title, colorClass, id }, index) => {
+        {BILLBOARD_TABLE_LIST.map(({ colorClass, address, id }, index) => {
           return (
             <div
               key={index}
@@ -20,8 +23,8 @@ export const LooseBillboards = () => {
                   <CompassIcon />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-white text-[12px] font-normal whitespace-nowrap">
-                    {title}
+                  <h2 className="text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px]">
+                    {address}
                   </h2>
                   <h3 className="text-[#3C424C] text-[11px] font-normal">
                     {id}
