@@ -1,7 +1,6 @@
 import { ExtendedUser } from "@/../next-auth";
 import {
   TengeLargeCurrencyIcon,
-  TengeSmallCurrencyIcon,
 } from "@/components/Icons";
 
 interface UserInfoProps {
