@@ -51,7 +51,6 @@ export default function SettingsPage() {
       newPassword: undefined,
       name: user?.name || undefined,
       email: user?.email || undefined,
-      role: user?.role || undefined,
       isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
     },
   });
@@ -77,9 +76,9 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col space-y-[20px]">
-      <Card className="w-[600px]">
+      <Card className="w-[600px] bg-[#0F1623] border-transparent text-white">
         <CardHeader>
-          <p className="text-2xl font-semibold text-center">
+          <p className="text-2xl font-semibold text-left">
             Personal information
           </p>
         </CardHeader>
@@ -127,32 +126,6 @@ export default function SettingsPage() {
                     />
                   </>
                 )}
-
-                <FormField
-                  control={form.control}
-                  name="role"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Role</FormLabel>
-                      <Select
-                        disabled={isPending}
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a role" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value={UserRole.ADMIN}>Admin</SelectItem>
-                          <SelectItem value={UserRole.USER}>User</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               </div>
               <FormError message={error} />
               <FormSuccess message={success} />
@@ -163,16 +136,18 @@ export default function SettingsPage() {
           </Form>
         </CardContent>
       </Card>
-
-      <Card className="w-[600px]">
-        <CardHeader>
-          <p className="text-2xl font-semibold text-center">Security</p>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="space-y-4">
-                {user?.isOAuth === false && (
+      {user?.isOAuth === false && (
+        <Card className="w-[600px] bg-[#0F1623] border-transparent text-white">
+          <CardHeader>
+            <p className="text-2xl font-semibold text-left">Security</p>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form
+                className="space-y-6"
+                onSubmit={form.handleSubmit(onSubmit)}
+              >
+                <div className="space-y-4">
                   <>
                     <FormField
                       control={form.control}
@@ -233,17 +208,17 @@ export default function SettingsPage() {
                       )}
                     />
                   </>
-                )}
-              </div>
-              <FormError message={error} />
-              <FormSuccess message={success} />
-              <Button type="submit" disabled={isPending}>
-                Save
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+                </div>
+                <FormError message={error} />
+                <FormSuccess message={success} />
+                <Button type="submit" disabled={isPending}>
+                  Save
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
