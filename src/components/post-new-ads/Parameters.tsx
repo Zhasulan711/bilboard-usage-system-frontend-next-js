@@ -65,7 +65,7 @@ export const Parameters = () => {
     return (
       <div className="border-t-2 border-[#182235] flex flex-col space-y-[8px] px-[14px] pt-[24px] justify-center mt-[24px]">
         <h3 className="text-lg font-normal text-[#575C65]">{title}</h3>
-        <div className="grid grid-cols-3 gap-[12px]">
+        <div className="grid grid-cols-2 gap-[12px]">
           {items.map(({ item, width }: any, index: any) => (
             <div
               className="bg-[#070F1B] h-[42px] flex justify-center items-center text-white text-xl font-normal rounded-lg"
@@ -81,11 +81,11 @@ export const Parameters = () => {
   }
 
   return (
-    <div className="h-[980px] overflow-y-auto w-[451px] scroll-hidden rounded-[14px] bg-[#0F1623]">
+    <div className="h-[980px] overflow-y-auto w-[321px] scroll-hidden rounded-[14px] bg-[#0F1623]">
       <div className="h-[1266px] py-[12px] px-[26px]">
         {/* Places choose */}
         <h1 className="text-[28px] font-medium text-white">Parameters</h1>
-        <div className="border-t-2 border-[#182235] flex flex-row mt-[25px] px-[46px] pt-[24px] space-x-[95px] justify-center">
+        <div className="border-t-2 border-[#182235] flex flex-row mt-[25px] px-[46px] pt-[24px] space-x-[48px] justify-center">
           {places.map(({ place, district }, index) => (
             <div className="flex flex-col space-y-[4px]" key={index}>
               <h3 className="text-[#575C65] text-lg font-normal">{place}</h3>

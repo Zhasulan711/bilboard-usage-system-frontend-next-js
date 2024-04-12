@@ -1,4 +1,3 @@
-
 import { BillingSummary } from "@/components/finance/BillingSummary";
 import { PaymentMethod } from "@/components/finance/PaymentMethod";
 import { ShippingAddress } from "@/components/finance/ShippingAddress";
@@ -9,11 +8,11 @@ export default async function FinancePage() {
     <div className="flex flex-row space-x-[20px]">
       <div className="flex flex-col space-y-[20px]">
         <SummaryOrder />
-        <ShippingAddress />
+        <BillingSummary />
       </div>
 
       <div className="flex flex-col space-y-[20px]">
-        <BillingSummary />
+        <ShippingAddress />
         <PaymentMethod />
       </div>
     </div>
