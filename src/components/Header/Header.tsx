@@ -1,9 +1,9 @@
 "use client";
 
 import { ShoppingBasketIcon } from "@/components/Icons";
-import { HeaderSearchBar } from "@/components/header/HeaderSearchBar";
-import { HeaderAccount } from "./HeaderAccount";
-import { useState } from "react";
+import { HeaderSearchBar } from "@/components/Header/HeaderSearchBar";
+import { HeaderAccount } from "@/components/Header/HeaderAccount";
+// import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export const Header = () => {
