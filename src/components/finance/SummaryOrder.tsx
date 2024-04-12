@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 
 // import { RedTrashIcon } from "@/components/Icons";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -10,6 +10,7 @@ export const SummaryOrder = () => {
   const [processingItems, setProcessingItems] = useState<BillboardTableList[]>(
     []
   );
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     const loadedItems: BillboardTableList[] = JSON.parse(
@@ -19,14 +20,18 @@ export const SummaryOrder = () => {
   }, []);
 
   const handleRemove = (index: number) => {
-    const updatedItems = processingItems.filter((_, i) => i !== index);
-    setProcessingItems(updatedItems);
-    localStorage.setItem("processingItems", JSON.stringify(updatedItems));
-    const canceledItems = JSON.parse(
-      localStorage.getItem("canceledItems") || "[]"
-    );
-    const newCanceledItems = canceledItems.concat(processingItems);
-    localStorage.setItem("canceledItems", JSON.stringify(newCanceledItems));
+    startTransition(() => {
+      const itemToRemove = processingItems[index];
+      const updatedItems = processingItems.filter((_, i) => i !== index);
+      setProcessingItems(updatedItems);
+      localStorage.setItem("processingItems", JSON.stringify(updatedItems));
+      const canceledItems = JSON.parse(
+        localStorage.getItem("canceledItems") || "[]"
+      );
+
+      const newCanceledItems = [...canceledItems, itemToRemove];
+      localStorage.setItem("canceledItems", JSON.stringify(newCanceledItems));
+    });
   };
 
   return (
@@ -67,6 +72,7 @@ export const SummaryOrder = () => {
               <button
                 className="text-red-500"
                 onClick={() => handleRemove(index)}
+                disabled={isPending}
               >
                 Remove
               </button>
