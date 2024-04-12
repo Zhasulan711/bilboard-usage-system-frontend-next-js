@@ -13,7 +13,7 @@ const navTable = [
   "GRP",
   "Date",
   "Category",
-  "Buy",
+  "Buying",
 ];
 
 export const BuyingTable: React.FC = () => {
