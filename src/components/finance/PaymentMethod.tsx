@@ -1,13 +1,12 @@
 "use client";
 
-import { Card } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../ui/card";
 import {
   Form,
   FormField,
   FormControl,
   FormItem,
   FormLabel,
-  FormDescription,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -19,7 +18,7 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PaymentSchema } from "@/schemas";
 import { z } from "zod";
-import { useTransition, useState } from "react";
+import { useTransition, useState, useEffect } from "react";
 import { payment } from "@/actions/payment";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
@@ -33,61 +32,164 @@ export const PaymentMethod = () => {
   const form = useForm<z.infer<typeof PaymentSchema>>({
     resolver: zodResolver(PaymentSchema),
     defaultValues: {
-      balance: user?.balance || undefined,
+      balance: "0",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof PaymentSchema>) => {
-    startTransition(() => {
-      payment(values)
-        .then((data) => {
-          if (data.error) {
-            setError(data.error);
-          }
+  const onSubmit = async (values: z.infer<typeof PaymentSchema>) => {
+    startTransition(async () => {
+      const amountToAdd = Number(values.balance);
+      if (isNaN(amountToAdd) || amountToAdd <= 0) {
+        setError("Please enter a valid numeric amount to add.");
+        return;
+      }
 
-          if (data.success) {
-            update();
-            setSuccess(data.success);
-          }
-        })
-        .catch(() => {
-          setError("Something went wrong!");
-        });
+      if (user && user.balance !== null) {
+        const newBalance = Number(user.balance) + amountToAdd;
+        try {
+          await payment({ balance: newBalance.toString() });
+          update();
+          setSuccess("Balance updated successfully!");
+
+          const transactionHistory: number[] = JSON.parse(
+            localStorage.getItem("transactionHistory") || "[]"
+          );
+          transactionHistory.push(amountToAdd);
+          localStorage.setItem(
+            "transactionHistory",
+            JSON.stringify(transactionHistory)
+          );
+        } catch (error) {
+          setError("Something went wrong with the payment!");
+        }
+      } else {
+        setError("Insufficient details for payment processing.");
+      }
     });
   };
 
   return (
-    <Card className="w-[821px] h-[472px] bg-[#0F1623] border-transparent p-[20px]">
-      <Form {...form}>
-        <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="balance"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-white text-[26px]">Payment method</FormLabel>
+    <Card className="w-[821px] h-[480px] bg-[#0F1623] border-transparent -space-y-[16px]">
+      <CardHeader className="text-white text-[26px] font-medium -mt-[16px]">
+        Payment method
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="flex flex-row space-x-[37.5px] items-center w-[769px] h-[72px] bg-[#141D2F] rounded-md pl-[34.5px]">
+              <div className="h-3.5 w-3.5 rounded-full bg-white bg-opacity-30" />
+              <h1 className="text-white text-xl font-normal">Paypal</h1>
+              <p className="text-white text-opacity-30 text-base">
+                You will be redirected to thr PayPal website after submitting
+                your order
+              </p>
+            </div>
 
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="1234 1234 1234 1234"
-                    type="text"
-                    className="text-white"
-                    disabled={isPending}
-                  />
-                </FormControl>
+            <div className="w-[769px] h-[310px] px-[24px] bg-[#141D2F] pt-[10px] rounded-md">
+              <div className="flex flex-row space-x-[150px] ml-[80px]">
+                <div className="flex flex-row space-x-[20px] items-center">
+                  <div className="h-3.5 w-3.5 rounded-full bg-white bg-opacity-30" />
+                  <h1 className="text-white text-xl font-normal">
+                    Pay with Credit Card
+                  </h1>
+                </div>
+                <div className="flex flex-row space-x-[10px]">
+                  <div className="w-16 h-11 rounded-md border border-white" />
+                  <div className="w-16 h-11 rounded-md border border-white" />
+                  <div className="w-16 h-11 rounded-md border border-white" />
+                  <div className="w-16 h-11 rounded-md border border-white" />
+                </div>
+              </div>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormError message={error} />
-          <FormSuccess message={success} />
-          <Button type="submit" disabled={isPending}>
-            Save
-          </Button>
-        </form>
-      </Form>
+              <div className="grid grid-cols-2 gap-[30px] pt-[10px]">
+                <FormItem>
+                  <FormLabel className="text-white text-base font-normal">
+                    Card number
+                  </FormLabel>
+
+                  <FormControl>
+                    <Input
+                      placeholder="435353563"
+                      type="text"
+                      className="text-white"
+                      disabled={isPending}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+
+                <FormItem>
+                  <FormLabel className="text-white text-base font-normal">
+                    Expiration Date
+                  </FormLabel>
+
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your Date"
+                      type="text"
+                      className="text-white"
+                      disabled={isPending}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+
+                <FormItem>
+                  <FormLabel className="text-white text-base font-normal">
+                    Card Security Code
+                  </FormLabel>
+
+                  <FormControl>
+                    <Input
+                      placeholder="000"
+                      type="text"
+                      className="text-white"
+                      disabled={isPending}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+
+                <FormField
+                  control={form.control}
+                  name="balance"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white text-base font-normal">
+                        Adding Balance
+                      </FormLabel>
+
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder="1111"
+                          type="text"
+                          className="text-white"
+                          disabled={isPending}
+                        />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormError message={error} />
+                <FormSuccess message={success} />
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="hover:bg-amber-500"
+                >
+                  Deposit
+                </Button>
+              </div>
+            </div>
+          </form>
+        </Form>
+      </CardContent>
     </Card>
   );
 };

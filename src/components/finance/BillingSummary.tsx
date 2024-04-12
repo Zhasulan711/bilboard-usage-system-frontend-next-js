@@ -107,7 +107,7 @@ export const BillingSummary = () => {
           <Button
             type="submit"
             disabled={isPending || totalPrice === 0}
-            className="w-[469px] h-11 px-[18px] py-2.5 bg-slate-700 rounded-md hover:bg-amber-500"
+            className="w-[469px] h-11 px-[18px] py-2.5 rounded-md hover:bg-amber-500"
           >
             Pay order
           </Button>

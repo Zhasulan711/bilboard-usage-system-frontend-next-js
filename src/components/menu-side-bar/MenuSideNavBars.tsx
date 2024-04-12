@@ -28,6 +28,10 @@ export const MenuSideNavBars = () => {
       localStorage.removeItem("clickedIndex");
       setClickedIndex(null);
       logout();
+    } else if (index === 4) {
+      localStorage.removeItem("clickedIndex");
+      setClickedIndex(null);
+      router.push("https://wa.me/qr/3NR4CZ7RSLCXB1");
     } else {
       localStorage.setItem("clickedIndex", index.toString());
       setClickedIndex(index);
