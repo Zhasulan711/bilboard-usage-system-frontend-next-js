@@ -5,7 +5,7 @@ import { Calendar } from "@/components/dashboard/Calendar";
 import { YourBudget } from "@/components/dashboard/YourBudget";
 import { AmountAdsDistrict } from "@/components/dashboard/AmountAdsDistrict";
 
-export default function Home() {
+export default function DashboardPage() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row">
