@@ -22,17 +22,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { UserRole } from "@prisma/client";
 
 export default function SettingsPage() {
   const user = useCurrentUser();

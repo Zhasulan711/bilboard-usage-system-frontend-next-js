@@ -13,7 +13,7 @@ const navTable = [
   "GRP",
   "Date",
   "Category",
-  "Purchasing",
+  "Buy",
 ];
 
 export const BuyingTable: React.FC = () => {
@@ -68,7 +68,7 @@ export const BuyingTable: React.FC = () => {
         <tbody className="divide-y-[12px] divide-[#010714] text-white text-base font-normal whitespace-nowrap">
           {BILLBOARD_TABLE_LIST.map((item, index) => (
             <tr key={index}>
-              <td className="py-[20px] px-[26px]">{item.address}</td>
+              <td className="py-[20px] px-[26px] truncate max-w-[270px]">{item.address}</td>
               <td className="py-[20px] px-[26px]">{item.region}</td>
               <td className="py-[20px] px-[26px]">{item.price}</td>
               <td className="py-[20px] px-[26px]">{item.grp}</td>

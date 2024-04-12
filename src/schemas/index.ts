@@ -75,3 +75,14 @@ export const PaymentSchema = z.object({
 export const BillboardSchema = z.object({
   billboard: z.optional(z.string()),
 });
+
+export const ShippingAddressSchema = z.object({
+  userName: z.optional(z.string()),
+  address1: z.optional(z.string()),
+  address2: z.optional(z.string()),
+  phoneNumber: z.optional(z.string()),
+  city: z.optional(z.string()),
+  state: z.optional(z.string()),
+  zip: z.optional(z.string()),
+  region: z.optional(z.string()),
+});
