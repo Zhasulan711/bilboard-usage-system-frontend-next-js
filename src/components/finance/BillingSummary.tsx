@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card } from "../ui/card";
@@ -8,87 +7,112 @@ import {
   FormControl,
   FormItem,
   FormLabel,
-  FormDescription,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+import { useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useForm } from "react-hook-form";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { PaymentSchema } from "@/schemas";
-import { z } from "zod";
 import { useTransition, useState } from "react";
 import { payment } from "@/actions/payment";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
+import { useForm, FormProvider } from "react-hook-form";
 
 export const BillingSummary = () => {
   const [isPending, startTransition] = useTransition();
   const user = useCurrentUser();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+  const [totalPrice, setTotalPrice] = useState(0);
   const { update } = useSession();
-  const form = useForm<z.infer<typeof PaymentSchema>>({
-    resolver: zodResolver(PaymentSchema),
-    defaultValues: {
-      balance: user?.balance || undefined,
-    },
-  });
 
-  const onSubmit = (values: z.infer<typeof PaymentSchema>) => {
-    startTransition(() => {
-      payment(values)
-        .then((data) => {
-          if (data.error) {
-            setError(data.error);
-          }
+  const methods = useForm();
 
-          if (data.success) {
-            update();
-            setSuccess(data.success);
-          }
-        })
-        .catch(() => {
-          setError("Something went wrong!");
-        });
+  useEffect(() => {
+    calculateTotal();
+  }, []);
+
+  const calculateTotal = () => {
+    const processingItems = JSON.parse(
+      localStorage.getItem("processingItems") || "[]"
+    );
+
+    const totalItemPrice = processingItems.reduce((total: any, item: any) => {
+      const price = item.price ? Number(item.price.replace(/,/g, "")) : 0;
+      return total + price;
+    }, 0);
+
+    setTotalPrice(totalItemPrice);
+  };
+
+  const onSubmit = async (values: any) => {
+    startTransition(async () => {
+      if (user && user.balance !== null && totalPrice > 0) {
+        const newBalance = Number(user.balance) - totalPrice;
+        try {
+          await payment({ balance: newBalance.toString() });
+          update();
+          setSuccess("Payment successful!");
+          setError(undefined);
+
+          const processingItems = JSON.parse(
+            localStorage.getItem("processingItems") || "[]"
+          );
+          const purchasedItems = JSON.parse(
+            localStorage.getItem("purchasedItems") || "[]"
+          );
+          const newPurchasedItems = purchasedItems.concat(processingItems);
+          localStorage.setItem(
+            "purchasedItems",
+            JSON.stringify(newPurchasedItems)
+          );
+          localStorage.removeItem("processingItems");
+        } catch (error) {
+          setError("Something went wrong with the payment!");
+          setSuccess(undefined);
+        }
+      } else {
+        setError("Insufficient details for payment processing.");
+      }
     });
   };
 
   return (
     <Card className="w-[505px] h-[397px] bg-[#0F1623] border-transparent p-[20px]">
-      <Form {...form}>
-        <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+      <FormProvider {...methods}>
+        <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
           <FormField
-            control={form.control}
-            name="balance"
-            render={({ field }) => (
+            name="billboard"
+            render={() => (
               <FormItem>
-                <FormLabel className="text-white text-[26px]">Billing Summary</FormLabel>
-
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="1234 1234 1234 1234"
-                    type="text"
-                    className="text-white"
-                    disabled={isPending}
-                  />
-                </FormControl>
+                <FormLabel className="text-white text-[26px]">
+                  Billing Summary
+                </FormLabel>
 
                 <FormMessage />
               </FormItem>
             )}
           />
+          <div className="flex flex-row space-x-[100px]">
+            <h1 className="text-white text-xl">Grand total:</h1>
+            <h1 className="text-white text-xl">
+              {totalPrice.toLocaleString()}
+            </h1>
+          </div>
+
           <FormError message={error} />
           <FormSuccess message={success} />
-          <Button type="submit" disabled={isPending}>
+          <Button
+            type="submit"
+            disabled={isPending || totalPrice === 0}
+            className="w-[469px] h-11 px-[18px] py-2.5 bg-slate-700 rounded-md hover:bg-amber-500"
+          >
             Pay order
           </Button>
         </form>
-      </Form>
+      </FormProvider>
     </Card>
   );
 };
