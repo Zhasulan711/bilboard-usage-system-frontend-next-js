@@ -32,3 +32,21 @@ export const sendVerificationEmail = async (email: string, token: string) => {
     html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`,
   });
 };
+
+
+export type SendEmailParams = {
+  email: string;
+  from: string;
+  subject: string;
+  html: string;
+};
+
+
+export const sendEmail = ({ email, from, subject, html }: SendEmailParams) => {
+  resend.emails.send({
+    from: from,
+    to: email,
+    subject: subject,
+    html: html,
+  });
+}

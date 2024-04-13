@@ -55,17 +55,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     if (code) {
       const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
 
-      if (!twoFactorToken) {
-        return {
-          error: "Invalid code!",
-        };
-      }
-
-      if (twoFactorToken.token !== code) {
-        return {
-          error: "Invalid code!",
-        };
-      }
+      if (!twoFactorToken || (twoFactorToken.token !== code)) return { error: "Invalid code!" };
 
       const hasExpired = new Date(twoFactorToken.expires) < new Date();
 
@@ -116,12 +106,8 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     });
   } catch (error) {
     if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return { error: "Invalid credentials!" };
-        default:
-          return { error: "Something went wrong!" };
-      }
+      if (error.type === "CredentialsSignin") return { error: "Invalid credentials!" };
+      return { error: "Something went wrong!" };
     }
 
     throw error;
