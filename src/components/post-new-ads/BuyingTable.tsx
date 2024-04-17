@@ -55,8 +55,8 @@ export const BuyingTable: React.FC = () => {
 
   return (
     <div className="h-[895px] overflow-y-auto overflow-x-hidden scroll-hidden">
-      <table className="table-auto divide-y-[20px] divide-[#010714]">
-        <thead className="text-[#575C65] text-base font-normal">
+      <table className="table-auto divide-y-[20px] divide-[#D9D9D9] dark:divide-[#010714]">
+        <thead className="text-[#D9D9D9] dark:text-[#575C65] text-base font-normal">
           <tr>
             {navTable.map((item, index) => (
               <th key={index} className="py-[20px] px-[26px] text-left">
@@ -65,7 +65,7 @@ export const BuyingTable: React.FC = () => {
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y-[12px] divide-[#010714] text-white text-base font-normal whitespace-nowrap">
+        <tbody className="divide-y-[12px] divide-[#D9D9D9] dark:divide-[#010714] text-black dark:text-white text-base font-normal whitespace-nowrap">
           {BILLBOARD_TABLE_LIST.map((item, index) => (
             <tr key={index}>
               <td className="py-[20px] px-[26px] truncate max-w-[270px]">{item.address}</td>
@@ -76,7 +76,7 @@ export const BuyingTable: React.FC = () => {
               <td className="py-[20px] px-[26px]">{item.category}</td>
               <td className="py-[20px] px-[26px]">
                 <button
-                  className="text-white"
+                  className="text-black dark:text-white"
                   onClick={() => handleBuy(item)}
                   disabled={processedIndex.includes(item.id.toString()) || purchasedIndex.includes(item.id.toString())}
                 >

@@ -69,27 +69,29 @@ export const PaymentMethod = () => {
   };
 
   return (
-    <Card className="w-[821px] h-[480px] bg-[#0F1623] border-transparent -space-y-[16px]">
+    <Card className="w-[821px] h-[480px] bg-white dark:bg-[#0F1623] border-transparent -space-y-[16px]">
       <CardHeader className="text-white text-[26px] font-medium -mt-[16px]">
         Payment method
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="flex flex-row space-x-[37.5px] items-center w-[769px] h-[72px] bg-[#141D2F] rounded-md pl-[34.5px]">
-              <div className="h-3.5 w-3.5 rounded-full bg-white bg-opacity-30" />
-              <h1 className="text-white text-xl font-normal">Paypal</h1>
-              <p className="text-white text-opacity-30 text-base">
+            <div className="flex flex-row space-x-[37.5px] items-center w-[769px] h-[72px] bg-[#D9D9D9] dark:bg-[#141D2F] rounded-md pl-[34.5px]">
+              <div className="h-3.5 w-3.5 rounded-full bg-black dark:bg-white bg-opacity-30" />
+              <h1 className="text-black dark:text-white text-xl font-normal">
+                Paypal
+              </h1>
+              <p className="text-black dark:text-white text-opacity-30 text-base">
                 You will be redirected to thr PayPal website after submitting
                 your order
               </p>
             </div>
 
-            <div className="w-[769px] h-[310px] px-[24px] bg-[#141D2F] pt-[10px] rounded-md">
+            <div className="w-[769px] h-[310px] px-[24px] bg-[#D9D9D9] dark:bg-[#141D2F] pt-[10px] rounded-md">
               <div className="flex flex-row space-x-[150px] ml-[80px]">
                 <div className="flex flex-row space-x-[20px] items-center">
-                  <div className="h-3.5 w-3.5 rounded-full bg-white bg-opacity-30" />
-                  <h1 className="text-white text-xl font-normal">
+                  <div className="h-3.5 w-3.5 rounded-full bg-black dark:bg-white bg-opacity-30" />
+                  <h1 className="text-black dark:text-white text-xl font-normal">
                     Pay with Credit Card
                   </h1>
                 </div>
@@ -103,7 +105,7 @@ export const PaymentMethod = () => {
 
               <div className="grid grid-cols-2 gap-[30px] pt-[10px]">
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Card number
                   </FormLabel>
 
@@ -111,7 +113,7 @@ export const PaymentMethod = () => {
                     <Input
                       placeholder="435353563"
                       type="text"
-                      className="text-white"
+                      className="text-black dark:text-white"
                       disabled={isPending}
                     />
                   </FormControl>
@@ -120,7 +122,7 @@ export const PaymentMethod = () => {
                 </FormItem>
 
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Expiration Date
                   </FormLabel>
 
@@ -128,7 +130,7 @@ export const PaymentMethod = () => {
                     <Input
                       placeholder="Enter your Date"
                       type="text"
-                      className="text-white"
+                      className="text-black dark:text-white"
                       disabled={isPending}
                     />
                   </FormControl>
@@ -137,7 +139,7 @@ export const PaymentMethod = () => {
                 </FormItem>
 
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Card Security Code
                   </FormLabel>
 
@@ -145,7 +147,7 @@ export const PaymentMethod = () => {
                     <Input
                       placeholder="000"
                       type="text"
-                      className="text-white"
+                      className="text-black dark:text-white"
                       disabled={isPending}
                     />
                   </FormControl>
@@ -158,7 +160,7 @@ export const PaymentMethod = () => {
                   name="balance"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white text-base font-normal">
+                      <FormLabel className="text-black dark:text-white text-base font-normal">
                         Adding Balance
                       </FormLabel>
 
@@ -167,7 +169,7 @@ export const PaymentMethod = () => {
                           {...field}
                           placeholder="1111"
                           type="text"
-                          className="text-white"
+                          className="text-black dark:text-white"
                           disabled={isPending}
                         />
                       </FormControl>

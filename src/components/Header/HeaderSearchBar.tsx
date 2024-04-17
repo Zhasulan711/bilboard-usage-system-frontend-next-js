@@ -3,6 +3,7 @@
 import { useState, useRef, ChangeEvent } from "react";
 import { SearchIcon } from "@/components/Icons";
 import { useRouter } from "next/navigation";
+import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 
 export const HeaderSearchBar = () => {
   const [searchText, setSearchText] = useState("");
@@ -11,6 +12,7 @@ export const HeaderSearchBar = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const isDark = StrokeIconTheme();
 
   const routes: { [key: string]: string } = {
     dashboard: "/dashboard",
@@ -72,7 +74,10 @@ export const HeaderSearchBar = () => {
       className="w-[321px] h-[42px] bg-[#D9D9D9] dark:bg-[#182235] rounded-lg pl-[10px]
         flex flex-row space-x-[6px] items-center "
     >
-      <SearchIcon handleSVGClick={() => handleSVGClick(inputRef.current)} />
+      <SearchIcon
+        handleSVGClick={() => handleSVGClick(inputRef.current)}
+        strokeColor={isDark ? "white" : "black"}
+      />
       <input
         ref={inputRef}
         className="placeholder-[#6E7581] text-sm font-normal bg-[#D9D9D9] dark:bg-[#182235] text-[#6E7581] focus:outline-none"

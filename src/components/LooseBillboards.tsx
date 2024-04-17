@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { CompassIcon, SmallShoppingBagIcon } from "@/components/Icons";
 import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
@@ -8,6 +8,11 @@ import { BillboardTableList } from "@/constants/billboardTableList";
 
 export const LooseBillboards = () => {
   const [processedIndex, setProcessedIndex] = useState<string[]>([]);
+  const [purchasedItems, setPurchasedItems] = useState([]);
+  const [purchasedIds, setPurchasedIds] = useState<string[]>([]);
+  const [availableBillboards, setAvailableBillboards] = useState<
+    BillboardTableList[]
+  >([]);
 
   useEffect(() => {
     const items = JSON.parse(
@@ -16,6 +21,23 @@ export const LooseBillboards = () => {
 
     setProcessedIndex(items.map((item) => item.id));
   }, []);
+
+  useEffect(() => {
+    const items = localStorage.getItem("purchasedItems");
+    setPurchasedItems(items ? JSON.parse(items) : []);
+  }, []);
+
+  useEffect(() => {
+    setPurchasedIds(purchasedItems.map((item: { id: string }) => item.id));
+  }, [purchasedItems]);
+
+  useEffect(() => {
+    setAvailableBillboards(
+      BILLBOARD_TABLE_LIST.filter(
+        (billboard) => !purchasedIds.includes(billboard.id)
+      )
+    );
+  }, [purchasedIds]);
 
   const handleBuy = (item: BillboardTableList): void => {
     const itemId = item.id.toString();
@@ -35,24 +57,11 @@ export const LooseBillboards = () => {
     }
   };
 
-  const purchasedItems = useMemo(() => {
-    const items = localStorage.getItem("purchasedItems");
-    return items ? JSON.parse(items) : [];
-  }, []);
-
-  const purchasedIds = useMemo(() => {
-    return purchasedItems.map((item: { id: string }) => item.id);
-  }, [purchasedItems]);
-
-  const availableBillboards = useMemo(() => {
-    return BILLBOARD_TABLE_LIST.filter(
-      (billboard) => !purchasedIds.includes(billboard.id)
-    );
-  }, [purchasedIds]);
-
   return (
     <div className="bg-white dark:bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[12px]">
-      <h1 className="text-black dark:text-white text-[28px] font-medium">Loose billboards</h1>
+      <h1 className="text-black dark:text-white text-[28px] font-medium">
+        Loose billboards
+      </h1>
       <div className="flex flex-col pt-[20px] space-y-[10px] h-[360px] overflow-y-auto scroll-hidden">
         {/* add DRY */}
         {availableBillboards.map((item, index) => {

@@ -50,14 +50,14 @@ export const ShippingAddress = () => {
   };
 
   return (
-    <Card className="w-[821px] h-[459px] bg-[#0F1623] border-transparent -space-y-[16px]">
-      <CardHeader className="text-white text-[26px] font-medium -mt-[16px]">
+    <Card className="w-[821px] h-[459px] bg-white dark:bg-[#0F1623] border-transparent -space-y-[16px]">
+      <CardHeader className="text-black dark:text-white text-[26px] font-medium -mt-[16px]">
         Shipping address
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form
-            className="space-x-[0px] grid grid-cols-2 gap-[20px] text-white"
+            className="space-x-[0px] grid grid-cols-2 gap-[20px] text-black dark:text-white"
             onSubmit={form.handleSubmit(onSubmit)}
           >
             <FormField
@@ -65,7 +65,7 @@ export const ShippingAddress = () => {
               name="userName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     User Name
                   </FormLabel>
                   <FormControl>
@@ -84,7 +84,7 @@ export const ShippingAddress = () => {
               name="address1"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Address 1
                   </FormLabel>
                   <FormControl>
@@ -103,7 +103,7 @@ export const ShippingAddress = () => {
               name="phoneNumber"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Phone number
                   </FormLabel>
                   <FormControl>
@@ -122,7 +122,7 @@ export const ShippingAddress = () => {
               name="address2"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Address 2
                   </FormLabel>
                   <FormControl>
@@ -141,7 +141,7 @@ export const ShippingAddress = () => {
               name="city"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     City
                   </FormLabel>
                   <FormControl>
@@ -160,7 +160,7 @@ export const ShippingAddress = () => {
               name="state"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     State
                   </FormLabel>
                   <FormControl>
@@ -179,7 +179,7 @@ export const ShippingAddress = () => {
               name="region"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Region
                   </FormLabel>
                   <FormControl>
@@ -198,7 +198,7 @@ export const ShippingAddress = () => {
               name="zip"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white text-base font-normal">
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
                     Zip Code
                   </FormLabel>
                   <FormControl>

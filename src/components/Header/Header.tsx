@@ -3,13 +3,11 @@
 import { ShoppingBasketIcon } from "@/components/Icons";
 import { HeaderSearchBar } from "@/components/Header/HeaderSearchBar";
 import { HeaderAccount } from "@/components/Header/HeaderAccount";
-// import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 export const Header = () => {
-  // const [isShoppingBasketIconClicked, setIsShoppingBasketIconClicked] =
-  //   useState<boolean>(false);
   const route = useRouter();
+  const isDark = StrokeIconTheme();
 
   const isClicked = () => {
     route.push("/finance");
@@ -25,7 +23,10 @@ export const Header = () => {
         <div className="flex flex-row space-x-[15px] items-center">
           {/* shoppingBasket icon*/}
 
-          <ShoppingBasketIcon isClicked={isClicked} />
+          <ShoppingBasketIcon
+            isClicked={isClicked}
+            strokeColor={isDark ? "white" : "black"}
+          />
 
           <HeaderAccount />
         </div>

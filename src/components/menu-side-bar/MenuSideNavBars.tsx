@@ -61,7 +61,7 @@ export const MenuSideNavBars = () => {
                 href={href}
                 className={`text-[#3F454F] text-[19px] font-normal 
                 hover:text-[#F9B13C] target:text-[#F9B13C] transition duration-2000 ease-in-out
-                ${isClicked ? "text-[#F9B13C]" : "text-[#3F454F]"}`}
+                ${isClicked ? "text-[#F9B13C]" : "text-[#D9D9D9] dark:text-[#3F454F]"}`}
               >
                 {title}
               </Link>

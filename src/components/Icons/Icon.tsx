@@ -6,6 +6,7 @@ import { SettingsIcon } from "./SettingsIcon";
 import { TransactionIcon } from "./TransactionIcon";
 import { ContactWithUsIcon } from "./ContactWithUsIcon";
 import { LogOutIcon } from "./LogOutIcon";
+import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 
 const Icons = {
   search: SearchIcon,
@@ -27,8 +28,10 @@ export type IconProps = {
 
 export const Icon: FC<IconProps> = ({ type, isClicked, ...props }) => {
   const IconComponent = Icons[type];
+  const isDark = StrokeIconTheme();
+
   const additionalProps = {
-    stroke: isClicked ? "#FFB13D" : "#4F5664",
+    stroke: isClicked ? "#FFB13D" : isDark ? "#4F5664" : "#D9D9D9",
   };
-  return <IconComponent {...props} {...additionalProps} />;
+  return <IconComponent strokeColor={""} {...props} {...additionalProps} />;
 };

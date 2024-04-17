@@ -80,14 +80,14 @@ export const BillingSummary = () => {
   };
 
   return (
-    <Card className="w-[505px] h-[397px] bg-[#0F1623] border-transparent p-[20px]">
+    <Card className="w-[505px] h-[397px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
       <FormProvider {...methods}>
         <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
           <FormField
             name="billboard"
             render={() => (
               <FormItem>
-                <FormLabel className="text-white text-[26px]">
+                <FormLabel className="text-black dark:text-white text-[26px]">
                   Billing Summary
                 </FormLabel>
 
@@ -96,8 +96,8 @@ export const BillingSummary = () => {
             )}
           />
           <div className="flex flex-row space-x-[100px]">
-            <h1 className="text-white text-xl">Grand total:</h1>
-            <h1 className="text-white text-xl">
+            <h1 className="text-black dark:text-white text-xl">Grand total:</h1>
+            <h1 className="text-black dark:text-white text-xl">
               {totalPrice.toLocaleString()}
             </h1>
           </div>

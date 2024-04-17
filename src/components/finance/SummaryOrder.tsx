@@ -36,8 +36,8 @@ export const SummaryOrder = () => {
   };
 
   return (
-    <Card className="w-[505px] h-[395px] bg-[#0F1623] border-transparent flex flex-col -space-y-[16px]">
-      <CardHeader className="text-white text-[26px] font-medium -mt-[16px]">
+    <Card className="w-[505px] h-[395px] bg-white dark:bg-[#0F1623] border-transparent flex flex-col -space-y-[16px]">
+      <CardHeader className="text-black dark:text-white text-[26px] font-medium -mt-[16px]">
         Summary order
       </CardHeader>
       <CardContent className="flex flex-col space-y-[18px] overflow-y-auto h-[320px] scroll-hidden overflow-x-hidden">
@@ -51,17 +51,17 @@ export const SummaryOrder = () => {
                 {/* <img src={order.image} alt="order" /> */}
               </div>
               <div className="flex flex-col">
-                <h1 className="text-white text-2xl font-normal truncate w-[230px]">
+                <h1 className="text-black dark:text-white text-2xl font-normal truncate w-[230px]">
                   {item.address}
                 </h1>
-                <div className="flex flex-row text-white text-opacity-40 text-xs font-normal space-x-[16px]">
-                  <div className="flex flex-col">
+                <div className="flex flex-row text-black dark:text-white text-opacity-40 text-xs font-normal space-x-[16px]">
+                  <div className="flex flex-col text-[#D9D9D9] dark:text-[#575C65]">
                     <h1>Category:</h1>
                     <h1>Region:</h1>
                     <h1>Time:</h1>
                     <h1>GRP:</h1>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col text-[#D9D9D9] dark:text-[#575C65]">
                     <h1>{item.category}</h1>
                     <h1>{item.region}</h1>
                     <h1>{item.time}</h1>
