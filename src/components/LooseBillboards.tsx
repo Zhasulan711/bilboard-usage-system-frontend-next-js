@@ -51,8 +51,8 @@ export const LooseBillboards = () => {
   }, [purchasedIds]);
 
   return (
-    <div className="bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[12px]">
-      <h1 className="text-white text-[28px] font-medium">Loose billboards</h1>
+    <div className="bg-white dark:bg-[#0F1623] ml-[20px] w-[322px] h-[420px] rounded-lg pl-[26px] pt-[12px]">
+      <h1 className="text-black dark:text-white text-[28px] font-medium">Loose billboards</h1>
       <div className="flex flex-col pt-[20px] space-y-[10px] h-[360px] overflow-y-auto scroll-hidden">
         {/* add DRY */}
         {availableBillboards.map((item, index) => {
@@ -68,16 +68,16 @@ export const LooseBillboards = () => {
                   <CompassIcon />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px]">
+                  <h2 className="text-black dark:text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px]">
                     {item.address}
                   </h2>
-                  <h3 className="text-[#3C424C] text-[11px] font-normal">
+                  <h3 className="text-[#D9D9D9] dark:text-[#3C424C] text-[11px] font-normal">
                     {item.id}
                   </h3>
                 </div>
               </div>
               <button
-                className="text-white"
+                className="text-black dark:text-white"
                 onClick={() => handleBuy(item)}
                 disabled={processedIndex.includes(item.id.toString())}
               >

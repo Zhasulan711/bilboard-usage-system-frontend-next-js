@@ -8,6 +8,7 @@ export * from "./SettingsIcon";
 export * from "./ContactWithUsIcon";
 export * from "./LogOutIcon";
 export * from "./PlusIcon";
+export * from "./ThemeModeIcon";
 
 /***
  * Header

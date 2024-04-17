@@ -14,8 +14,8 @@ export const AmountAdsDistrict = () => {
   };
 
   return (
-    <div className="bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[12px]">
-      <h1 className="text-white text-[28px] font-medium">
+    <div className="bg-white dark:bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[12px]">
+      <h1 className="text-black dark:text-white text-[28px] font-medium">
         The amount of your ads in district
       </h1>
       <div className="flex flex-row space-x-[45px]">
@@ -27,13 +27,13 @@ export const AmountAdsDistrict = () => {
               <React.Fragment key={index}>
                 <div
                   className={`flex flex-row space-x-[7px] h-[40px] w-[185px] items-center transition duration-2000 ease-in-out rounded-lg pl-[10px]
-                ${isClicked ? "bg-[#182235]" : ""}`}
+                ${isClicked ? "bg-[#D9D9D9] dark:bg-[#182235]" : ""}`}
                   onClick={(event) => handleClick(event, index)}
                 >
                   <div
                     className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}
                   ></div>
-                  <h2 className="text-white text-xl font-normal cursor-pointer">{title}</h2>
+                  <h2 className="text-[#7A7A7A] dark:text-white text-xl font-normal cursor-pointer">{title}</h2>
                 </div>
               </React.Fragment>
             );

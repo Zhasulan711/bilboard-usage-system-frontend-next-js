@@ -69,16 +69,18 @@ export default function TransactionPage() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row space-x-[275px]">
-        <div className="bg-[#0F1623] rounded-lg h-[40px] w-[451px] flex flex-row items-center pl-[20px] space-x-[20px]">
+        <div className="bg-white dark:bg-[#0F1623] rounded-lg h-[40px] w-[451px] flex flex-row items-center pl-[20px] space-x-[20px]">
           <SearchIcon />
-          <h2 className="text-[#575C65] text-xl font-normal">Search</h2>
+          <h2 className="text-[#D9D9D9] dark:text-[#575C65] text-xl font-normal">
+            Search
+          </h2>
         </div>
 
         {/* navbars */}
         <div className="flex flex-row space-x-[10px]">
           {navItems.map(({ name, width }, index) => (
             <div
-              className="h-[40px] flex items-center justify-center bg-[#0B101F] text-xl font-normal text-white rounded-lg"
+              className="h-[40px] flex items-center justify-center bg-white dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
               style={{ width: width }}
               key={index}
             >
@@ -90,8 +92,8 @@ export default function TransactionPage() {
 
       {/* table */}
       <div className="overflow-y-auto scroll-hidden max-h-[930px] border rounded-lg mt-[16px] border-transparent">
-        <table className="table-fixed divide-y-[32px] divide-[#010714] w-[1346px]">
-          <thead className="text-[#B7B9BE] font-normal bg-[#0F1623]">
+        <table className="table-fixed divide-y-[32px] divide-[#D9D9D9] dark:divide-[#010714] w-[1346px]">
+          <thead className="text-[#D9D9D9] dark:text-[#B7B9BE] font-normal bg-white dark:bg-[#0F1623]">
             <tr>
               {navTable.map((item, index) => (
                 <th
@@ -104,7 +106,7 @@ export default function TransactionPage() {
               ))}
             </tr>
           </thead>
-          <tbody className="text-white text-lg font-normal bg-[#0F1623] divide-y-[16px] divide-[#010714]">
+          <tbody className="text-black dark:text-white text-lg font-normal bg-white dark:bg-[#0F1623] divide-y-[16px] divide-[#D9D9D9] dark:divide-[#010714]">
             {canceledItems.map((item, index) => (
               <TableRow
                 key={index}

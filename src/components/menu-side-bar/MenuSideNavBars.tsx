@@ -47,12 +47,12 @@ export const MenuSideNavBars = () => {
         return (
           <React.Fragment key={index}>
             {index === 4 && (
-              <div className="border-t-2 border-[#182235] mt-[8px] pt-[8px]"></div>
+              <div className="border-t-2 dark:border-[#182235] mt-[8px] pt-[8px]"></div>
             )}
             <button
-              className={`flex flex-row gap-[10px] items-center pl-2 w-[286px] h-[46px] rounded-lg
-              hover:bg-[#182235] transition duration-2000 ease-in-out
-              ${isClicked ? "bg-[#182235]" : "bg-[#0F1623]"} 
+              className={`flex flex-row gap-[10px] items-center pl-2 w-[286px] h-[46px] rounded-lg hover:bg-[#D9D9D9]
+              dark:hover:bg-[#182235] transition duration-2000 ease-in-out
+              ${isClicked ? "bg-[#D9D9D9] dark:bg-[#182235]" : "bg-white dark:bg-[#0F1623]"} 
               `}
               onClick={(event) => handleClick(event, index, href)}
             >

@@ -16,7 +16,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="w-[1386px] bg-[#0F1623] h-[68px] ml-auto flex border-l-2 border-[#010714]">
+    <header className="w-[1386px] bg-white dark:bg-[#0F1623] h-[68px] ml-auto flex border-l-2 dark:border-[#010714]">
       <div className="flex flex-row pl-[20px] space-x-[815px] items-center">
         {/* search bar */}
         <HeaderSearchBar />

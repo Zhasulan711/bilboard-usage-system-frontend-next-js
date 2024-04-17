@@ -21,12 +21,12 @@ export const TotalSpending = () => {
   }, []);
 
   return (
-    <div className="bg-[#0F1623] w-[321px] h-[160px] rounded-lg flex flex-col pl-[26px] space-y-[10px] justify-center">
-      <h1 className="text-white text-[28px] font-medium text-left">
+    <div className="bg-white dark:bg-[#0F1623] w-[321px] h-[160px] rounded-lg flex flex-col pl-[26px] space-y-[10px] justify-center">
+      <h1 className="text-black dark:text-white text-[28px] font-medium text-left">
         Total spending
       </h1>
       <div className="flex flex-row items-center space-x-[3px]">
-        <h1 className="text-white text-5xl font-normal">
+        <h1 className="text-black dark:text-white text-5xl font-normal">
           {totalSpending.toLocaleString()}
         </h1>
         <TengeLargeCurrencyIcon />

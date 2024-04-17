@@ -47,14 +47,14 @@ export const CalendarSpendingMoney = () => {
                 <div
                   key={globalIndex}
                   className={`flex flex-row items-center space-x-[5px] ${
-                    isActive ? "bg-[#182235]" : ""
+                    isActive ? "bg-[#D9D9D9] dark:bg-[#182235]" : ""
                   }`}
                   onClick={(event) => handleClick(globalIndex, event)}
                 >
                   <div
                     className={`w-2 h-2 bg-color-${item.color} rounded-full`}
                   ></div>
-                  <h3 className="text-white text-xl font-normal">
+                  <h3 className="text-black dark:text-white text-xl font-normal">
                     {item.text}
                   </h3>
                 </div>

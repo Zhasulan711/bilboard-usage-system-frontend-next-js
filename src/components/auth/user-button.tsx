@@ -28,10 +28,10 @@ export const UserButton = () => {
           </Avatar>
 
           <div className="flex flex-col">
-            <span className="text-[#FFFFFF] text-sm font-normal">
+            <span className="text-black dark:text-[#FFFFFF] text-sm font-normal">
               {user?.name}
             </span>
-            <span className="text-[#6F737B] text-sm font-normal truncate max-w-[50px]">
+            <span className="text-[#D9D9D9] dark:text-[#6F737B] text-sm font-normal truncate max-w-[50px]">
               #{user?.id}
             </span>
           </div>

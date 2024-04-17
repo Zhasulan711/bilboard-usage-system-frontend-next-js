@@ -69,13 +69,13 @@ export const HeaderSearchBar = () => {
 
   return (
     <div
-      className="w-[321px] h-[42px] bg-[#182235] rounded-lg pl-[10px]
+      className="w-[321px] h-[42px] bg-[#D9D9D9] dark:bg-[#182235] rounded-lg pl-[10px]
         flex flex-row space-x-[6px] items-center "
     >
       <SearchIcon handleSVGClick={() => handleSVGClick(inputRef.current)} />
       <input
         ref={inputRef}
-        className="placeholder-[#6E7581] text-sm font-normal bg-[#182235] text-[#6E7581] focus:outline-none"
+        className="placeholder-[#6E7581] text-sm font-normal bg-[#D9D9D9] dark:bg-[#182235] text-[#6E7581] focus:outline-none"
         type="search"
         placeholder="Search"
         value={searchText}

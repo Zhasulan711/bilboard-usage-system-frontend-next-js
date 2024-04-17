@@ -38,7 +38,9 @@ const regionToDistrict = {
 };
 
 export const LargeInformationAddTable = () => {
-  const [purchasedItems, setPurchasedItems] = useState<BillboardTableList[]>([]);
+  const [purchasedItems, setPurchasedItems] = useState<BillboardTableList[]>(
+    []
+  );
 
   useEffect(() => {
     const items = localStorage.getItem("purchasedItems");
@@ -47,12 +49,11 @@ export const LargeInformationAddTable = () => {
     }
   }, []);
 
-
   return (
     <div className="mt-[20px]">
-      <div className="bg-[#0F1623] px-6 py-6 border-b-2 border-[#182235] rounded-lg">
+      <div className="bg-white dark:bg-[#0F1623] px-6 py-6 border-b-2 dark:border-[#182235] rounded-lg">
         <div className="flex flex-row space-x-[600px]">
-          <h1 className="text-white text-[28px] font-medium ml-[10px]">
+          <h1 className="text-black dark:text-white text-[28px] font-medium ml-[10px]">
             Information about your add
           </h1>
           <div className="flex flex-row space-x-[60px] mt-[10px]">
@@ -64,21 +65,27 @@ export const LargeInformationAddTable = () => {
               <ChevronDownAddIcon />
             </div>
             <div className="flex flex-row space-x-[10px] items-center">
-              <h2 className="text-white text-xl font-normal">Compare</h2>
+              <h2 className="text-black dark:text-white text-xl font-normal">
+                Compare
+              </h2>
               <ChevronDownAddIcon />
             </div>
           </div>
         </div>
         {Object.entries(regionToDistrict).map(([region, districtName]) => {
-          const districtItems = purchasedItems.filter(item => item.region === region);
+          const districtItems = purchasedItems.filter(
+            (item) => item.region === region
+          );
           return (
             <div key={region}>
               <div className="flex flex-row justify-between text-center pl-[10px] pt-[20px]">
-                <h1 className="text-white text-2xl font-normal">{districtName}</h1>
+                <h1 className="text-black dark:text-white text-2xl font-normal">
+                  {districtName}
+                </h1>
                 <div className="flex flex-row space-x-[10px]">
                   {navItems.map(({ name, width }, index) => (
                     <div
-                      className="h-[40px] flex items-center justify-center bg-[#0B101F] text-xl font-normal text-white rounded-lg"
+                      className="h-[40px] flex items-center justify-center bg-white dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
                       style={{ width }}
                       key={index}
                     >
@@ -87,17 +94,21 @@ export const LargeInformationAddTable = () => {
                   ))}
                 </div>
               </div>
-              <table className="w-full table-auto divide-y-[3px] divide-[#182235] mt-[10px] border-b-2 border-[#182235]">
-                <thead className="text-[#6F737B] text-base font-normal">
+              <table className="w-full table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235] mt-[10px] border-b-2 dark:border-[#182235]">
+                <thead className="text-[#D9D9D9] dark:text-[#6F737B] text-base font-normal">
                   <tr>
                     {headerTable.map((header, idx) => (
-                      <th key={idx} scope="col" className="px-[10px] py-[10px] text-left">
+                      <th
+                        key={idx}
+                        scope="col"
+                        className="px-[10px] py-[10px] text-left"
+                      >
                         {header}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="text-white text-lg font-normal divide-y-[3px] divide-[#182235]">
+                <tbody className="text-black dark:text-white text-lg font-normal divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]">
                   {districtItems.length > 0 ? (
                     districtItems.map((item, index) => (
                       <tr key={index}>
@@ -105,7 +116,9 @@ export const LargeInformationAddTable = () => {
                         <td className="px-[10px] py-[10px]">{item.price}</td>
                         <td className="px-[10px] py-[10px]">{item.grp}</td>
                         <td className="px-[10px] py-[10px]">{item.time}</td>
-                        <td className="px-[10px] py-[10px]">{item.placeNumber}</td>
+                        <td className="px-[10px] py-[10px]">
+                          {item.placeNumber}
+                        </td>
                         <td className="px-[10px] py-[10px]">{item.size}</td>
                         <td className="px-[10px] py-[10px]">{item.category}</td>
                       </tr>

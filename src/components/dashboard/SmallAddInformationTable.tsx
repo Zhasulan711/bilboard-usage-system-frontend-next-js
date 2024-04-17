@@ -26,8 +26,8 @@ export const SmallAddInformationTable = () => {
 
   return (
     <div className="overflow-y-auto h-[300px] mt-[10px] scroll-hidden">
-      <table className="w-full table-auto divide-y-[3px] divide-[#182235]">
-        <thead className="text-[#6F737B] text-base font-normal">
+      <table className="w-full table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]">
+        <thead className="text-[#D9D9D9] dark:text-[#6F737B] text-base font-normal">
           <tr>
             {headerTable.map((item, index) => (
               <th
@@ -40,7 +40,7 @@ export const SmallAddInformationTable = () => {
             ))}
           </tr>
         </thead>
-        <tbody className="text-white text-lg font-normal divide-y-[3px] divide-[#182235]">
+        <tbody className="text-black dark:text-white text-lg font-normal divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]">
           {purchasedItems.map(
             (
               { address, price, grp, time, placeNumber, size, category },

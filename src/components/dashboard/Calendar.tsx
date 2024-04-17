@@ -4,9 +4,9 @@ import { CalendarSpendingMoney } from "@/components/dashboard/CalendarSpendingMo
 
 export const Calendar = () => {
   return (
-    <div className="bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg pl-[15px] pt-[16px]">
+    <div className="bg-white dark:bg-[#0F1623] ml-[20px] mt-[20px] w-[321px] h-[420px] rounded-lg pl-[15px] pt-[16px]">
       <div className="flex flex-row space-x-[110px]">
-        <h1 className="text-white text-2xl font-normal">Calendar</h1>
+        <h1 className="text-black dark:text-white text-2xl font-normal">Calendar</h1>
         <div className="flex flex-row items-center">
           <h2 className="text-[#B7B9BE] text-base font-normal">September</h2>
           <ChevronDownCalendarIcon />
