@@ -127,9 +127,11 @@ export default function SettingsPage() {
                 </div>
                 <FormError message={error} />
                 <FormSuccess message={success} />
-                <Button type="submit" disabled={isPending}>
-                  Save
-                </Button>
+                {user?.isOAuth === true && (
+                  <Button type="submit" disabled={isPending}>
+                    Save
+                  </Button>
+                )}
               </form>
             </Form>
           </CardContent>
