@@ -85,7 +85,7 @@ export const LargeInformationAddTable = () => {
                 <div className="flex flex-row space-x-[10px]">
                   {navItems.map(({ name, width }, index) => (
                     <div
-                      className="h-[40px] flex items-center justify-center bg-white dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
+                      className="h-[40px] flex items-center justify-center bg-[#D9D9D9] dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
                       style={{ width }}
                       key={index}
                     >

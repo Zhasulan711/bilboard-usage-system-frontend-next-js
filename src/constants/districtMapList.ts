@@ -6,35 +6,35 @@ export type DistrictMapList = {
 export const DISTRICT_MAP_LIST: DistrictMapList[] = [
     {
         title: "Alatau district",
-        colorClass: "alatau",
+        colorClass: "alatau-billboard",
     },
     {
         title: "Almalinsk district",
-        colorClass: "almalinsk",
+        colorClass: "almalinsk-billboard",
     },
     {
         title: "Auezov district",
-        colorClass: "auezov",
+        colorClass: "auezov-billboard",
     },
     {
         title: "Bostandyk district",
-        colorClass: "bostandyk",
+        colorClass: "bostandyk-billboard",
     },
     {
         title: "Medeu district",
-        colorClass: "medeu",
+        colorClass: "medeu-billboard",
     },
     {
         title: "Nauryzbay district",
-        colorClass: "nauryzbay",
+        colorClass: "nauryzbay-billboard",
     },
     {
         title: "Turksib district",
-        colorClass: "turksib",
+        colorClass: "turksib-billboard",
     },
     {
         title: "Zhetysu district",
-        colorClass: "zhetysu",
+        colorClass: "zhetysu-billboard",
     }
 ]
 
