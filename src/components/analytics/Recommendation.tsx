@@ -8,6 +8,11 @@ import { BillboardTableList } from "@/constants/billboardTableList";
 
 export const Recommendation = () => {
   const [processedIndex, setProcessedIndex] = useState<string[]>([]);
+  const [purchasedItems, setPurchasedItems] = useState([]);
+  const [purchasedIds, setPurchasedIds] = useState<string[]>([]);
+  const [availableBillboards, setAvailableBillboards] = useState<
+    BillboardTableList[]
+  >([]);
 
   useEffect(() => {
     const items = JSON.parse(
@@ -16,6 +21,23 @@ export const Recommendation = () => {
 
     setProcessedIndex(items.map((item) => item.id));
   }, []);
+
+  useEffect(() => {
+    const items = localStorage.getItem("purchasedItems");
+    setPurchasedItems(items ? JSON.parse(items) : []);
+  }, []);
+
+  useEffect(() => {
+    setPurchasedIds(purchasedItems.map((item: { id: string }) => item.id));
+  }, [purchasedItems]);
+
+  useEffect(() => {
+    setAvailableBillboards(
+      BILLBOARD_TABLE_LIST.filter(
+        (billboard) => !purchasedIds.includes(billboard.id)
+      )
+    );
+  }, [purchasedIds]);
 
   const handleBuy = (item: BillboardTableList): void => {
     const itemId = item.id.toString();
@@ -35,26 +57,13 @@ export const Recommendation = () => {
     }
   };
 
-  const purchasedItems = useMemo(() => {
-    const items = localStorage.getItem("purchasedItems");
-    return items ? JSON.parse(items) : [];
-  }, []);
-
-  const purchasedIds = useMemo(() => {
-    return purchasedItems.map((item: { id: string }) => item.id);
-  }, [purchasedItems]);
-
-  const availableBillboards = useMemo(() => {
-    return BILLBOARD_TABLE_LIST.filter(
-      (billboard) => !purchasedIds.includes(billboard.id)
-    ).reverse();
-  }, [purchasedIds]);
-  
   return (
     <div className="bg-white dark:bg-[#0F1623] w-[322px] h-[501px] rounded-lg pl-[26px] pt-[16px] flex flex-col space-y-[3px] mb-[20px]">
-      <h1 className="text-black dark:text-white text-2xl font-medium">Recommendation</h1>
+      <h1 className="text-black dark:text-white text-2xl font-medium">
+        Recommendation
+      </h1>
       <div className="h-[425px] overflow-y-auto overflow-x-hidden scroll-hidden flex flex-col space-y-[12px]">
-        {availableBillboards.map((item, index) => {
+        {[...availableBillboards].reverse().map((item, index) => {
           return (
             <div
               key={index}

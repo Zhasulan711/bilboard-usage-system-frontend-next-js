@@ -9,7 +9,7 @@ export const SettingsNavbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="p-4 rounded-xl w-[320px] h-[185px] shadow-sm bg-[#0F1623] text-white text-[28px] font-medium">
+    <nav className="p-4 rounded-xl w-[320px] h-[185px] shadow-sm bg-white dark:bg-[#0F1623] text-black dark:text-white text-[28px] font-medium">
       Settings
       <div className="flex flex-col space-y-[10px] mt-[16px]">
       <Button

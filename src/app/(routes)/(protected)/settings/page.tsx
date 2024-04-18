@@ -71,7 +71,7 @@ export default function SettingsPage() {
     <div className="flex flex-row space-x-[184px]">
       <SettingsNavbar />
       <div className="flex flex-col space-y-[20px]">
-        <Card className="w-[600px] bg-[#0F1623] border-transparent text-white">
+        <Card className="w-[600px] bg-white dark:bg-[#0F1623] border-transparent text-black dark:text-white">
           <CardHeader>
             <p className="text-2xl font-semibold text-left">
               Personal information
@@ -135,7 +135,7 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
         {user?.isOAuth === false && (
-          <Card className="w-[600px] bg-[#0F1623] border-transparent text-white">
+          <Card className="w-[600px] bg-white dark:bg-[#0F1623] border-transparent text-black dark:text-white">
             <CardHeader>
               <p className="text-2xl font-semibold text-left">Security</p>
             </CardHeader>

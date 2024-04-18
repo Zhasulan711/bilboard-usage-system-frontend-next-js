@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { SearchIcon } from "@/components/Icons";
 import { BillboardTableList } from "@/constants/billboardTableList";
+import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 
 const navItems = [
   { name: "All", width: "53px" },
@@ -33,6 +34,7 @@ export default function TransactionPage() {
     []
   );
   const [canceledItems, setCanceledItems] = useState<BillboardTableList[]>([]);
+  const isDark = StrokeIconTheme();
 
   useEffect(() => {
     setProcessingItems(
@@ -70,7 +72,7 @@ export default function TransactionPage() {
     <div className="flex flex-col">
       <div className="flex flex-row space-x-[275px]">
         <div className="bg-white dark:bg-[#0F1623] rounded-lg h-[40px] w-[451px] flex flex-row items-center pl-[20px] space-x-[20px]">
-          <SearchIcon />
+          <SearchIcon strokeColor={isDark ? "white" : "black"}/>
           <h2 className="text-[#D9D9D9] dark:text-[#575C65] text-xl font-normal">
             Search
           </h2>
@@ -112,7 +114,7 @@ export default function TransactionPage() {
                 key={index}
                 item={item}
                 statusColor="text-red-400"
-                statusWord="Canceled"
+                statusWord="CANCELED"
               />
             ))}
             {purchasedItems.map((item, index) => (
@@ -120,7 +122,7 @@ export default function TransactionPage() {
                 key={index}
                 item={item}
                 statusColor="text-green-400"
-                statusWord="Success"
+                statusWord="SUCCESS"
               />
             ))}
             {processingItems.map((item, index) => (
@@ -128,7 +130,7 @@ export default function TransactionPage() {
                 key={index}
                 item={item}
                 statusColor="text-orange-400"
-                statusWord="Process"
+                statusWord="PROCESS"
               />
             ))}
           </tbody>
