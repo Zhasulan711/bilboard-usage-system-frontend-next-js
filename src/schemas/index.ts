@@ -77,12 +77,9 @@ export const BillboardSchema = z.object({
 });
 
 export const ShippingAddressSchema = z.object({
-  userName: z.optional(z.string()),
-  address1: z.optional(z.string()),
-  address2: z.optional(z.string()),
-  phoneNumber: z.optional(z.string()),
-  city: z.optional(z.string()),
-  state: z.optional(z.string()),
-  zip: z.optional(z.string()),
-  region: z.optional(z.string()),
+  cardNumber: z.optional(z.string()),
+  cardHolderName: z.optional(z.string()),
+  cvv: z.optional(z.string()),
+  expirationDate: z.optional(z.string()),
+  cardType: z.optional(z.string()),
 });

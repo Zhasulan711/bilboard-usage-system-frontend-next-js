@@ -80,7 +80,7 @@ export const BillingSummary = () => {
   };
 
   return (
-    <Card className="w-[505px] h-[397px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
+    <Card className="w-[505px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
       <FormProvider {...methods}>
         <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
           <FormField

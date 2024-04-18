@@ -26,7 +26,7 @@ export const Graphs = () => {
         </h1>
         <div className="flex flex-row text-center">
           <h2 className="text-[#D9D9D9] dark:text-[#575C65] text-xl font-normal">
-            Last 7 days, <span className="text-white">26 Aug - 01 Sep.</span>
+            Last 7 days, <span className="text-black dark:text-white">26 Aug - 01 Sep.</span>
           </h2>
           <ChevronDownAddIcon />
         </div>

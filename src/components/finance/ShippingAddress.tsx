@@ -26,16 +26,6 @@ export const ShippingAddress = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const form = useForm<z.infer<typeof ShippingAddressSchema>>({
     resolver: zodResolver(ShippingAddressSchema),
-    defaultValues: {
-      userName: undefined,
-      address1: undefined,
-      address2: undefined,
-      phoneNumber: undefined,
-      city: undefined,
-      state: undefined,
-      zip: undefined,
-      region: undefined,
-    },
   });
 
   const onSubmit = (values: any) => {
@@ -44,29 +34,55 @@ export const ShippingAddress = () => {
         setError("Please fill in all required fields correctly.");
         return;
       }
+      const existingCards = localStorage.getItem("cardVisa");
+      const cards = existingCards ? JSON.parse(existingCards) : [];
+
+      cards.push(values);
+
+      localStorage.setItem("cardVisa", JSON.stringify(cards));
       setSuccess("Shipping address updated!");
       setError("");
     });
   };
 
   return (
-    <Card className="w-[821px] h-[459px] bg-white dark:bg-[#0F1623] border-transparent -space-y-[16px]">
+    <Card className="w-[821px] bg-white dark:bg-[#0F1623] border-transparent -space-y-[16px]">
       <CardHeader className="text-black dark:text-white text-[26px] font-medium -mt-[16px]">
-        Shipping address
+        New card
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form
-            className="space-x-[0px] grid grid-cols-2 gap-[20px] text-black dark:text-white"
+            className="grid grid-cols-2 gap-x-[100px] gap-y-[20px] text-black dark:text-white"
             onSubmit={form.handleSubmit(onSubmit)}
           >
             <FormField
               control={form.control}
-              name="userName"
+              name="cardNumber"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-black dark:text-white text-base font-normal">
-                    User Name
+                    Card number
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="4400 4400 4400 4400"
+                      disabled={isPending}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="cardHolderName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
+                    Cardholder name
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -79,17 +95,34 @@ export const ShippingAddress = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
-              name="address1"
+              name="cvv"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-black dark:text-white text-base font-normal">
-                    Address 1
+                    CVV
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="000" disabled={isPending} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="expirationDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-black dark:text-white text-base font-normal">
+                    Expiration Date
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="10 - 25 - 100"
+                      placeholder="22/01/2023"
                       disabled={isPending}
                       {...field}
                     />
@@ -98,17 +131,18 @@ export const ShippingAddress = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
-              name="phoneNumber"
+              name="cardType"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-black dark:text-white text-base font-normal">
-                    Phone number
+                    Card type
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="+7 777 77 77"
+                      placeholder="Enter your Card Type"
                       disabled={isPending}
                       {...field}
                     />
@@ -117,111 +151,16 @@ export const ShippingAddress = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="address2"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-black dark:text-white text-base font-normal">
-                    Address 2
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="10 - 25 - 100"
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="city"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-black dark:text-white text-base font-normal">
-                    City
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Enter your city"
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="state"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-black dark:text-white text-base font-normal">
-                    State
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="California State"
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="region"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-black dark:text-white text-base font-normal">
-                    Region
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Enter your region"
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="zip"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-black dark:text-white text-base font-normal">
-                    Zip Code
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="00000000"
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormError message={error} />
-            <FormSuccess message={success} />
+
             <Button
               type="submit"
               disabled={isPending}
-              className="hover:bg-amber-500"
+              className="hover:bg-amber-500 w-[79px] h-[31px] px-[9px] py-1.5 text-white dark:text-black col-start-1 col-end-3"
             >
-              Save
+              Add card
             </Button>
-             
+            <FormError message={error} />
+            <FormSuccess message={success} />
           </form>
         </Form>
       </CardContent>

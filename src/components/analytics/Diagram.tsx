@@ -60,7 +60,7 @@ export const Diagram = () => {
       </div>
       <div className="flex flex-col">
         <h2 className="text-[#D9D9D9] dark:text-[#6F737B] text-xl font-normal pl-[80px]">
-          All of your billboards 28
+          All of your billboards {totalBillboards}
         </h2>
         {BILLBOARD_TABLE_LIST.map(
           ({ region, colorClass, percentage, count }, index) => {
@@ -75,7 +75,9 @@ export const Diagram = () => {
                   ></div>
                   <h2 className="text-black dark:text-white text-xl font-normal cursor-pointer whitespace-nowrap">
                     {region}, <span>{percentage}%, </span>{" "}
-                    <span className="text-[#D9D9D9] dark:text-[#6F737B]">{count} billboard</span>
+                    <span className="text-[#D9D9D9] dark:text-[#6F737B]">
+                      {count} billboard
+                    </span>
                   </h2>
                 </div>
               </React.Fragment>
