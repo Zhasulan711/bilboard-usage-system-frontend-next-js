@@ -24,7 +24,7 @@ export const Tooltip = () => {
   if (!isTooltipVisible) {
     return null;
   }
-  
+
   return (
     <div className="">
       {activeTooltip === 1 && (
@@ -45,7 +45,7 @@ export const Tooltip = () => {
       )}
 
       {activeTooltip === 2 && (
-        <div className="absolute right-[74px] top-[50px] flex flex-col items-center">
+        <div className="absolute right-[91.5px] top-[50px] flex flex-col items-center">
           <div className="w-[1px] bg-[#29354E] h-[47px] ml-[100px]" />
           <div className="bg-[#29354E] rounded-[18px] shadow-lg w-[382px] h-[130px] flex flex-col space-y-[10px] p-[15px]">
             <p className="text-white text-2xl font-normal">

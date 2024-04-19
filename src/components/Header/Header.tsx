@@ -5,7 +5,7 @@ import { HeaderSearchBar } from "@/components/Header/HeaderSearchBar";
 import { HeaderAccount } from "@/components/Header/HeaderAccount";
 import { useRouter } from "next/navigation";
 import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 export const Header = () => {
   const route = useRouter();
@@ -39,7 +39,10 @@ export const Header = () => {
             isClicked={isClicked}
             strokeColor={isDark ? "white" : "black"}
           />
-          <InfoToolTipIcon toggleVisibility={handleToggleTooltipVisibility}/>
+          <InfoToolTipIcon
+            toggleVisibility={handleToggleTooltipVisibility}
+            strokeColor={isDark ? "white" : "black"}
+          />
 
           <HeaderAccount />
         </div>

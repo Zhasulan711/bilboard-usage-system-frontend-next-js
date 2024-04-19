@@ -1,4 +1,7 @@
+"use client";
+
 import { ChevronDownParametersIcon } from "@/components/Icons";
+import { useEffect, useState } from "react";
 
 const places = [
   { place: "City", district: "Almaty" },
@@ -58,25 +61,54 @@ const grps = [
   { item: "Custom", width: "99px" },
 ];
 
-export const Parameters = () => {
-  const sizes = [{ item: "3.2x3.2" }];
+const sizes = [{ item: "3.2x3.2" }];
 
-  function Section({ title, items }: any) {
+export const Parameters = () => {
+  const [selectedPrice, setSelectedPrice] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedTime, setSelectedTime] = useState([]);
+  const [selectedGrp, setSelectedGrp] = useState([]);
+  const [selectedSize, setSelectedSize] = useState([]);
+
+  function Section({
+    title,
+    items,
+    selected,
+    setSelected,
+  }: any) {
     return (
       <div className="border-t-2 border-[#D9D9D9] dark:border-[#182235] flex flex-col space-y-[8px] px-[14px] pt-[24px] justify-center mt-[24px]">
         <h3 className="text-lg font-normal text-[#D9D9D9] dark:text-[#575C65]">
           {title}
         </h3>
         <div className="grid grid-cols-2 gap-[12px]">
-          {items.map(({ item, width }: any, index: any) => (
-            <div
-              className="bg-[#D9D9D9] dark:bg-[#070F1B] h-[42px] flex justify-center items-center text-black dark:text-white text-xl font-normal rounded-lg"
-              style={{ width: width }}
-              key={index}
-            >
-              {item}
-            </div>
-          ))}
+          {items.map(({ item, width }: any, index: any) => {
+            const isClicked = selected.includes(index);
+            return (
+              <div
+                className={`bg-[#D9D9D9] dark:bg-[#070F1B] h-[42px] flex justify-center items-center text-black dark:text-white text-xl font-normal rounded-lg
+                ${
+                  isClicked
+                    ? "bg-[#F99802] dark:bg-[#F99802]"
+                    : "bg-[#D9D9D9] dark:bg-[#070F1B]] "
+                } `}
+                style={{ width: width }}
+                key={index}
+                onClick={() => {
+                  const newSelectedIndexes = [...selected];
+                  const idx = newSelectedIndexes.indexOf(index);
+                  if (idx > -1) {
+                    newSelectedIndexes.splice(idx, 1);
+                  } else if (newSelectedIndexes.length < 3) {
+                    newSelectedIndexes.push(index);
+                  }
+                  setSelected(newSelectedIndexes);
+                }}
+              >
+                {item}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -90,20 +122,49 @@ export const Parameters = () => {
         <div className="border-t-2 border-[#D9D9D9] dark:border-[#182235] flex flex-row mt-[25px] px-[46px] pt-[24px] space-x-[48px] justify-center">
           {places.map(({ place, district }, index) => (
             <div className="flex flex-col space-y-[4px]" key={index}>
-              <h3 className="text-[#D9D9D9] dark:text-[#575C65] text-lg font-normal">{place}</h3>
+              <h3 className="text-[#D9D9D9] dark:text-[#575C65] text-lg font-normal">
+                {place}
+              </h3>
               <div className="flex flex-row space-x-[8px] items-center">
                 <ChevronDownParametersIcon />
-                <h2 className="text-black dark:text-white text-2xl font-normal">{district}</h2>
+                <h2 className="text-black dark:text-white text-2xl font-normal">
+                  {district}
+                </h2>
               </div>
             </div>
           ))}
         </div>
 
-        <Section title="Price" items={prices} />
-        <Section title="Category" items={categories} />
-        <Section title="Time" items={times} />
-        <Section title="Grp" items={grps} />
-        <Section title="Size" items={sizes} />
+        <Section
+          title="Price"
+          items={prices}
+          selected={selectedPrice}
+          setSelected={setSelectedPrice}
+        />
+        <Section
+          title="Category"
+          items={categories}
+          selected={selectedCategory}
+          setSelected={setSelectedCategory}
+        />
+        <Section
+          title="Time"
+          items={times}
+          selected={selectedTime}
+          setSelected={setSelectedTime}
+        />
+        <Section
+          title="Grp"
+          items={grps}
+          selected={selectedGrp}
+          setSelected={setSelectedGrp}
+        />
+        <Section
+          title="Size"
+          items={sizes}
+          selected={selectedSize}
+          setSelected={setSelectedSize}
+        />
       </div>
     </div>
   );
