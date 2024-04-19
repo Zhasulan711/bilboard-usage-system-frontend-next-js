@@ -8,7 +8,7 @@ export const SmallAddInformation = () => {
         <h1 className="text-black dark:text-white text-[28px] font-medium ml-[10px]">
           Information about your add
         </h1>
-        <div className="flex flex-row space-x-[60px] mt-[10px]">
+        {/* <div className="flex flex-row space-x-[60px] mt-[10px]">
           <div className="flex flex-row space-x-[10px] items-center">
             <CalendarDaysIcon />
             <h2 className="text-black dark:text-white text-xl font-normal">
@@ -22,7 +22,7 @@ export const SmallAddInformation = () => {
             </h2>
             <ChevronDownAddIcon />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* table */}

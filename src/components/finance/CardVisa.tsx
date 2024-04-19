@@ -18,7 +18,6 @@ export const CardVisa = () => {
     setCards(cards.map(card => card.cardNumber === cardNumber ? { ...card, isClicked: true } : { ...card, isClicked: false }));
   };
 
-
   const handleStorageChange = () => {
     const storedCardData = localStorage.getItem("cardVisa");
     if (storedCardData) {

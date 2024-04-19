@@ -41,23 +41,31 @@ export const SmallAddInformationTable = () => {
           </tr>
         </thead>
         <tbody className="text-black dark:text-white text-lg font-normal divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]">
-          {purchasedItems.map(
-            (
-              { address, price, grp, time, placeNumber, size, category },
-              index
-            ) => {
-              return (
-                <tr key={index}>
-                  <td className="px-[10px] py-[10px]">{address}</td>
-                  <td className="px-[10px] py-[10px]">{price}</td>
-                  <td className="px-[10px] py-[10px]">{grp}</td>
-                  <td className="px-[10px] py-[10px]">{time}</td>
-                  <td className="px-[10px] py-[10px]">{placeNumber}</td>
-                  <td className="px-[10px] py-[10px]">{size}</td>
-                  <td className="px-[10px] py-[10px]">{category}</td>
-                </tr>
-              );
-            }
+          {purchasedItems.length > 0 ? (
+            purchasedItems.map(
+              (
+                { address, price, grp, time, placeNumber, size, category },
+                index
+              ) => {
+                return (
+                  <tr key={index}>
+                    <td className="px-[10px] py-[10px]">{address}</td>
+                    <td className="px-[10px] py-[10px]">{price}</td>
+                    <td className="px-[10px] py-[10px]">{grp}</td>
+                    <td className="px-[10px] py-[10px]">{time}</td>
+                    <td className="px-[10px] py-[10px]">{placeNumber}</td>
+                    <td className="px-[10px] py-[10px]">{size}</td>
+                    <td className="px-[10px] py-[10px]">{category}</td>
+                  </tr>
+                );
+              }
+            )
+          ) : (
+            <tr>
+              <td colSpan={7} className="text-center py-[10px]">
+                No purchased billboards. Buy some billboards to fill this table.
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

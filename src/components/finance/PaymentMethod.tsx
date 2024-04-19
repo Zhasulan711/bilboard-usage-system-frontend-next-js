@@ -113,7 +113,8 @@ export const PaymentMethod = () => {
               <Button
                 type="submit"
                 disabled={isPending}
-                className="hover:bg-amber-500 w-[100px] dark:text-black text-white col-start-1 col-end-3"
+                className="hover:bg-amber-500 dark:hover:bg-[#F9B13C] dark:hover:text-black w-[79px] text-white dark:text-[#F9B13C] bg-[#F9B13C] dark:bg-black dark:border-[#F9B13C] dark:border-[1px]
+                col-start-1 col-end-3"
               >
                 Deposit
               </Button>

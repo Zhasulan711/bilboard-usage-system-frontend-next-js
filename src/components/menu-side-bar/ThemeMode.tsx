@@ -20,8 +20,12 @@ export const ThemeMode = () => {
   };
 
   return (
-    <div className="flex flex-row space-x-[15px] items-center pl-[10px]" onClick={toggleTheme}>
-      <ThemeModeIcon strokeColor={isDark ? "white" : "black"}/>
+    <button
+      className="flex flex-row space-x-[15px] items-center pl-[10px] hover:bg-[#D9D9D9]
+      dark:hover:bg-[#182235] transition duration-1000 ease-in-out"
+      onClick={toggleTheme}
+    >
+      <ThemeModeIcon strokeColor={isDark ? "white" : "black"} />
       <h1
         className={`text-lg font-normal ${
           isDark ? "text-white" : "text-black"
@@ -29,6 +33,6 @@ export const ThemeMode = () => {
       >
         {isDark ? "Night Mode" : "Light Mode"}
       </h1>
-    </div>
+    </button>
   );
 };

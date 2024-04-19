@@ -56,7 +56,7 @@ export const LargeInformationAddTable = () => {
           <h1 className="text-black dark:text-white text-[28px] font-medium ml-[10px]">
             Information about your add
           </h1>
-          <div className="flex flex-row space-x-[60px] mt-[10px]">
+          {/* <div className="flex flex-row space-x-[60px] mt-[10px]">
             <div className="flex flex-row space-x-[10px] items-center">
               <CalendarDaysIcon />
               <h2 className="text-white text-xl font-normal">
@@ -70,7 +70,7 @@ export const LargeInformationAddTable = () => {
               </h2>
               <ChevronDownAddIcon />
             </div>
-          </div>
+          </div> */}
         </div>
         {Object.entries(regionToDistrict).map(([region, districtName]) => {
           const districtItems = purchasedItems.filter(
@@ -82,7 +82,7 @@ export const LargeInformationAddTable = () => {
                 <h1 className="text-black dark:text-white text-2xl font-normal">
                   {districtName}
                 </h1>
-                <div className="flex flex-row space-x-[10px]">
+                {/* <div className="flex flex-row space-x-[10px]">
                   {navItems.map(({ name, width }, index) => (
                     <div
                       className="h-[40px] flex items-center justify-center bg-[#D9D9D9] dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
@@ -92,7 +92,7 @@ export const LargeInformationAddTable = () => {
                       {name}
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
               <table className="w-full table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235] mt-[10px] border-b-2 dark:border-[#182235]">
                 <thead className="text-[#D9D9D9] dark:text-[#6F737B] text-base font-normal">

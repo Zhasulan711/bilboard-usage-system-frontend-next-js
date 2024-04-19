@@ -3,20 +3,20 @@
 import { useState } from "react";
 import React from "react";
 
+const colorData = [
+  { color: "midnightCircle", text: "0" },
+  { color: "denimCircle", text: "200k-300k" },
+  { color: "cobaltCircle", text: "300k-500k" },
+  { color: "blueCircle", text: "500k-800k" },
+  { color: "oceanCircle", text: "Above 800k" },
+];
+
 export const CalendarSpendingMoney = () => {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const handleClick = (index: number, event: any) => {
     event.preventDefault();
     setClickedIndex((prevIndex) => (prevIndex === index ? null : index));
   };
-
-  const colorData = [
-    { color: "midnightCircle", text: "0" },
-    { color: "denimCircle", text: "200k-300k" },
-    { color: "cobaltCircle", text: "300k-500k" },
-    { color: "blueCircle", text: "500k-800k" },
-    { color: "oceanCircle", text: "Above 800k" },
-  ];
 
   const chunk = (array: any[], size: number) => {
     const chunked_arr = [];
@@ -31,7 +31,7 @@ export const CalendarSpendingMoney = () => {
   const colorDataChunks = chunk(colorData, 2);
 
   return (
-    <div className="flex flex-col space-y-[10px] mt-[20px]">
+    <div className="flex flex-col space-y-[10px] mt-[2px] ml-[10px]">
       {colorDataChunks.map(
         (
           chunk,

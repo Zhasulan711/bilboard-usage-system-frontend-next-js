@@ -51,7 +51,7 @@ export const ShippingAddress = () => {
   };
 
   return (
-    <div className="">
+    <div>
       {!showCard && (
         <h1
           className={`text-center text-black dark:text-white text-xl font-medium`}
@@ -179,13 +179,13 @@ export const ShippingAddress = () => {
                   >
                     Add card
                   </Button>
-                  <div
+                  <button
                     className="hover:bg-amber-500 dark:hover:bg-[#F9B13C] dark:hover:text-black w-[79px] h-[31px] flex justify-center items-center rounded-[5px] 
                     text-white dark:text-[#F9B13C] bg-[#F9B13C] dark:bg-black dark:border-[#F9B13C] dark:border-[1px]"
                     onClick={handleCancelClick}
                   >
                     Cancel
-                  </div>
+                  </button>
                 </div>
                 <FormError message={error} />
                 <FormSuccess message={success} />

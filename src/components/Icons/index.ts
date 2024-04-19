@@ -27,6 +27,7 @@ export * from "./CompassIcon";
 export * from "./ChevronDownCalendarIcon";
 export * from "./CalendarDaysIcon";
 export * from "./ChevronDownAddIcon";
+export * from "./ArrowRightIcon";
 
 /***
  * Post Add page
