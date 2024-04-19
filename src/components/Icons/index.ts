@@ -49,3 +49,9 @@ export * from "./TransactionIcon";
  * Finance page
  */
 export * from "./RedTrashIcon";
+
+/***
+ * / page
+ */
+export * from "./LandingPageVerticalIcon";
+export * from "./LandingPageHorizontalIcon";
