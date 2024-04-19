@@ -1,13 +1,25 @@
 "use client";
 
-import { ShoppingBasketIcon } from "@/components/Icons";
+import { InfoToolTipIcon, ShoppingBasketIcon } from "@/components/Icons";
 import { HeaderSearchBar } from "@/components/Header/HeaderSearchBar";
 import { HeaderAccount } from "@/components/Header/HeaderAccount";
 import { useRouter } from "next/navigation";
 import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
+import React, { useState, useEffect } from 'react';
+
 export const Header = () => {
   const route = useRouter();
   const isDark = StrokeIconTheme();
+
+  const [isTooltipVisible, setIsTooltipVisible] = useState(() => {
+    return localStorage.getItem("isTooltipVisible") === "false" ? false : true;
+  });
+
+  const handleToggleTooltipVisibility = () => {
+    const newVisibility = !isTooltipVisible;
+    setIsTooltipVisible(newVisibility);
+    localStorage.setItem("isTooltipVisible", newVisibility.toString());
+  };
 
   const isClicked = () => {
     route.push("/finance");
@@ -15,7 +27,7 @@ export const Header = () => {
 
   return (
     <header className="w-[1386px] bg-white dark:bg-[#0F1623] h-[68px] ml-auto flex border-l-2 dark:border-[#010714]">
-      <div className="flex flex-row pl-[20px] space-x-[815px] items-center">
+      <div className="flex flex-row pl-[20px] space-x-[750px] items-center">
         {/* search bar */}
         <HeaderSearchBar />
 
@@ -27,6 +39,7 @@ export const Header = () => {
             isClicked={isClicked}
             strokeColor={isDark ? "white" : "black"}
           />
+          <InfoToolTipIcon toggleVisibility={handleToggleTooltipVisibility}/>
 
           <HeaderAccount />
         </div>

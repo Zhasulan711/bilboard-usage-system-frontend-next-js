@@ -1,11 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { ArrowRightIcon } from "@/components/Icons";
 
 export const Tooltip = () => {
   const [activeTooltip, setActiveTooltip] = useState(1);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(() => {
+    return localStorage.getItem("isTooltipVisible") === "true";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("isTooltipVisible", isTooltipVisible.toString());
+  }, [isTooltipVisible]);
 
   const handleCloseFirstTooltip = () => {
     setActiveTooltip(2);
@@ -15,8 +21,12 @@ export const Tooltip = () => {
     setActiveTooltip(0);
   };
 
+  if (!isTooltipVisible) {
+    return null;
+  }
+  
   return (
-    <div>
+    <div className="">
       {activeTooltip === 1 && (
         <div className="absolute right-[1022px] top-[480px] flex flex-row items-center">
           <div className="w-[127px] bg-[#29354E] h-[2px]" />
