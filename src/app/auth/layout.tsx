@@ -11,10 +11,9 @@ export default function AuthLayout({
         <div>{children}</div>
       </div>
       <div className="w-1/2 h-screen relative">
-        <Image
+        <img
           src="/images/Rectangle 2090.png"
-          layout="fill"
-          objectFit="cover"
+          className="imageCover"
           alt="sign in"
         />
       </div>

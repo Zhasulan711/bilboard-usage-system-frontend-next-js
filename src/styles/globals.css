@@ -79,6 +79,12 @@ body.light-mode {
   transition: all 2000ms ease-in-out;
 }
 
+.imageCover {
+  object-fit: cover; /* Ensures the image covers the available space */
+  width: 100%;       /* Fill the width */
+  height: 100%;      /* Fill the height */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

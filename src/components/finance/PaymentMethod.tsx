@@ -24,6 +24,7 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 
 export const PaymentMethod = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [isPending, startTransition] = useTransition();
   const user = useCurrentUser();
   const [error, setError] = useState<string | undefined>("");
@@ -35,6 +36,14 @@ export const PaymentMethod = () => {
       balance: "0",
     },
   });
+
+  useEffect(() => {
+    const cardData = localStorage.getItem("cardVisa");
+    if (cardData) {
+      const cards = JSON.parse(cardData);
+      setIsVisible(Array.isArray(cards) && cards.length > 0);
+    }
+  }, []);
 
   const onSubmit = async (values: z.infer<typeof PaymentSchema>) => {
     startTransition(async () => {
@@ -68,7 +77,7 @@ export const PaymentMethod = () => {
     });
   };
 
-  return (
+  return isVisible ? (
     <Card className="w-[821px] bg-white dark:bg-[#0F1623] border-transparent -space-y-[16px]">
       <CardHeader className="text-black dark:text-white text-[26px] font-medium -mt-[16px]">
         Add balance
@@ -115,5 +124,5 @@ export const PaymentMethod = () => {
         </Form>
       </CardContent>
     </Card>
-  );
+  ) : null;
 };
