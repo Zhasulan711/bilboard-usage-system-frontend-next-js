@@ -3,7 +3,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LoginButton } from "@/components/auth/login-button";
 import { RegisterButton } from "@/components/auth/register-button";
-import { LandingPageHorizontalIcon, LandingPageVerticalIcon } from "@/components/Icons";
+import {
+  LandingPageHorizontalIcon,
+  LandingPageVerticalIcon,
+} from "@/components/Icons";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,7 +20,7 @@ export default function Home() {
         <h1 className="text-black text-2xl font-normal">HAPPY CLIENT</h1>
 
         <div className="flex flex-row space-x-[16px]">
-          <LoginButton>
+          <LoginButton asChild>
             <Button
               variant="secondary"
               size="lg"
