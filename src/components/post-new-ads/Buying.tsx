@@ -21,7 +21,7 @@ export const Buying = () => {
       <div className="flex flex-row space-x-[620px] px-[26px] py-[13px] items-center border-b-[12px] border-[#D9D9D9] dark:border-[#010714]">
         {/* Buying navBars */}
         <h1 className="text-[28px] font-medium text-black dark:text-white">Buying</h1>
-        <div className="flex flex-row space-x-[10px] mt-[5px]">
+        {/* <div className="flex flex-row space-x-[10px] mt-[5px]">
           {navHeader.map(({ title, width }, index) => (
             <div
               className="bg-[#D9D9D9] dark:bg-[#070F1B] h-[31px] flex justify-center items-center text-black dark:text-white text-base font-normal rounded-lg"
@@ -31,7 +31,7 @@ export const Buying = () => {
               {title}
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
       {/* Buying table */}
       <BuyingTable />

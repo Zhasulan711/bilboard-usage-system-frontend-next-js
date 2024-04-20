@@ -12,8 +12,12 @@ export const Header = () => {
   const isDark = StrokeIconTheme();
 
   const [isTooltipVisible, setIsTooltipVisible] = useState(() => {
-    return localStorage.getItem("isTooltipVisible") === "false" ? false : true;
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("isTooltipVisible") === "false" ? false : true;
+    }
+    return true; // Default value or consider another state handling for SSR
   });
+  
 
   const handleToggleTooltipVisibility = () => {
     const newVisibility = !isTooltipVisible;

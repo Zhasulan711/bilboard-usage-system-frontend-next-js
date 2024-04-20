@@ -5,6 +5,7 @@ import React, { useMemo, useEffect, useState } from "react";
 import { CompassIcon, SmallShoppingBagIcon } from "@/components/Icons";
 import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
 import { BillboardTableList } from "@/constants/billboardTableList";
+import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 
 export const Recommendation = () => {
   const [processedIndex, setProcessedIndex] = useState<string[]>([]);
@@ -13,6 +14,7 @@ export const Recommendation = () => {
   const [availableBillboards, setAvailableBillboards] = useState<
     BillboardTableList[]
   >([]);
+  const isDark = StrokeIconTheme();
 
   useEffect(() => {
     const items = JSON.parse(
@@ -64,10 +66,15 @@ export const Recommendation = () => {
       </h1>
       <div className="h-[425px] overflow-y-auto overflow-x-hidden scroll-hidden flex flex-col space-y-[12px]">
         {[...availableBillboards].reverse().map((item, index) => {
+          const isDisabled = processedIndex.includes(item.id.toString());
           return (
             <div
               key={index}
-              className="w-[270px] h-[32px] flex flex-row items-center space-x-[80px]"
+              className={`w-[270px] h-[32px] flex flex-row items-center space-x-[80px] ${
+                isDisabled
+                  ? "text-[#D9D9D9] dark:text-[#666666] bg-gray-100 dark:bg-[#182236]"
+                  : ""
+              }`}
             >
               <div className="flex flex-row space-x-[10px] items-center w-[160px]">
                 <div
@@ -76,7 +83,11 @@ export const Recommendation = () => {
                   <CompassIcon />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-black dark:text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px]">
+                  <h2 className={`text-black dark:text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px] ${
+                isDisabled
+                  ? "text-[#D9D9D9] dark:text-[#666666] bg-gray-100 dark:bg-[#182236]"
+                  : ""
+              }`}>
                     {item.address}
                   </h2>
                   <h3 className="text-[#D9D9D9] dark:text-[#3C424C] text-[11px] font-normal">
@@ -84,15 +95,27 @@ export const Recommendation = () => {
                   </h3>
                 </div>
               </div>
-              <button
+              {/* <button
                 className="text-black dark:text-white"
                 onClick={() => handleBuy(item)}
                 disabled={processedIndex.includes(item.id.toString())}
               >
                 {" "}
                 Buy
-              </button>
-              {/* <SmallShoppingBagIcon /> */}
+              </button> */}
+              <SmallShoppingBagIcon
+                onClick={() => !isDisabled && handleBuy(item)}
+                disabled={isDisabled}
+                strokeColor={
+                  isDisabled
+                    ? isDark
+                      ? "#666666"
+                      : "#D9D9D9"
+                    : isDark
+                    ? "white"
+                    : "black"
+                }
+              />
             </div>
           );
         })}

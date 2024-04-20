@@ -70,16 +70,16 @@ export default function TransactionPage() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row space-x-[275px]">
+      {/* <div className="flex flex-row space-x-[275px]">
         <div className="bg-white dark:bg-[#0F1623] rounded-lg h-[40px] w-[451px] flex flex-row items-center pl-[20px] space-x-[20px]">
           <SearchIcon strokeColor={isDark ? "white" : "black"}/>
           <h2 className="text-[#D9D9D9] dark:text-[#575C65] text-xl font-normal">
             Search
           </h2>
-        </div>
+        </div> */}
 
         {/* navbars */}
-        <div className="flex flex-row space-x-[10px]">
+        {/* <div className="flex flex-row space-x-[10px]">
           {navItems.map(({ name, width }, index) => (
             <div
               className="h-[40px] flex items-center justify-center bg-white dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
@@ -90,7 +90,7 @@ export default function TransactionPage() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* table */}
       <div className="overflow-y-auto scroll-hidden max-h-[930px] border rounded-lg mt-[16px] border-transparent">

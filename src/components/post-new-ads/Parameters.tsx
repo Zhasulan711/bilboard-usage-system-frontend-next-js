@@ -118,7 +118,7 @@ export const Parameters = () => {
     <div className="h-[980px] overflow-y-auto w-[321px] scroll-hidden rounded-[14px] bg-white dark:bg-[#0F1623]">
       <div className="h-[1266px] py-[12px] px-[26px]">
         {/* Places choose */}
-        <h1 className="text-[28px] font-medium text-white">Parameters</h1>
+        <h1 className="text-[28px] font-medium text-black dark:text-white">Parameters</h1>
         <div className="border-t-2 border-[#D9D9D9] dark:border-[#182235] flex flex-row mt-[25px] px-[46px] pt-[24px] space-x-[48px] justify-center">
           {places.map(({ place, district }, index) => (
             <div className="flex flex-col space-y-[4px]" key={index}>

@@ -4,14 +4,21 @@ import React, { useState, useEffect } from "react";
 import { ArrowRightIcon } from "@/components/Icons";
 
 export const Tooltip = () => {
+  const [isClient, setIsClient] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState(1);
-  const [isTooltipVisible, setIsTooltipVisible] = useState(() => {
-    return localStorage.getItem("isTooltipVisible") === "true";
-  });
+  const [isTooltipVisible, setIsTooltipVisible] = useState(true); // default to true or false, doesn't matter here
 
   useEffect(() => {
-    localStorage.setItem("isTooltipVisible", isTooltipVisible.toString());
-  }, [isTooltipVisible]);
+    setIsClient(true); // Component did mount, we're on the client
+    const visibility = localStorage.getItem("isTooltipVisible") === "true";
+    setIsTooltipVisible(visibility);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) { // Now safe to use localStorage
+      localStorage.setItem("isTooltipVisible", isTooltipVisible.toString());
+    }
+  }, [isTooltipVisible, isClient]);
 
   const handleCloseFirstTooltip = () => {
     setActiveTooltip(2);
@@ -26,7 +33,7 @@ export const Tooltip = () => {
   }
 
   return (
-    <div className="">
+    <>
       {activeTooltip === 1 && (
         <div className="absolute right-[1022px] top-[480px] flex flex-row items-center">
           <div className="w-[127px] bg-[#29354E] h-[2px]" />
@@ -60,6 +67,6 @@ export const Tooltip = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };

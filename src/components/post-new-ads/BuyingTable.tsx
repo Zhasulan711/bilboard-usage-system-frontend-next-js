@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
-// import { LargeShoppingBagIcon } from "@/components/Icons";
+import { LargeShoppingBagIcon } from "@/components/Icons";
 import { BillboardTableList } from "@/constants/billboardTableList";
+import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 
 const navTable = [
   "Address",
@@ -19,6 +20,7 @@ const navTable = [
 export const BuyingTable: React.FC = () => {
   const [processedIndex, setProcessedIndex] = useState<string[]>([]);
   const [purchasedIndex, setPurchasedItems] = useState<string[]>([]);
+  const isDark = StrokeIconTheme();
 
   useEffect(() => {
     const items = JSON.parse(
@@ -35,16 +37,13 @@ export const BuyingTable: React.FC = () => {
   const handleBuy = (item: BillboardTableList): void => {
     const itemId = item.id.toString();
 
-    if (
-      !processedIndex.includes(itemId) &&
-      !purchasedIndex.includes(itemId)
-    ) {
+    if (!processedIndex.includes(itemId) && !purchasedIndex.includes(itemId)) {
       const currentProcessingItems = JSON.parse(
         localStorage.getItem("processingItems") || "[]"
       ) as BillboardTableList[];
 
       currentProcessingItems.push(item);
-      
+
       localStorage.setItem(
         "processingItems",
         JSON.stringify(currentProcessingItems)
@@ -66,27 +65,46 @@ export const BuyingTable: React.FC = () => {
           </tr>
         </thead>
         <tbody className="divide-y-[12px] divide-[#D9D9D9] dark:divide-[#010714] text-black dark:text-white text-base font-normal whitespace-nowrap">
-          {BILLBOARD_TABLE_LIST.map((item, index) => (
-            <tr key={index}>
-              <td className="py-[20px] px-[26px] truncate max-w-[270px]">{item.address}</td>
-              <td className="py-[20px] px-[26px]">{item.region}</td>
-              <td className="py-[20px] px-[26px]">{item.price}</td>
-              <td className="py-[20px] px-[26px]">{item.grp}</td>
-              <td className="py-[20px] px-[26px]">{item.date}</td>
-              <td className="py-[20px] px-[26px]">{item.category}</td>
-              <td className="py-[20px] px-[26px]">
-                <button
-                  className="text-black dark:text-white"
-                  onClick={() => handleBuy(item)}
-                  disabled={processedIndex.includes(item.id.toString()) || purchasedIndex.includes(item.id.toString())}
-                >
-                  {" "}
-                  Buy
-                </button>
-                {/* <LargeShoppingBagIcon /> */}
-              </td>
-            </tr>
-          ))}
+          {BILLBOARD_TABLE_LIST.map((item, index) => {
+            const itemId = item.id.toString();
+            const isDisabled =
+              processedIndex.includes(itemId) ||
+              purchasedIndex.includes(itemId);
+            return (
+              <tr
+                key={index}
+                className={
+                  isDisabled
+                    ? "text-[#D9D9D9] dark:text-[#666666] bg-gray-100 dark:bg-[#182236]"
+                    : ""
+                }
+              >
+                <td className="py-[20px] px-[26px] truncate max-w-[270px]">
+                  {item.address}
+                </td>
+                <td className="py-[20px] px-[26px]">{item.region}</td>
+                <td className="py-[20px] px-[26px]">{item.price}</td>
+                <td className="py-[20px] px-[26px]">{item.grp}</td>
+                <td className="py-[20px] px-[26px]">{item.date}</td>
+                <td className="py-[20px] px-[26px]">{item.category}</td>
+                <td className="py-[20px] px-[26px]">
+                  <LargeShoppingBagIcon
+                    onClick={() => !isDisabled && handleBuy(item)}
+                    disabled={isDisabled}
+                    strokeColor={
+                      isDisabled
+                        ? isDark
+                          ? "#666666"
+                          : "#D9D9D9"
+                        : isDark
+                        ? "white"
+                        : "black"
+                    }
+                  />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
