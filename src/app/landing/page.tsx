@@ -4,30 +4,7 @@ import { useState } from "react";
 import Swipe from "react-easy-swipe";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import Link from "next/link";
-
-type IMAGES_LOL = {
-  index: number;
-  imageURL: string;
-};
-
-export const IMAGES: IMAGES_LOL[] = [
-  {
-    index: 1,
-    imageURL: "/images/landing 1.png",
-  },
-  {
-    index: 2,
-    imageURL: "/images/landing 2.png",
-  },
-  {
-    index: 3,
-    imageURL: "/images/landing 3.png",
-  },
-  {
-    index: 4,
-    imageURL: "/images/landing 4.png",
-  },
-];
+import { IMAGES } from "@/constants/LandingPageImages";
 
 export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -44,8 +21,13 @@ export default function LandingPage() {
 
   return (
     <div className="relative h-screen">
-      <Link href="/post-add" className="absolute z-20 w-[100px] h-[40px] bg-amber-500 flex justify-center items-center bottom-[70px] right-[60px]
-      text-black text-[20px] font-normal uppercase hover:bg-orange-500 cursor-pointer">buy ad</Link>
+      <Link
+        href="/post-add"
+        className="absolute z-20 w-[100px] h-[40px] bg-amber-500 flex justify-center items-center bottom-[70px] right-[60px]
+      text-black text-[20px] font-normal uppercase hover:bg-orange-500 cursor-pointer"
+      >
+        buy ad
+      </Link>
       <AiOutlineLeft
         onClick={handlePrevSlide}
         className="absolute z-20 inset-y-1/2 left-0 cursor-pointer text-white ml-[60px]
