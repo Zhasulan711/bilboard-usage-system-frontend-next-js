@@ -58,7 +58,7 @@ export const BuyingTable: React.FC = () => {
         <thead className="text-[#D9D9D9] dark:text-[#575C65] text-base font-normal">
           <tr>
             {navTable.map((item, index) => (
-              <th key={index} className="py-[20px] px-[26px] text-left">
+              <th key={index} className="py-[20px] px-[54px] text-left">
                 {item}
               </th>
             ))}
@@ -79,15 +79,15 @@ export const BuyingTable: React.FC = () => {
                     : ""
                 }
               >
-                <td className="py-[20px] px-[26px] truncate max-w-[270px]">
+                <td className="py-[20px] px-[54px] truncate max-w-[270px]">
                   {item.address}
                 </td>
-                <td className="py-[20px] px-[26px]">{item.region}</td>
-                <td className="py-[20px] px-[26px]">{item.price}</td>
-                <td className="py-[20px] px-[26px]">{item.grp}</td>
-                <td className="py-[20px] px-[26px]">{item.date}</td>
-                <td className="py-[20px] px-[26px]">{item.category}</td>
-                <td className="py-[20px] px-[26px]">
+                <td className="py-[20px] px-[54px]">{item.region}</td>
+                <td className="py-[20px] px-[54px]">{item.price}</td>
+                <td className="py-[20px] px-[54px]">{item.grp}</td>
+                <td className="py-[20px] px-[54px]">{item.date}</td>
+                <td className="py-[20px] px-[54px]">{item.category}</td>
+                <td className="py-[20px] px-[54px]">
                   <LargeShoppingBagIcon
                     onClick={() => !isDisabled && handleBuy(item)}
                     disabled={isDisabled}

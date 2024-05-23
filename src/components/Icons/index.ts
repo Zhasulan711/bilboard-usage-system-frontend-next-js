@@ -15,6 +15,7 @@ export * from "./ThemeModeIcon";
  */
 export * from "./SearchIcon";
 export * from "./ShoppingBasketIcon";
+export * from "./LandingPageIcon"
 
 /***
  * Main
