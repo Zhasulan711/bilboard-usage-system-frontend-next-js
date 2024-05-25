@@ -27,7 +27,6 @@ interface Item {
 
 export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
   const [isPending, startTransition] = useTransition();
-  // const [showModal, setShowModal] = useState(true);
   const user = useCurrentUser();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -35,6 +34,7 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
   const [processingItems, setProcessingItems] = useState<Item[]>([]);
   const methods = useForm();
   const [paymentComplete, setPaymentComplete] = useState(false);
+  const [hasVisaCards, setHasVisaCards] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -62,25 +62,36 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
     setTotalPrice(total);
   };
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async () => {
     startTransition(async () => {
-      if (user && user.balance !== null && totalPrice > 0) {
-        const newBalance = Number(user.balance) - totalPrice;
-        try {
+      try {
+        const visaCardResponse = await fetch("/api/visaCards");
+        const visaCards: { id: number }[] = await visaCardResponse.json();
+    
+        if (visaCards.length === 0) {
+          setHasVisaCards(false);
+          setError("No Visa cards available in the database.");
+          setSuccess(undefined);
+          return;
+        }
+    
+        if (user && user.balance !== null && totalPrice > 0) {
+          const newBalance = Number(user.balance) - totalPrice;
           await payment({ balance: newBalance.toString() });
           await updateItemsToPurchased();
           setSuccess("Payment successful!");
           setPaymentComplete(true);
           setError(undefined);
-        } catch (error) {
-          setError("Something went wrong with the payment!");
-          setSuccess(undefined);
+        } else {
+          setError("Insufficient details for payment processing.");
         }
-      } else {
-        setError("Insufficient details for payment processing.");
+      } catch (error) {
+        console.error("Failed during payment processing:", error);
+        setError("An error occurred during payment.");
+        setSuccess(undefined);
       }
     });
-  };
+  };  
 
   const updateItemsToPurchased = async () => {
     try {
@@ -108,7 +119,7 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
       <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center">
         <Card className="w-[592px] h-[224px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
           <h1 className="text-black dark:text-white text-[26px]">
-            Payment was successful!
+            ✅ Payment was successful!
           </h1>
           <h1 className="text-neutral-600 dark:text-neutral-500 w-[543px] text-base">
             The payment was successful, you now own the billboards. <br />
@@ -133,9 +144,41 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
     );
   }
 
+  if (!hasVisaCards) {
+    return (
+      <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center">
+        <Card className="w-[592px] h-[224px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
+          <h1 className="text-black dark:text-white text-[26px]">
+            Payment was not successful
+          </h1>
+          <h1 className="text-neutral-600 dark:text-neutral-500 w-[543px] text-base">
+            Please check if you have entered your card details correctly or{" "}
+            <br />
+            if there is money in your card. After that, please <br />
+            repeat the purchase
+          </h1>
+          <div className="flex flex-row space-x-[20px]">
+            <Button
+              onClick={onClose}
+              className="w-20 h-9 rounded-md hover:bg-red-700 bg-red-500"
+            >
+              Okay
+            </Button>
+            <Button
+              onClick={onClose}
+              className="w-20 h-9 rounded-md hover:bg-red-700 bg-black border-red-500 border-[2px]"
+            >
+              Cancel
+            </Button>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center">
-      <Card className="w-[592px] h-[224px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
+      <Card className="w-[592px] h-[200px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
         <FormProvider {...methods}>
           <form
             className="space-y-[8px]"
@@ -184,3 +227,5 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
     </div>
   );
 };
+
+
