@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { BillboardTableList } from "@/constants/billboardTableList";
+// import { BillboardTableList } from "@/constants/billboardTableList";
 
 const headerTable = [
   "Address",
@@ -13,15 +13,41 @@ const headerTable = [
   "Category",
 ];
 
+enum STATUS {
+  IDLING = "IDLING",
+  IN_CART = "IN_CART",
+  PURCHASED = "PURCHASED",
+}
+
+interface Billboard {
+  id: number;
+  address: string;
+  region: string;
+  price: string;
+  grp: string;
+  date: string;
+  placeNumber: string;
+  size: string;
+  category: string;
+  status: STATUS;
+  time: string;
+}
+
 export const SmallAddInformationTable = () => {
-  const [purchasedItems, setPurchasedItems] = useState<BillboardTableList[]>(
-    []
-  );
+  const [purchasedItems, setPurchasedItems] = useState<Billboard[]>([]);
 
   useEffect(() => {
-    setPurchasedItems(
-      JSON.parse(localStorage.getItem("purchasedItems") || "[]")
-    );
+    const fetchPurchasedItems = async () => {
+      try {
+        const response = await fetch('/api/billboards?status=PURCHASED');
+        const data: Billboard[] = await response.json();
+        setPurchasedItems(data.filter(item => item.status === STATUS.PURCHASED));
+      } catch (error) {
+        console.error("Error fetching purchased items:", error);
+      }
+    };
+
+    fetchPurchasedItems();
   }, []);
 
   return (

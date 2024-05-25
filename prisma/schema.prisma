@@ -92,3 +92,25 @@ model TwoFactorConfirmation {
 
   @@unique([userId])
 }
+
+enum STATUS {
+  IDLING
+  IN_CART
+  PURCHASED
+}
+
+model Billboard {
+  id          Int     @unique @default(autoincrement())
+  status      STATUS
+  address     String
+  region      String
+  price       String
+  grp         String
+  time        String
+  placeNumber String
+  size        String
+  category    String
+  date        String
+  colorClass  String
+  changed     Boolean @default(false)
+}

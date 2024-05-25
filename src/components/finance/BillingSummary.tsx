@@ -11,14 +11,19 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { useTransition, useState } from "react";
+import { useTransition, useState, useEffect } from "react";
 import { payment } from "@/actions/payment";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { useForm, FormProvider } from "react-hook-form";
+
+interface Item {
+  id: number;
+  price: string;
+  status: 'IN_CART' | 'PURCHASED' | 'IDLING'; 
+}
 
 export const BillingSummary = () => {
   const [isPending, startTransition] = useTransition();
@@ -26,26 +31,32 @@ export const BillingSummary = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [totalPrice, setTotalPrice] = useState(0);
-  const { update } = useSession();
-
+  const [processingItems, setProcessingItems] = useState<Item[]>([]);
   const methods = useForm();
 
   useEffect(() => {
-    calculateTotal();
+    const fetchItems = async () => {
+      try {
+        const response = await fetch('/api/billboards?status=IN_CART');
+        const data: Item[] = await response.json();
+        const filteredData = data.filter(item => item.status === 'IN_CART'); // Additional client-side filtering
+        setProcessingItems(filteredData);
+        calculateTotal(filteredData);
+      } catch (error) {
+        console.error("Failed to fetch items:", error);
+      }
+    };
+
+    fetchItems();
+    const intervalId = setInterval(fetchItems, 1000); // Poll every 10 seconds
+    return () => clearInterval(intervalId);
   }, []);
 
-  const calculateTotal = () => {
-    const processingItems = JSON.parse(
-      localStorage.getItem("processingItems") || "[]"
-    );
-
-    const totalItemPrice = processingItems.reduce((total: any, item: any) => {
-      const price = item.price ? Number(item.price.replace(/,/g, "")) : 0;
-      return total + price;
-    }, 0);
-
-    setTotalPrice(totalItemPrice);
+  const calculateTotal = (items: Item[]) => {
+    const total = items.reduce((acc, item) => acc + Number(item.price.replace(/,/g, "")), 0);
+    setTotalPrice(total);
   };
+
 
   const onSubmit = async (values: any) => {
     startTransition(async () => {
@@ -53,22 +64,9 @@ export const BillingSummary = () => {
         const newBalance = Number(user.balance) - totalPrice;
         try {
           await payment({ balance: newBalance.toString() });
-          update();
+          await updateItemsToPurchased();
           setSuccess("Payment successful!");
           setError(undefined);
-
-          const processingItems = JSON.parse(
-            localStorage.getItem("processingItems") || "[]"
-          );
-          const purchasedItems = JSON.parse(
-            localStorage.getItem("purchasedItems") || "[]"
-          );
-          const newPurchasedItems = purchasedItems.concat(processingItems);
-          localStorage.setItem(
-            "purchasedItems",
-            JSON.stringify(newPurchasedItems)
-          );
-          localStorage.removeItem("processingItems");
         } catch (error) {
           setError("Something went wrong with the payment!");
           setSuccess(undefined);
@@ -79,8 +77,25 @@ export const BillingSummary = () => {
     });
   };
 
+  const updateItemsToPurchased = async () => {
+    try {
+      await Promise.all(
+        processingItems.map((item) =>
+          fetch("/api/billboards", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: item.id, status: "PURCHASED", changed: false }),
+          })
+        )
+      );
+      setProcessingItems([]);
+    } catch (error) {
+      console.error("Failed to update item status:", error);
+    }
+  };
+
   return (
-    <Card className="w-[505px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
+    <Card className="w-[821px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
       <FormProvider {...methods}>
         <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
           <FormField

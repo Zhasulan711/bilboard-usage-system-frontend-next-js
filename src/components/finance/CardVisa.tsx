@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import React, { useState, useEffect } from "react";
 
-type Card = {
+type CardInfo = {
   isClicked: any;
   expirationDate: string;
   cvv: string;
@@ -12,7 +12,7 @@ type Card = {
 };
 
 export const CardVisa = () => {
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<CardInfo[]>([]);
 
   const handleDivClick = (cardNumber: string) => {
     setCards(cards.map(card => card.cardNumber === cardNumber ? { ...card, isClicked: true } : { ...card, isClicked: false }));
@@ -47,9 +47,9 @@ export const CardVisa = () => {
 
   return (
     <div className="flex flex-col space-y-[20px]">
-      {cards.map((card: Card) => (
+      {cards.map((card: CardInfo) => (
         <Card
-          className="w-[821px] bg-white dark:bg-[#0F1623] border-transparent pt-[16px] flex flex-row h-[175px] space-x-[20px]"
+          className="w-[821px] bg-white dark:bg-[#0F1623] border-transparent pt-[16px] flex flex-row h-[175px] space-x-[20px] mt-[20px]"
           key={card.cardNumber}
         >
           <CardContent className="flex flex-row space-x-[20px] items-center">

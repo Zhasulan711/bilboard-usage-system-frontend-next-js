@@ -34,7 +34,7 @@ export const PieChartComponent = ({ data }: any) => {
           ))}
         </Pie>
         <Tooltip />
-        <Legend />
+        {/* <Legend /> */}
       </PieChart>
     </div>
   );

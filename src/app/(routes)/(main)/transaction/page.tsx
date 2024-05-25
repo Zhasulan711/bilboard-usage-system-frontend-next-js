@@ -26,35 +26,56 @@ const navTable = [
   "Status",
 ];
 
+enum STATUS {
+  PURCHASED = "PURCHASED",
+  IN_CART = "IN_CART",
+  IDLING = "IDLING",
+}
+
+interface Billboard {
+  id: number;
+  address: string;
+  region: string;
+  price: string;
+  placeNumber: string;
+  category: string;
+  date: string;
+  status: STATUS;
+  changed: boolean;
+}
+
 export default function TransactionPage() {
-  const [processingItems, setProcessingItems] = useState<BillboardTableList[]>(
-    []
-  );
-  const [purchasedItems, setPurchasedItems] = useState<BillboardTableList[]>(
-    []
-  );
-  const [canceledItems, setCanceledItems] = useState<BillboardTableList[]>([]);
-  const isDark = StrokeIconTheme();
+  const [billboards, setBillboards] = useState<Billboard[]>([]);
 
   useEffect(() => {
-    setProcessingItems(
-      JSON.parse(localStorage.getItem("processingItems") || "[]")
-    );
-    setPurchasedItems(
-      JSON.parse(localStorage.getItem("purchasedItems") || "[]")
-    );
-    setCanceledItems(JSON.parse(localStorage.getItem("canceledItems") || "[]"));
+    async function fetchBillboards() {
+      try {
+        const response = await fetch('/api/billboards');
+        const data: Billboard[] = await response.json();
+        // Фильтрация билбордов, чтобы отображать только те, что были изменены
+        const filteredData = data.filter(billboard => billboard.status !== 'IDLING' || billboard.changed);
+        setBillboards(filteredData);
+      } catch (error) {
+        console.error("Failed to fetch billboards:", error);
+      }
+    }
+  
+    fetchBillboards();
   }, []);
 
-  function TableRow({
-    item,
-    statusColor,
-    statusWord,
-  }: {
-    item: BillboardTableList;
-    statusColor: string;
-    statusWord: string;
-  }) {
+  function TableRow({ item }: { item: Billboard }) {
+    const statusColors = {
+      [STATUS.PURCHASED]: "text-green-400",
+      [STATUS.IN_CART]: "text-orange-400",
+      [STATUS.IDLING]: "text-red-400",
+    };
+
+    const statusLabels = {
+      [STATUS.PURCHASED]: "PURCHASED",
+      [STATUS.IN_CART]: "IN_CART",
+      [STATUS.IDLING]: "CANCELED", // Замена 'IDLING' на 'CANCELED'
+    };
+
     return (
       <tr>
         <td className="px-6 py-4 truncate">{item.address}</td>
@@ -63,75 +84,27 @@ export default function TransactionPage() {
         <td className="px-6 py-4">{item.placeNumber}</td>
         <td className="px-6 py-4">{item.category}</td>
         <td className="px-6 py-4">{item.date}</td>
-        <td className={`px-6 py-4 ${statusColor}`}>{statusWord}</td>
+        <td className={`px-6 py-4 ${statusColors[item.status]}`}>{statusLabels[item.status]}</td>
       </tr>
     );
   }
 
   return (
     <div className="flex flex-col">
-      {/* <div className="flex flex-row space-x-[275px]">
-        <div className="bg-white dark:bg-[#0F1623] rounded-lg h-[40px] w-[451px] flex flex-row items-center pl-[20px] space-x-[20px]">
-          <SearchIcon strokeColor={isDark ? "white" : "black"}/>
-          <h2 className="text-[#D9D9D9] dark:text-[#575C65] text-xl font-normal">
-            Search
-          </h2>
-        </div> */}
-
-        {/* navbars */}
-        {/* <div className="flex flex-row space-x-[10px]">
-          {navItems.map(({ name, width }, index) => (
-            <div
-              className="h-[40px] flex items-center justify-center bg-white dark:bg-[#0B101F] text-xl font-normal text-black dark:text-white rounded-lg"
-              style={{ width: width }}
-              key={index}
-            >
-              {name}
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* table */}
       <div className="overflow-y-auto scroll-hidden max-h-[930px] border rounded-lg mt-[16px] border-transparent">
         <table className="table-fixed divide-y-[32px] divide-[#D9D9D9] dark:divide-[#010714] w-[1346px]">
           <thead className="text-[#D9D9D9] dark:text-[#B7B9BE] font-normal bg-white dark:bg-[#0F1623]">
             <tr>
               {navTable.map((item, index) => (
-                <th
-                  scope="col"
-                  className="px-[26px] py-[18px] pb-[30px] text-left"
-                  key={index}
-                >
+                <th key={index} className="px-[26px] py-[18px] pb-[30px] text-left">
                   {item}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody className="text-black dark:text-white text-lg font-normal bg-white dark:bg-[#0F1623] divide-y-[16px] divide-[#D9D9D9] dark:divide-[#010714]">
-            {canceledItems.map((item, index) => (
-              <TableRow
-                key={index}
-                item={item}
-                statusColor="text-red-400"
-                statusWord="CANCELED"
-              />
-            ))}
-            {purchasedItems.map((item, index) => (
-              <TableRow
-                key={index}
-                item={item}
-                statusColor="text-green-400"
-                statusWord="SUCCESS"
-              />
-            ))}
-            {processingItems.map((item, index) => (
-              <TableRow
-                key={index}
-                item={item}
-                statusColor="text-orange-400"
-                statusWord="PROCESS"
-              />
+            {billboards.map((item, index) => (
+              <TableRow key={index} item={item} />
             ))}
           </tbody>
         </table>

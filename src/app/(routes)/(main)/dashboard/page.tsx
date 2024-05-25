@@ -12,14 +12,15 @@ export default function DashboardPage() {
       <div className="flex flex-row">
         <AmountAdsDistrict />
 
-        <div className="flex flex-col">
-          <YourBudget />
-          <CalendarWrapper  />
+        <div className="flex flex-col space-y-[20px]">
+          {/* <YourBudget /> */}
+          <LooseBillboards />
+          {/* <CalendarWrapper  /> */}
         </div>
 
         <div className="flex flex-col">
-          <LooseBillboards />
-          <YourPersonalManager />
+          {/* <CalendarWrapper  /> */}
+          {/* <YourPersonalManager /> */}
           <Tooltip />
         </div>
       </div>

@@ -22,7 +22,10 @@ import { z } from "zod";
 
 export const ShippingAddress = () => {
   const [isPending, startTransition] = useTransition();
-  const [showCard, setShowCard] = useState(false);
+  const [showCard, setShowCard] = useState(() => {
+    const cardData = localStorage.getItem("cardVisa");
+    return !(cardData && JSON.parse(cardData).length); // Show "Add Card" only if there is no card data
+  });
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const form = useForm<z.infer<typeof ShippingAddressSchema>>({

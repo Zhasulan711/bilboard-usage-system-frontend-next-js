@@ -14,7 +14,7 @@ export const AmountAdsDistrict = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-[#0F1623] w-[663px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[12px]">
+    <div className="bg-white dark:bg-[#0F1623] w-[1002px] h-[600px] rounded-lg pl-[26px] flex flex-col space-y-[20px] pt-[12px] justify-center items-center">
       <h1 className="text-black dark:text-white text-[28px] font-medium">
         The amount of your ads in district
       </h1>

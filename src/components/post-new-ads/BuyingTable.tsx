@@ -1,11 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
 import { LargeShoppingBagIcon } from "@/components/Icons";
-import { BillboardTableList } from "@/constants/billboardTableList";
+
 import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
+
+interface Billboard {
+  id: number;
+  address: string;
+  region: string;
+  price: string;
+  grp: string;
+  date: string;
+  category: string;
+  status: "IN_CART" | "PURCHASED" | "IDLING";
+}
 
 const navTable = [
   "Address",
@@ -18,38 +28,51 @@ const navTable = [
 ];
 
 export const BuyingTable: React.FC = () => {
-  const [processedIndex, setProcessedIndex] = useState<string[]>([]);
-  const [purchasedIndex, setPurchasedItems] = useState<string[]>([]);
+  const [billboards, setBillboards] = useState<Billboard[]>([]);
   const isDark = StrokeIconTheme();
 
   useEffect(() => {
-    const items = JSON.parse(
-      localStorage.getItem("processingItems") || "[]"
-    ) as BillboardTableList[];
-    const purchasedItems = JSON.parse(
-      localStorage.getItem("purchasedItems") || "[]"
-    ) as BillboardTableList[];
+    const fetchBillboards = async () => {
+      try {
+        const response = await fetch("/api/billboards");
+        const data = await response.json();
+        setBillboards(data);
+      } catch (error) {
+        console.error("Ошибка при получении данных:", error);
+      }
+    };
 
-    setProcessedIndex(items.map((item) => item.id));
-    setPurchasedItems(purchasedItems.map((item) => item.id));
+    fetchBillboards();
   }, []);
 
-  const handleBuy = (item: BillboardTableList): void => {
-    const itemId = item.id.toString();
-
-    if (!processedIndex.includes(itemId) && !purchasedIndex.includes(itemId)) {
-      const currentProcessingItems = JSON.parse(
-        localStorage.getItem("processingItems") || "[]"
-      ) as BillboardTableList[];
-
-      currentProcessingItems.push(item);
-
-      localStorage.setItem(
-        "processingItems",
-        JSON.stringify(currentProcessingItems)
-      );
-      setProcessedIndex((prev) => [...prev, itemId]); // Update the purchasedIds state
+  const handleBuy = async (item: Billboard) => {
+    if (item.status === "IDLING") {
+      try {
+        const response = await fetch("/api/billboards", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: item.id, status: "IN_CART" }),
+        });
+        if (response.ok) {
+          updateBillboardStatus(item.id, "IN_CART");
+        } else {
+          console.error("Failed to update status:", await response.text());
+        }
+      } catch (error) {
+        console.error("Error updating status:", error);
+      }
     }
+  };
+
+  const updateBillboardStatus = (
+    id: number,
+    status: "IN_CART" | "PURCHASED" | "IDLING"
+  ) => {
+    setBillboards((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, status } : b))
+    );
   };
 
   return (
@@ -65,11 +88,8 @@ export const BuyingTable: React.FC = () => {
           </tr>
         </thead>
         <tbody className="divide-y-[12px] divide-[#D9D9D9] dark:divide-[#010714] text-black dark:text-white text-base font-normal whitespace-nowrap">
-          {BILLBOARD_TABLE_LIST.map((item, index) => {
-            const itemId = item.id.toString();
-            const isDisabled =
-              processedIndex.includes(itemId) ||
-              purchasedIndex.includes(itemId);
+          {billboards.map((item, index) => {
+            const isDisabled = item.status !== "IDLING";
             return (
               <tr
                 key={index}

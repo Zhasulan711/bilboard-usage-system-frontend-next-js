@@ -1,13 +1,33 @@
 "use client";
 
 import { TengeSmallCurrencyIcon } from "@/components/Icons";
-import { BillboardTableList } from "@/constants";
 import React, { useEffect, useState } from "react";
+
+enum STATUS {
+  IDLING = "IDLING",
+  IN_CART = "IN_CART",
+  PURCHASED = "PURCHASED",
+}
 
 type RegionMaxPrice = {
   region: string;
   maxPrice: number;
 };
+
+interface Billboard {
+  id: number;
+  address: string;
+  region: string;
+  price: string;
+  grp: string;
+  date: string;
+  placeNumber: string;
+  size: string;
+  category: string;
+  status: STATUS;
+  time: string;
+  colorClass: string;
+}
 
 const SpenderItem = ({ region, maxPrice }: RegionMaxPrice) => (
   <div className="flex flex-row space-x-[155px]">
@@ -26,33 +46,39 @@ export const BiggestSpenders = () => {
   const [maxPrices, setMaxPrices] = useState<RegionMaxPrice[]>([]);
 
   useEffect(() => {
-    const rawData = localStorage.getItem("purchasedItems");
-    if (rawData) {
-      const billboardData: BillboardTableList[] = JSON.parse(rawData);
+    const fetchPurchasedItems = async () => {
+      try {
+        const response = await fetch("/api/billboards?status=PURCHASED");
+        const billboardData: Billboard[] = await response.json();
 
-      // Find the highest price in each region
-      const regionMaxPrices: RegionMaxPrice[] = billboardData.reduce(
-        (acc: any, item: any) => {
-          const price = parseFloat(item.price.replace(/,/g, ""));
-          const existing = acc.find((x:any) => x.region === item.region);
-          if (!existing || price > existing.maxPrice) {
-            return [
-              ...acc.filter((x:any) => x.region !== item.region),
-              { region: item.region, maxPrice: price },
-            ];
-          }
-          return acc;
-        },
-        [] as RegionMaxPrice[]
-      );
+        // Find the highest price in each region
+        const regionMaxPrices: RegionMaxPrice[] = billboardData.reduce(
+          (acc, item) => {
+            const price = parseFloat(item.price.replace(/,/g, ""));
+            const existing = acc.find((x) => x.region === item.region);
+            if (!existing || price > existing.maxPrice) {
+              return [
+                ...acc.filter((x) => x.region !== item.region),
+                { region: item.region, maxPrice: price },
+              ];
+            }
+            return acc;
+          },
+          [] as RegionMaxPrice[]
+        );
 
-      // Sort by maxPrice and pick top 3
-      const topRegions = regionMaxPrices
-        .sort((a, b) => b.maxPrice - a.maxPrice)
-        .slice(0, 3);
+        // Sort by maxPrice and pick top 3
+        const topRegions = regionMaxPrices
+          .sort((a, b) => b.maxPrice - a.maxPrice)
+          .slice(0, 3);
 
-      setMaxPrices(topRegions);
-    }
+        setMaxPrices(topRegions);
+      } catch (error) {
+        console.error("Error fetching purchased items:", error);
+      }
+    };
+
+    fetchPurchasedItems();
   }, []);
 
   return (

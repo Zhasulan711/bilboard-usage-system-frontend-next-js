@@ -2,41 +2,66 @@
 
 import React, { useEffect, useState } from "react";
 import { PieChartComponent } from "@/components/analytics/PieChartComponent";
-import { BILLBOARD_TABLE_LIST } from "@/constants/billboardTableList";
-import { BillboardTableList } from "@/constants/billboardTableList";
 
 type PieChartData = {
   name: string;
   value: number;
 };
 
+enum STATUS {
+  IDLING = "IDLING",
+  IN_CART = "IN_CART",
+  PURCHASED = "PURCHASED",
+}
+
+interface Billboard {
+  id: number;
+  address: string;
+  region: string;
+  price: string;
+  grp: string;
+  date: string;
+  placeNumber: string;
+  size: string;
+  category: string;
+  status: STATUS;
+  time: string;
+  colorClass: string;
+}
+
 export const Diagram = () => {
   const [chartData, setChartData] = useState<PieChartData[]>([]);
   const [totalBillboards, setTotalBillboards] = useState(0);
 
   useEffect(() => {
-    const getChartData = (): PieChartData[] => {
-      const itemsStr = localStorage.getItem("purchasedItems");
-      const items: BillboardTableList[] = itemsStr ? JSON.parse(itemsStr) : [];
+    const fetchPurchasedItems = async () => {
+      try {
+        const response = await fetch("/api/billboards?status=PURCHASED");
+        const items: Billboard[] = await response.json();
 
-      const countByRegion = items.reduce(
-        (acc: { [key: string]: number }, item) => {
-          acc[item.region] = (acc[item.region] || 0) + 1;
-          return acc;
-        },
-        {}
-      );
+        const countByRegion = items.reduce(
+          (acc: { [key: string]: number }, item) => {
+            acc[item.region] = (acc[item.region] || 0) + 1;
+            return acc;
+          },
+          {}
+        );
 
-      const total = items.length;
-      setTotalBillboards(total);
+        const total = items.length;
+        setTotalBillboards(total);
 
-      return Object.entries(countByRegion).map(([name, value]) => ({
-        name,
-        value,
-      }));
+        const chartData = Object.entries(countByRegion).map(([name, value]) => ({
+          name,
+          value,
+        }));
+
+        setChartData(chartData);
+      } catch (error) {
+        console.error("Error fetching purchased items:", error);
+      }
     };
 
-    setChartData(getChartData());
+    fetchPurchasedItems();
   }, []);
 
   const BILLBOARD_TABLE_LIST = chartData.map((item) => {
