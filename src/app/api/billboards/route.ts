@@ -1,5 +1,5 @@
 import { PrismaClient, STATUS } from "@prisma/client";
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -19,17 +19,21 @@ export async function GET(request: Request) {
     }
     return NextResponse.json(billboards);
   } catch (error) {
-    return NextResponse.json({ error: "Error in getting Data" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error in getting Data" },
+      { status: 500 }
+    );
   }
 }
 
 export async function POST(request: any) {
   const { id, status, changed } = await request.json();
 
-  // Ensure status is of type STATUS
-  const updateData: { status: STATUS; changed?: boolean } = { status: STATUS[status as keyof typeof STATUS] };
+  const updateData: { status: STATUS; changed?: boolean } = {
+    status: STATUS[status as keyof typeof STATUS],
+  };
 
-  if (changed !== undefined) { // Check if 'changed' is provided in the request
+  if (changed !== undefined) {
     updateData.changed = changed;
   }
 
@@ -40,6 +44,9 @@ export async function POST(request: any) {
     });
     return NextResponse.json(updatedBillboard);
   } catch (error) {
-    return NextResponse.json({ error: "Error updating billboard status" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error updating billboard status" },
+      { status: 500 }
+    );
   }
 }

@@ -4,7 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import React, { useState, useEffect } from "react";
 
 type CardInfo = {
-  isClicked: any;
+  id: number;
+  isClicked: boolean;
   expirationDate: string;
   cvv: string;
   cardHolderName: string;
@@ -13,37 +14,40 @@ type CardInfo = {
 
 export const CardVisa = () => {
   const [cards, setCards] = useState<CardInfo[]>([]);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-  const handleDivClick = (cardNumber: string) => {
-    setCards(cards.map(card => card.cardNumber === cardNumber ? { ...card, isClicked: true } : { ...card, isClicked: false }));
-  };
+  const fetchCards = async () => {
+    try {
+      const response = await fetch("/api/visaCards");
+      if (!response.ok) throw new Error("Failed to fetch cards");
+      let cardDetailsArray: CardInfo[] = await response.json();
 
-  const handleStorageChange = () => {
-    const storedCardData = localStorage.getItem("cardVisa");
-    if (storedCardData) {
-      try {
-        const cardDetailsArray = JSON.parse(storedCardData);
-        if (Array.isArray(cardDetailsArray)) {
-          setCards(cardDetailsArray);
-        } else {
-          setCards([cardDetailsArray]); // Assuming it could be a single object
-        }
-      } catch (error) {
-        console.error("Failed to parse card data:", error);
-        setCards([]);
-      }
+      cardDetailsArray.sort((a, b) => a.id - b.id);
+
+      const updatedCards = cardDetailsArray.map((card, index) => ({
+        ...card,
+        isClicked: index === 0,
+      }));
+
+      setCards(updatedCards);
+    } catch (error) {
+      console.error("Failed to fetch card data:", error);
     }
   };
 
   useEffect(() => {
-    handleStorageChange();
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
+    fetchCards();
+    const id = setInterval(fetchCards, 6000);
+    return () => clearInterval(id);
   }, []);
+
+  const handleDivClick = (cardNumber: string) => {
+    setCards(
+      cards.map((card) =>
+        card.cardNumber === cardNumber ? { ...card, isClicked: true } : card
+      )
+    );
+  };
 
   return (
     <div className="flex flex-col space-y-[20px]">
@@ -100,10 +104,14 @@ export const CardVisa = () => {
               </div>
             </div>
           </CardContent>
-          <div className={`w-6 h-6 rounded-full items-center flex justify-center ${card.isClicked ? 'bg-[#F99801] dark:bg-white' : 'bg-gray-800'}`}
-          onClick={() => handleDivClick(card.cardNumber)}>
+          <div
+            className={`w-6 h-6 rounded-full items-center flex justify-center cursor-pointer ${
+              card.isClicked ? "bg-[#F99801] dark:bg-white" : "bg-gray-800"
+            }`}
+            onClick={() => handleDivClick(card.cardNumber)}
+          >
             {" "}
-            <div className="w-3 h-3 bg-white dark:bg-[#5578BB] rounded-full"/>
+            <div className="w-3 h-3 bg-white dark:bg-[#5578BB] rounded-full" />
           </div>
         </Card>
       ))}

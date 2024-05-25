@@ -11,8 +11,7 @@ interface Item {
   status: "IN_CART" | "PURCHASED" | "IDLING";
 }
 
-export const ContinueOrder = ({ onContinue }: any) => {
-  const [isPending, startTransition] = useTransition();
+export const PayOrder = ({ onPayStart }: { onPayStart: () => void }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export const ContinueOrder = ({ onContinue }: any) => {
   };
 
   return (
-    <Card className="w-[505px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
+    <Card className="w-[821px] bg-white dark:bg-[#0F1623] border-transparent p-[20px]">
       <h1 className="text-black dark:text-white text-[26px]">
         Billing Summary
       </h1>
@@ -52,11 +51,10 @@ export const ContinueOrder = ({ onContinue }: any) => {
         </h1>
       </div>
       <Button
-        onClick={onContinue}
-        disabled={isPending || totalPrice === 0}
+      onClick={onPayStart}
         className="w-full h-11 px-[18px] py-2.5 rounded-md hover:bg-amber-500 mt-[16px]"
       >
-        Continue order
+        Pay order
       </Button>
     </Card>
   );

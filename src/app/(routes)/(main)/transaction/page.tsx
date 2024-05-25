@@ -46,21 +46,25 @@ interface Billboard {
 
 export default function TransactionPage() {
   const [billboards, setBillboards] = useState<Billboard[]>([]);
+  const [isClient, setIsClient] = useState(false); 
 
   useEffect(() => {
     async function fetchBillboards() {
       try {
-        const response = await fetch('/api/billboards');
+        const response = await fetch("/api/billboards");
         const data: Billboard[] = await response.json();
         // Фильтрация билбордов, чтобы отображать только те, что были изменены
-        const filteredData = data.filter(billboard => billboard.status !== 'IDLING' || billboard.changed);
+        const filteredData = data.filter(
+          (billboard) => billboard.status !== "IDLING" || billboard.changed
+        );
         setBillboards(filteredData);
       } catch (error) {
         console.error("Failed to fetch billboards:", error);
       }
     }
-  
+
     fetchBillboards();
+    setIsClient(true);
   }, []);
 
   function TableRow({ item }: { item: Billboard }) {
@@ -84,7 +88,9 @@ export default function TransactionPage() {
         <td className="px-6 py-4">{item.placeNumber}</td>
         <td className="px-6 py-4">{item.category}</td>
         <td className="px-6 py-4">{item.date}</td>
-        <td className={`px-6 py-4 ${statusColors[item.status]}`}>{statusLabels[item.status]}</td>
+        <td className={`px-6 py-4 ${statusColors[item.status]}`}>
+          {statusLabels[item.status]}
+        </td>
       </tr>
     );
   }
@@ -96,17 +102,26 @@ export default function TransactionPage() {
           <thead className="text-[#D9D9D9] dark:text-[#B7B9BE] font-normal bg-white dark:bg-[#0F1623]">
             <tr>
               {navTable.map((item, index) => (
-                <th key={index} className="px-[26px] py-[18px] pb-[30px] text-left">
+                <th
+                  key={index}
+                  className="px-[26px] py-[18px] pb-[30px] text-left"
+                >
                   {item}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="text-black dark:text-white text-lg font-normal bg-white dark:bg-[#0F1623] divide-y-[16px] divide-[#D9D9D9] dark:divide-[#010714]">
-            {billboards.map((item, index) => (
-              <TableRow key={index} item={item} />
-            ))}
-          </tbody>
+          {isClient && (billboards.length > 0 ? (
+            <tbody className="text-black dark:text-white text-lg font-normal bg-white dark:bg-[#0F1623] divide-y-[16px] divide-[#D9D9D9] dark:divide-[#010714]">
+              {billboards.map((item, index) => (
+                <TableRow key={index} item={item} />
+              ))}
+            </tbody>
+          ) : (
+            <h1 className="text-center text-black dark:text-white text-xl font-medium ml-[500px] mt-[20px] whitespace-nowrap">
+              You have no billboards transaction.
+            </h1>
+          ))}
         </table>
       </div>
     </div>

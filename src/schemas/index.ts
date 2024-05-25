@@ -77,9 +77,18 @@ export const BillboardSchema = z.object({
 });
 
 export const ShippingAddressSchema = z.object({
-  cardNumber: z.optional(z.string()),
-  cardHolderName: z.optional(z.string()),
-  cvv: z.optional(z.string()),
-  expirationDate: z.optional(z.string()),
-  cardType: z.optional(z.string()),
+  cardNumber: z
+    .string()
+    .regex(/^\d{16}$/, { message: "Card number must be 16 digits long." }),
+  cardHolderName: z
+    .string()
+    .min(1, { message: "Cardholder name is required." }),
+  cvv: z.string().regex(/^\d{3}$/, { message: "CVV must be 3 digits." }),
+  expirationDate: z
+    .string()
+    .regex(
+      /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+      "Expiration date must be in DD/MM/YYYY format."
+    ),
+  cardType: z.string().min(1, { message: "Card type is required." }),
 });

@@ -111,7 +111,7 @@ export const Recommendation = () => {
                     <h2
                       className={`text-black dark:text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px] ${
                         isDisabled
-                          ? "text-[#D9D9D9] dark:text-[#666666] bg-gray-100 dark:bg-[#182236]"
+                          ? "text-[#D9D9D9] dark:text-gray-600 bg-gray-100 dark:bg-[#182236]"
                           : ""
                       }`}
                     >

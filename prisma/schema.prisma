@@ -114,3 +114,12 @@ model Billboard {
   colorClass  String
   changed     Boolean @default(false)
 }
+
+model VisaCard {
+  id             Int    @unique @default(autoincrement())
+  cardNumber     String
+  cardHolderName String
+  cvv            String
+  expirationDate String
+  cardType       String
+}

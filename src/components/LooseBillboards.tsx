@@ -87,7 +87,7 @@ export const LooseBillboards = () => {
   return (
     <div className="bg-white dark:bg-[#0F1623] ml-[20px] w-[322px] h-[600px] rounded-lg pl-[26px] pt-[12px]">
       <h1 className="text-black dark:text-white text-[28px] font-medium">
-        Loose billboards
+        Available billboards
       </h1>
       <div className="flex flex-col pt-[20px] space-y-[10px] h-[540px] overflow-y-auto scroll-hidden">
         {availableBillboards.length > 0 ? (
@@ -115,7 +115,7 @@ export const LooseBillboards = () => {
                     <h2
                       className={`text-black dark:text-white text-[12px] font-normal whitespace-nowrap truncate max-w-[100px] ${
                         isDisabled
-                          ? "text-gray-400 dark:text-[#666666] bg-gray-100 dark:bg-[#182236]"
+                          ? "text-gray-400 dark:text-gray-600 bg-gray-100 dark:bg-[#182236]"
                           : ""
                       }`}
                     >
