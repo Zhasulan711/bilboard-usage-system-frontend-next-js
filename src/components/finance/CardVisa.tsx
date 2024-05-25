@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 type CardInfo = {
   id: number;
@@ -14,37 +14,47 @@ type CardInfo = {
 
 export const CardVisa = () => {
   const [cards, setCards] = useState<CardInfo[]>([]);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+  const selectedCardRef = useRef<string | null>(null);
 
   const fetchCards = async () => {
     try {
       const response = await fetch("/api/visaCards");
       if (!response.ok) throw new Error("Failed to fetch cards");
       let cardDetailsArray: CardInfo[] = await response.json();
-
+  
       cardDetailsArray.sort((a, b) => a.id - b.id);
-
-      const updatedCards = cardDetailsArray.map((card, index) => ({
+  
+      if (!selectedCardRef.current && cardDetailsArray.length > 0) {
+        // Установка первой карточки как выбранной, если ранее не было выбора
+        selectedCardRef.current = cardDetailsArray[0].cardNumber;
+      }
+  
+      const updatedCards = cardDetailsArray.map(card => ({
         ...card,
-        isClicked: index === 0,
+        isClicked: card.cardNumber === selectedCardRef.current
       }));
-
+  
       setCards(updatedCards);
     } catch (error) {
       console.error("Failed to fetch card data:", error);
     }
   };
-
+  
   useEffect(() => {
     fetchCards();
     const id = setInterval(fetchCards, 6000);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+    };
   }, []);
 
   const handleDivClick = (cardNumber: string) => {
+    selectedCardRef.current = cardNumber; // Обновление ссылки на выбранную карту
     setCards(
       cards.map((card) =>
-        card.cardNumber === cardNumber ? { ...card, isClicked: true } : card
+        card.cardNumber === cardNumber
+          ? { ...card, isClicked: true }
+          : { ...card, isClicked: false }
       )
     );
   };
