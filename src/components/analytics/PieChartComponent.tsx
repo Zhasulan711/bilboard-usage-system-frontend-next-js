@@ -3,18 +3,19 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
+const COLORS = [
+  "#d46a6e", // alatau
+  "#fad577", // almalinsk
+  "#f9fc74", // auezov
+  "#89d563", // bostandyk
+  "#71a2d6", // medeu
+  "#857efd", // nauryzbay
+  "#dd55d7", // turksib
+  "#63dec7", // zhetysu
+];
+
 export const PieChartComponent = ({ data }: any) => {
   // Define the colors for each section of the pie chart
-  const COLORS = [
-    "#d46a6e",
-    "#fad577",
-    "#f9fc74",
-    "#89d563",
-    "#71a2d6",
-    "#857efd",
-    "#dd55d7",
-    "#63dec7",
-  ];
 
   return (
     <div className="flex justify-center items-center">

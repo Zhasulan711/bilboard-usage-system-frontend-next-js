@@ -36,7 +36,7 @@ export const PostNewAds = () => {
               ? "bg-black"
               : "bg-white"
             : isDark
-            ? "bg-black"
+            ? "bg-[#FF9800]"
             : "bg-[#FF9800]"
         }`}
       >

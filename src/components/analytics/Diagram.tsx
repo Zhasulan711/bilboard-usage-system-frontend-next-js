@@ -99,8 +99,10 @@ export const Diagram = () => {
           <PieChartComponent data={chartData} />
         </div>
       </div>
-      <div className="flex flex-col mt-[5px] 
-      pl-[50px]">
+      <div
+        className="flex flex-col mt-[5px] 
+      pl-[50px]"
+      >
         <h2 className="text-[#464B56] dark:text-[#6F737B] text-xl font-normal w-[200px]">
           All of your billboards {totalBillboards}
         </h2>
@@ -115,7 +117,7 @@ export const Diagram = () => {
               return (
                 <React.Fragment key={index}>
                   <div
-                    className={`flex flex-row space-x-[7px] h-[40px] w-[250px] items-center rounded-lg pl-[10px]
+                    className={`flex flex-row space-x-[7px] h-[40px] w-[280px] items-center rounded-lg pl-[10px]
                  `}
                   >
                     <div

@@ -96,7 +96,7 @@ export const BuyingTable: React.FC = () => {
               <th
                 key={index}
                 className="py-[20px] text-left
-              px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+              px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
               >
                 {item}
               </th>
@@ -117,44 +117,44 @@ export const BuyingTable: React.FC = () => {
               >
                 <td
                   className="py-[20px] truncate max-w-[270px]
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]
                 "
                 >
                   {item.address}
                 </td>
                 <td
                   className="py-[20px] 
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
                 >
                   {item.region}
                 </td>
                 <td
                   className="py-[20px] 
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
                 >
                   {item.price}
                 </td>
                 <td
                   className="py-[20px] 
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
                 >
                   {item.grp}
                 </td>
                 <td
                   className="py-[20px] 
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
                 >
                   {item.date}
                 </td>
                 <td
                   className="py-[20px] 
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
                 >
                   {item.category}
                 </td>
                 <td
                   className="py-[20px] 
-                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                px-[40px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
                 >
                   <LargeShoppingBagIcon
                     onClick={() => !isDisabled && handleBuy(item)}
