@@ -1,3 +1,4 @@
+// MenuSideNavBars.tsx
 "use client";
 
 import Link from "next/link";
@@ -5,14 +6,14 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { NAVBAR_LIST } from "@/constants";
 import { Icon } from "@/components/Icons/Icon";
-// import { LogoutButton } from "@/components/auth//logout-button";
 import { logout } from "@/actions/logout";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import React from "react";
+import { useClickedIndex } from "@/context/ClickedIndexContext";
 
-export const MenuSideNavBars = () => {
-  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+export const MenuSideNavBars: React.FC = () => {
+  const { clickedIndex, setClickedIndex } = useClickedIndex();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -29,9 +30,9 @@ export const MenuSideNavBars = () => {
     if (currentIndex !== -1) {
       localStorage.setItem("clickedIndex", currentIndex.toString());
     }
-  }, [pathname]);
+  }, [pathname, setClickedIndex]);
 
-  const handleClick = (event: any, index: number, href: string) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>, index: number, href: string) => {
     event.preventDefault();
     if (index === 7) {
       localStorage.removeItem("clickedIndex");

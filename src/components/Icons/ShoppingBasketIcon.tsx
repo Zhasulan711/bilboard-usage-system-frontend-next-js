@@ -2,12 +2,12 @@ import { FC, MouseEventHandler } from "react";
 import { DefaultIconComponentProps } from "./types";
 
 interface ShoppingBasketIconProps extends DefaultIconComponentProps {
-  isClicked?: MouseEventHandler<SVGElement>; // Add this line
+  onClick?: MouseEventHandler<SVGElement>;
 }
 
 export const ShoppingBasketIcon: FC<
   ShoppingBasketIconProps & { strokeColor: string }
-> = ({ width = 32, height = 32, isClicked, strokeColor = "white" }) => {
+> = ({ width = 32, height = 32, onClick, strokeColor = "white" }) => {
   const viewBox = `0 0 ${width} ${height}`;
   return (
     <svg
@@ -16,7 +16,8 @@ export const ShoppingBasketIcon: FC<
       viewBox={viewBox}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      onClick={isClicked}
+      onClick={onClick}
+      className="cursor-pointer navBars-icon"
     >
       <path
         d="M19.9993 14.6667L18.666 26.6667"

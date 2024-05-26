@@ -76,7 +76,7 @@ body.light-mode {
 
 .navBars-icon:hover path {
   stroke: #ffb13d; /* Цвет при наведении */
-  transition: all 2000ms ease-in-out;
+  transition: all 0ms ease-in-out;
 }
 
 .imageCover {

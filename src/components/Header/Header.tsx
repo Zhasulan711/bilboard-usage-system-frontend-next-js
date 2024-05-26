@@ -10,10 +10,12 @@ import { HeaderAccount } from "@/components/Header/HeaderAccount";
 import { useRouter } from "next/navigation";
 import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 import React, { useState, useEffect } from "react";
+import { useClickedIndex } from "@/context/ClickedIndexContext";
 
-export const Header = () => {
-  const route = useRouter();
+export const Header: React.FC = () => {
+  const router = useRouter();
   const isDark = StrokeIconTheme();
+  const { clickedIndex, setClickedIndex } = useClickedIndex();
 
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean | null>(
     null
@@ -38,12 +40,14 @@ export const Header = () => {
     localStorage.setItem("isTooltipVisible", newVisibility.toString());
   };
 
-  const isClickedFinance = () => {
-    route.push("/basket");
+  const handleClickBasket = () => {
+    setClickedIndex(4);
+    router.push("/basket");
   };
 
-  const isClickedLandingPage = () => {
-    route.push("/landing");
+  const handleClickLandingPage = () => {
+    setClickedIndex(null);
+    router.push("/landing");
   };
 
   const tooltipIconColor = isTooltipVisible
@@ -61,14 +65,19 @@ export const Header = () => {
         {/* notification and user information */}
         <div className="flex flex-row space-x-[15px] items-center">
           <LandingPageIcon
-            isClicked={isClickedLandingPage}
+            isClicked={handleClickLandingPage}
             strokeColor={isDark ? "white" : "black"}
           />
-          {/* shoppingBasket icon*/}
-          <ShoppingBasketIcon
-            isClicked={isClickedFinance}
-            strokeColor={isDark ? "white" : "black"}
-          />
+          <div className="flex flex-row">
+            <h1 className="text-black dark:text-white text-2xl font-normal">(1)</h1>
+            {/* shoppingBasket icon */}
+            <ShoppingBasketIcon
+              onClick={handleClickBasket}
+              strokeColor={
+                clickedIndex === 4 ? "#F9B13C" : isDark ? "white" : "black"
+              }
+            />
+          </div>
           <InfoToolTipIcon
             toggleVisibility={handleToggleTooltipVisibility}
             strokeColor={tooltipIconColor}

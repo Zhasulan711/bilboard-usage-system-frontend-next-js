@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { MenuSidebar } from "@/components/menu-side-bar/MenuSidebar";
 import { Header } from "@/components/Header/Header";
 import { ThemeProvider } from "@/components/providers";
+import { ClickedIndexProvider } from "@/context/ClickedIndexContext";
 
 export default function MainRoutesLayout({
   children,
@@ -17,13 +18,15 @@ export default function MainRoutesLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-row">
-            <MenuSidebar />
-            <div className="flex flex-col space-y-[20px]">
-              <Header />
-              <main className="ml-[20px]">{children}</main>
+          <ClickedIndexProvider>
+            <div className="flex flex-row">
+              <MenuSidebar />
+              <div className="flex flex-col space-y-[20px]">
+                <Header />
+                <main className="ml-[20px]">{children}</main>
+              </div>
             </div>
-          </div>
+          </ClickedIndexProvider>
         </ThemeProvider>
       </body>
     </html>
