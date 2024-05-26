@@ -4,13 +4,22 @@ import { DistrictMapIcon } from "@/components/Icons";
 import { DISTRICT_MAP_LIST } from "@/constants";
 import { useState } from "react";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export const AmountAdsDistrict = () => {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const router = useRouter();
 
   const handleClick = (event: any, index: number) => {
     event.preventDefault();
     setClickedIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
+  const navigateToDistrict = (index: number) => {
+    const district = DISTRICT_MAP_LIST[index];
+    if (district) {
+      router.push("/post-add");
+    }
   };
 
   return (
@@ -19,7 +28,10 @@ export const AmountAdsDistrict = () => {
         The amount of your ads in district
       </h1>
       <div className="flex flex-row space-x-[45px]">
-        <DistrictMapIcon activeIndex={clickedIndex} />
+        <DistrictMapIcon
+          activeIndex={clickedIndex}
+          onClick={navigateToDistrict}
+        />
         <div className="flex flex-col space-y-[10px] mt-[10px]">
           {DISTRICT_MAP_LIST.map(({ title, colorClass }, index) => {
             const isClicked = clickedIndex === index;
