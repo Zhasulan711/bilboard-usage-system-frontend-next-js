@@ -18,6 +18,7 @@ export const LandingPageIcon: FC<
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       onClick={isClicked}
+      className="cursor-pointer navBars-icon"
     >
       <path
         d="M2.33398 3.5H25.6673"

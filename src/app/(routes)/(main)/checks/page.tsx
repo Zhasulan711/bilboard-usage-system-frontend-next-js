@@ -44,7 +44,7 @@ export default function OrdersPage() {
       {orders.map((order) => (
         <div key={order.id} className="w-[444px] h-[384px] bg-white dark:bg-[#0F1623] flex flex-col space-y-[5px] pl-[16px] pt-[2px] rounded">
           <div className="flex flex-col space-y-[12px]">
-            <h1 className="text-white text-[32px] font-normal">Order #{order.id}</h1>
+            <h1 className="text-black dark:text-white text-[32px] font-normal">Order #{order.id}</h1>
             <div className="flex flex-col space-y-[10px] text-black dark:text-white text-xl font-normal">
               <h2>
                 <span className="text-zinc-500">Sum: </span>{order.totalSum}
@@ -59,7 +59,7 @@ export default function OrdersPage() {
           </div>
 
           <div className="flex flex-col space-y-[12px]">
-            <h1 className="text-white text-[32px] font-normal">Billboards</h1>
+            <h1 className="text-black dark:text-white text-[32px] font-normal">Billboards</h1>
             <div className="flex flex-col space-y-[10px] text-xl font-normal h-[145px] overflow-y-auto">
               {order.billboards && order.billboards.map((billboard, index) => (
                 <h2 key={billboard.id}>

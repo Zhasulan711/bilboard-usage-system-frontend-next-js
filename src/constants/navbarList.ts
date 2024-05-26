@@ -23,11 +23,19 @@ export const NAVBAR_LIST: NavbarList[] = [
     icon: "settings",
   },
   {
+    title: "Basket",
+    icon: "basket",
+  },
+  {
+    title: "Checks",
+    icon: "checks",
+  },
+  {
     title: "Contact With Us",
     icon: "contactWithUs",
   },
   {
     title: "Log Out",
     icon: "logOutIcon",
-  }
+  },
 ];

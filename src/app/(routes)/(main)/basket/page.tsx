@@ -1,12 +1,12 @@
 "use client";
 
-import { BillingSummary } from "@/components/finance/BillingSummary";
-import { CardVisa } from "@/components/finance/CardVisa";
-import { ContinueOrder } from "@/components/finance/ContinueOrder";
-import { PayOrder } from "@/components/finance/PayOrder";
+import { BillingSummary } from "@/components/basket/BillingSummary";
+import { CardVisa } from "@/components/basket/CardVisa";
+import { ContinueOrder } from "@/components/basket/ContinueOrder";
+import { PayOrder } from "@/components/basket/PayOrder";
 // import { PaymentMethod } from "@/components/finance/PaymentMethod";
-import { ShippingAddress } from "@/components/finance/ShippingAddress";
-import { SummaryOrder } from "@/components/finance/SummaryOrder";
+import { ShippingAddress } from "@/components/basket/ShippingAddress";
+import { SummaryOrder } from "@/components/basket/SummaryOrder";
 
 import { useState } from "react";
 

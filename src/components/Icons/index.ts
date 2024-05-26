@@ -5,6 +5,8 @@ export * from "./DashboardIcon";
 export * from "./AnalyticsIcon";
 export * from "./TransactionIcon";
 export * from "./SettingsIcon";
+export * from "./BasketIcon";
+export * from "./ChecksIcon";
 export * from "./ContactWithUsIcon";
 export * from "./LogOutIcon";
 export * from "./PlusIcon";
@@ -15,7 +17,7 @@ export * from "./ThemeModeIcon";
  */
 export * from "./SearchIcon";
 export * from "./ShoppingBasketIcon";
-export * from "./LandingPageIcon"
+export * from "./LandingPageIcon";
 
 /***
  * Main
@@ -29,7 +31,7 @@ export * from "./ChevronDownCalendarIcon";
 export * from "./CalendarDaysIcon";
 export * from "./ChevronDownAddIcon";
 export * from "./ArrowRightIcon";
-export * from "./InfoToolTipIcon"
+export * from "./InfoToolTipIcon";
 
 /***
  * Post Add page

@@ -15,14 +15,22 @@ export const Header = () => {
   const route = useRouter();
   const isDark = StrokeIconTheme();
 
-  const [isTooltipVisible, setIsTooltipVisible] = useState(() => {
+  const [isTooltipVisible, setIsTooltipVisible] = useState<boolean | null>(
+    null
+  );
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("isTooltipVisible") === "false"
-        ? false
-        : true;
+      const visibility = localStorage.getItem("isTooltipVisible") === "true";
+      setIsTooltipVisible(visibility);
     }
-    return true; // Default value or consider another state handling for SSR
-  });
+  }, []);
+
+  useEffect(() => {
+    if (isTooltipVisible !== null) {
+      localStorage.setItem("isTooltipVisible", isTooltipVisible.toString());
+    }
+  }, [isTooltipVisible]);
 
   const handleToggleTooltipVisibility = () => {
     const newVisibility = !isTooltipVisible;
@@ -31,12 +39,18 @@ export const Header = () => {
   };
 
   const isClickedFinance = () => {
-    route.push("/finance");
+    route.push("/basket");
   };
 
   const isClickedLandingPage = () => {
     route.push("/landing");
   };
+
+  const tooltipIconColor = isTooltipVisible
+    ? "#F9B13C"
+    : isDark
+    ? "white"
+    : "black";
 
   return (
     <header className="w-[1386px] bg-white dark:bg-[#0F1623] h-[68px] ml-auto flex border-l-2 dark:border-[#010714]">
@@ -57,7 +71,7 @@ export const Header = () => {
           />
           <InfoToolTipIcon
             toggleVisibility={handleToggleTooltipVisibility}
-            strokeColor={isDark ? "white" : "black"}
+            strokeColor={tooltipIconColor}
           />
 
           <HeaderAccount />

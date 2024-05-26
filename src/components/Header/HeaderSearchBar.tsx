@@ -15,10 +15,13 @@ export const HeaderSearchBar = () => {
   const isDark = StrokeIconTheme();
 
   const routes: { [key: string]: string } = {
+    landing: "/landing",
     dashboard: "/dashboard",
     transaction: "/transaction",
     analytics: "/analytics",
     settings: "/settings",
+    basket: "/basket",
+    checks: "/checks",
     contactWithUs: "/contactWithUs",
     logout: "/",
     postAdd: "/post-add",

@@ -4,6 +4,8 @@ import { DashboardIcon } from "./DashboardIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SettingsIcon } from "./SettingsIcon";
 import { TransactionIcon } from "./TransactionIcon";
+import { BasketIcon } from "./BasketIcon";
+import { ChecksIcon } from "./ChecksIcon";
 import { ContactWithUsIcon } from "./ContactWithUsIcon";
 import { LogOutIcon } from "./LogOutIcon";
 import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
@@ -14,6 +16,8 @@ const Icons = {
   analytics: AnalyticsIcon,
   transaction: TransactionIcon,
   settings: SettingsIcon,
+  basket: BasketIcon,
+  checks: ChecksIcon,
   contactWithUs: ContactWithUsIcon,
   logOutIcon: LogOutIcon,
 };
