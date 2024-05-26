@@ -55,7 +55,7 @@ export default function OrdersPage() {
       <h1 className="ml-[20px]">Checks of purchased billboards</h1>
 
       <div className="grid grid-cols-3 gap-[20px] overflow-y-auto overflow-x-hidden scroll-hidden mt-[20px]
-      h-[920px] laptop:h-[1070px]">
+      h-[920px] laptop:h-[1070px] QHD:h-[1320px]">
         {orders.length === 0 ? (
           <a
             href="/post-add"

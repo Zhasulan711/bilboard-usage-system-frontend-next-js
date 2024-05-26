@@ -65,6 +65,10 @@ export default function TransactionPage() {
 
     fetchBillboards();
     setIsClient(true);
+
+    const intervalId = setInterval(fetchBillboards, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   function TableRow({ item }: { item: Billboard }) {
@@ -77,7 +81,7 @@ export default function TransactionPage() {
     const statusLabels = {
       [STATUS.PURCHASED]: "PURCHASED",
       [STATUS.IN_CART]: "IN_CART",
-      [STATUS.IDLING]: "CANCELED", // Замена 'IDLING' на 'CANCELED'
+      [STATUS.IDLING]: "CANCELED",
     };
 
     return (
@@ -99,9 +103,13 @@ export default function TransactionPage() {
     <div className="flex flex-col">
       <div
         className="overflow-y-auto scroll-hidden border rounded-lg mt-[16px] border-transparent
-      max-h-[930px] laptop:max-h-[1100px]"
+      max-h-[930px] laptop:max-h-[1100px] QHD:max-h-[1320px]
+      w-[1346px] laptop:w-[1600px] QHD:w-[1962px]"
       >
-        <table className="table-fixed divide-y-[32px] divide-[#D9D9D9] dark:divide-[#010714] w-[1346px] laptop:w-[1600px]">
+        <table
+          className="table-fixed divide-y-[32px] divide-[#D9D9D9] dark:divide-[#010714] 
+        w-full"
+        >
           <thead className="text-[#464B56] dark:text-[#B7B9BE] font-normal bg-white dark:bg-[#0F1623]">
             <tr>
               {navTable.map((item, index) => (

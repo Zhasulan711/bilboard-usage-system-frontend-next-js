@@ -83,14 +83,14 @@ export const Diagram = () => {
   return (
     <div
       className="bg-white dark:bg-[#0F1623] h-[340px] rounded-lg flex flex-row justify-center pt-[20px] 
-    w-[663px] laptop:w-[930px]
+    w-[663px] laptop:w-[930px] QHD:w-[1280px]
     pl-[20px] laptop:pl-[0px]
     "
     >
       {/* Diagram for each Region */}
       <div
         className="flex flex-col h-[300px]
-      w-[320px] laptop:w-[400px]"
+      w-[320px] laptop:w-[400px] QHD:w-[400px]"
       >
         <h1 className="text-black dark:text-white text-2xl font-medium">
           Diagram for each region

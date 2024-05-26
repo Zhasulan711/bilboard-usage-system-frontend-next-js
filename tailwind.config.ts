@@ -18,6 +18,7 @@ const config = {
     extend: {
       screens: {
         laptop: { min: "1750px", max: "2000px" },
+        QHD: { min: "2001px", max: "2400px" },
       },
       transitionDuration: {
         "1000": "1000ms",

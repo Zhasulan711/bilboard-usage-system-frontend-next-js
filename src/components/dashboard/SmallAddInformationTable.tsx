@@ -59,10 +59,11 @@ export const SmallAddInformationTable = () => {
   return (
     <div
       className="overflow-y-auto mt-[10px] scroll-hidden
-    h-[300px] laptop:h-[435px]"
+    h-[300px] laptop:h-[435px] QHD:h-[665px]"
     >
-      <table className="w-full table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]">
-        <thead className="text-[#D9D9D9] dark:text-[#6F737B] text-base font-normal">
+      <table className="table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]
+      w-full">
+        <thead className="text-[#464B56] dark:text-[#6F737B] text-base font-normal">
           <tr>
             {headerTable.map((item, index) => (
               <th
