@@ -16,6 +16,7 @@ export const Header: React.FC = () => {
   const router = useRouter();
   const isDark = StrokeIconTheme();
   const { clickedIndex, setClickedIndex } = useClickedIndex();
+  const [inCartCount, setInCartCount] = useState<number>(0);
 
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean | null>(
     null
@@ -33,6 +34,27 @@ export const Header: React.FC = () => {
       localStorage.setItem("isTooltipVisible", isTooltipVisible.toString());
     }
   }, [isTooltipVisible]);
+
+  useEffect(() => {
+    const fetchInCartCount = async () => {
+      try {
+        const response = await fetch("/api/billboards?status=IN_CART");
+        const data = await response.json();
+        setInCartCount(data.length);
+      } catch (error) {
+        console.error("Error fetching in-cart count", error);
+      }
+    };
+
+    // Initial fetch
+    fetchInCartCount();
+
+    // Polling every 10 seconds
+    const intervalId = setInterval(fetchInCartCount, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleToggleTooltipVisibility = () => {
     const newVisibility = !isTooltipVisible;
@@ -69,7 +91,7 @@ export const Header: React.FC = () => {
             strokeColor={isDark ? "white" : "black"}
           />
           <div className="flex flex-row">
-            <h1 className="text-black dark:text-white text-2xl font-normal">(1)</h1>
+            <h1 className="text-black dark:text-white text-2xl font-normal">({inCartCount})</h1>
             {/* shoppingBasket icon */}
             <ShoppingBasketIcon
               onClick={handleClickBasket}
