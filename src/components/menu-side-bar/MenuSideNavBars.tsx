@@ -61,7 +61,7 @@ export const MenuSideNavBars: React.FC = () => {
             )}
             <button
               className={`flex flex-row gap-[10px] items-center pl-2 w-[286px] h-[46px] rounded-lg hover:bg-[#D9D9D9]
-              dark:hover:bg-[#182235] transition duration-2000 ease-in-out
+              dark:hover:bg-[#182235] transition duration-1000 ease-in-out
               ${
                 isClicked
                   ? "bg-[#D9D9D9] dark:bg-[#182235]"

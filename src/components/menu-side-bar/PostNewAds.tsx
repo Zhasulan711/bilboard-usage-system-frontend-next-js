@@ -16,21 +16,24 @@ export const PostNewAds = () => {
       href="/post-add"
       className={`w-[277px] h-[216px] border-[3px] border-transparent rounded-[18px] mt-[68px] 
           flex flex-col space-y-[15px] justify-center items-center text-center
+          transition-all duration-500 ease-in-out hover:bg-[#FF9800]
           ${
             isActive
               ? isDark
-                ? "bg-[#040C19]"
+                ? "bg-[#FF9800]"
                 : "bg-[#FF9800]"
               : isDark
-              ? "bg-[#0F1623] border-black"
+              ? "bg-black border-transparent"
               : "bg-white border-[#FF9800]"
           }`}
     >
       <div
-        className={`rounded-full w-[60px] h-[60px] flex justify-center items-center ${
+        className={`rounded-full w-[60px] h-[60px] flex justify-center items-center 
+        transition-all duration-500 ease-in-out
+        ${
           isActive
             ? isDark
-              ? "bg-[#FF9800]"
+              ? "bg-black"
               : "bg-white"
             : isDark
             ? "bg-black"
@@ -39,19 +42,14 @@ export const PostNewAds = () => {
       >
         <PlusIcon
           strokeColor={`${
-            isActive
-              ? isDark
-                ? "white"
-                : "black"
-              : isDark
-              ? "white"
-              : "white"
+            isActive ? (isDark ? "white" : "black") : isDark ? "white" : "white"
           }`}
         />
       </div>
       <section className="flex flex-col space-y-[6px]">
         <h1
-          className={`text-3xl font-normal
+          className={`text-3xl font-normal 
+          transition-all duration-500 ease-in-out
         ${
           isActive
             ? isDark
@@ -65,22 +63,24 @@ export const PostNewAds = () => {
           Buy new Billboards
         </h1>
         <p
-          className={`text-base font-normal ${
+          className={`text-base font-normal transition-all duration-500 ease-in-out
+          ${
             isActive
               ? isDark
-                ? "text-[#454B57]"
+                ? "text-[#D9D9D9]"
                 : "text-[#D9D9D9]"
               : isDark
-              ? "text-[#454B57]"
-              : "text-[#454B57]"
+              ? "text-[#FF9800]"
+              : "text-[#FF9800]"
           }`}
         >
           Click to that box, to buy <br />{" "}
           <span
-            className={`${
+            className={`transition-all duration-500 ease-in-out
+            ${
               isActive
                 ? isDark
-                  ? "text-[#FF9800]"
+                  ? "text-black"
                   : "text-black"
                 : isDark
                 ? "text-[#FF9800]"
