@@ -77,7 +77,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="w-[1386px] bg-white dark:bg-[#0F1623] h-[68px] ml-auto flex border-l-2 dark:border-[#010714]">
-      <div className="flex flex-row pl-[20px] space-x-[700px] items-center">
+      <div className="flex flex-row pl-[20px] space-x-[680px] items-center">
         {/* search bar */}
         <HeaderSearchBar />
 
