@@ -17,6 +17,7 @@ const config = {
     },
     extend: {
       screens: {
+        ipad: { min: "1650px", max: "1749px" },
         laptop: { min: "1750px", max: "2000px" },
         QHD: { min: "2001px", max: "2400px" },
       },

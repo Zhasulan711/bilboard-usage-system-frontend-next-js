@@ -59,7 +59,7 @@ export const SmallAddInformationTable = () => {
   return (
     <div
       className="overflow-y-auto mt-[10px] scroll-hidden
-    h-[300px] laptop:h-[435px] QHD:h-[665px]"
+    h-[205px] ipad:h-[300px] laptop:h-[435px] QHD:h-[665px]"
     >
       <table className="table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]
       w-full">

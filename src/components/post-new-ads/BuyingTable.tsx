@@ -84,14 +84,20 @@ export const BuyingTable: React.FC = () => {
   };
 
   return (
-    <div className="overflow-y-auto overflow-x-hidden scroll-hidden
-    h-[895px] laptop:h-[1045px] QHD:h-[1350px]
-    w-[1350px] laptop:w-[1600px] QHD:w-[1962px]">
+    <div
+      className="overflow-y-auto overflow-x-hidden scroll-hidden
+    h-[795px] ipad:h-[895px] laptop:h-[1045px] QHD:h-[1350px]
+    w-[1214px] ipad:w-[1350px] laptop:w-[1600px] QHD:w-[1962px]"
+    >
       <table className="table-auto divide-y-[20px] divide-[#D9D9D9] dark:divide-[#010714] w-full">
         <thead className="text-[#464B56] dark:text-[#575C65] text-base font-normal">
           <tr>
             {navTable.map((item, index) => (
-              <th key={index} className="py-[20px] px-[54px] text-left">
+              <th
+                key={index}
+                className="py-[20px] text-left
+              px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+              >
                 {item}
               </th>
             ))}
@@ -109,15 +115,47 @@ export const BuyingTable: React.FC = () => {
                     : ""
                 }
               >
-                <td className="py-[20px] px-[54px] truncate max-w-[270px]">
+                <td
+                  className="py-[20px] truncate max-w-[270px]
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]
+                "
+                >
                   {item.address}
                 </td>
-                <td className="py-[20px] px-[54px]">{item.region}</td>
-                <td className="py-[20px] px-[54px]">{item.price}</td>
-                <td className="py-[20px] px-[54px]">{item.grp}</td>
-                <td className="py-[20px] px-[54px]">{item.date}</td>
-                <td className="py-[20px] px-[54px]">{item.category}</td>
-                <td className="py-[20px] px-[54px]">
+                <td
+                  className="py-[20px] 
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                >
+                  {item.region}
+                </td>
+                <td
+                  className="py-[20px] 
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                >
+                  {item.price}
+                </td>
+                <td
+                  className="py-[20px] 
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                >
+                  {item.grp}
+                </td>
+                <td
+                  className="py-[20px] 
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                >
+                  {item.date}
+                </td>
+                <td
+                  className="py-[20px] 
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                >
+                  {item.category}
+                </td>
+                <td
+                  className="py-[20px] 
+                px-[50px] ipad:px-[54px] laptop:px-[54px] QHD:px-[54px]"
+                >
                   <LargeShoppingBagIcon
                     onClick={() => !isDisabled && handleBuy(item)}
                     disabled={isDisabled}

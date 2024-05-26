@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
       <HeaderSearchBar />
 
       {/* notification and user information */}
-      <div className="flex flex-row space-x-[15px] items-center ml-auto mr-[30px]">
+      <div className="flex flex-row space-x-[15px] items-center ml-auto mr-[35px]">
         <LandingPageIcon
           isClicked={handleClickLandingPage}
           strokeColor={isDark ? "white" : "black"}
