@@ -67,7 +67,6 @@ export const BiggestSpenders = () => {
           [] as RegionMaxPrice[]
         );
 
-        // Sort by maxPrice and pick top 3
         const topRegions = regionMaxPrices
           .sort((a, b) => b.maxPrice - a.maxPrice)
           .slice(0, 3);
@@ -79,6 +78,10 @@ export const BiggestSpenders = () => {
     };
 
     fetchPurchasedItems();
+
+    const intervalId = setInterval(fetchPurchasedItems, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -89,9 +92,15 @@ export const BiggestSpenders = () => {
         </h1>
         <TengeSmallCurrencyIcon />
       </div>
-      {maxPrices.map((spender, index) => (
-        <SpenderItem key={index} {...spender} />
-      ))}
+      {maxPrices.length === 0 ? (
+        <a className="hover:text-[#FF9800] text-[20px]">
+          No purchased billboards. but you can buy billboards by clicking here.
+        </a>
+      ) : (
+        maxPrices.map((spender, index) => (
+          <SpenderItem key={index} {...spender} />
+        ))
+      )}
     </div>
   );
 };

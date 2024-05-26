@@ -108,8 +108,8 @@ export const LargeInformationAddTable = () => {
                 ) : (
                   <tr>
                     <td colSpan={7} className="text-center py-[10px]">
-                      No purchased items for {districtName}.
-                    </td>
+                      <a href="/post-add" className="hover:text-[#FF9800]">There are no billboards for {districtName}, but you can buy those billboards by clicking here</a>
+                    </td> 
                   </tr>
                 )}
               </tbody>

@@ -45,6 +45,10 @@ export const Recommendation = () => {
     };
 
     fetchProcessingItems();
+
+    const intervalId = setInterval(fetchProcessingItems, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -59,6 +63,10 @@ export const Recommendation = () => {
     };
 
     fetchBillboards();
+
+    const intervalId = setInterval(fetchBillboards, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleBuy = async (item: Billboard) => {

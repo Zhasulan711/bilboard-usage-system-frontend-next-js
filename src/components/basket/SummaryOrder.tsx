@@ -133,9 +133,9 @@ export const SummaryOrder = () => {
             </div>
           ))
         ) : (
-          <div className="text-center text-black dark:text-white text-xl font-medium mt-[40px]">
-            You have nothing in orders, you can buy something.
-          </div>
+          <a href="/post-add" className="text-center text-black dark:text-white text-xl font-medium mt-[40px] hover:text-[#FF9800]">
+            You have nothing in orders, <br /> but you can buy choose billboards by clicking here.
+          </a>
         )}
       </CardContent>
     </Card>

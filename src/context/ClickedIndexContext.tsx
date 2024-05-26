@@ -7,9 +7,13 @@ interface ClickedIndexContextType {
   setClickedIndex: (index: number | null) => void;
 }
 
-const ClickedIndexContext = createContext<ClickedIndexContextType | undefined>(undefined);
+const ClickedIndexContext = createContext<ClickedIndexContextType | undefined>(
+  undefined
+);
 
-export const ClickedIndexProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ClickedIndexProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   return (
@@ -22,7 +26,9 @@ export const ClickedIndexProvider: React.FC<{ children: ReactNode }> = ({ childr
 export const useClickedIndex = (): ClickedIndexContextType => {
   const context = useContext(ClickedIndexContext);
   if (!context) {
-    throw new Error("useClickedIndex must be used within a ClickedIndexProvider");
+    throw new Error(
+      "useClickedIndex must be used within a ClickedIndexProvider"
+    );
   }
   return context;
 };

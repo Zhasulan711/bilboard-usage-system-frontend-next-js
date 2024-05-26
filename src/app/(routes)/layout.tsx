@@ -11,7 +11,7 @@ export default function MainRoutesLayout({
 }: PropsWithChildren<unknown>) {
   return (
     <html lang="en" className="">
-      <body>
+      <body className="scroll-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

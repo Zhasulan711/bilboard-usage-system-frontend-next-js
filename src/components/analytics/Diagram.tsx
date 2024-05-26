@@ -50,10 +50,12 @@ export const Diagram = () => {
         const total = items.length;
         setTotalBillboards(total);
 
-        const chartData = Object.entries(countByRegion).map(([name, value]) => ({
-          name,
-          value,
-        }));
+        const chartData = Object.entries(countByRegion).map(
+          ([name, value]) => ({
+            name,
+            value,
+          })
+        );
 
         setChartData(chartData);
       } catch (error) {
@@ -62,6 +64,10 @@ export const Diagram = () => {
     };
 
     fetchPurchasedItems();
+
+    const intervalId = setInterval(fetchPurchasedItems, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const BILLBOARD_TABLE_LIST = chartData.map((item) => {
@@ -87,27 +93,34 @@ export const Diagram = () => {
         <h2 className="text-[#D9D9D9] dark:text-[#6F737B] text-xl font-normal pl-[80px]">
           All of your billboards {totalBillboards}
         </h2>
-        {BILLBOARD_TABLE_LIST.map(
-          ({ region, colorClass, percentage, count }, index) => {
-            return (
-              <React.Fragment key={index}>
-                <div
-                  className={`flex flex-row space-x-[7px] h-[40px] w-[320px] items-center rounded-lg pl-[10px]
-                 `}
-                >
+        {BILLBOARD_TABLE_LIST.length === 0 ? (
+          <a className="hover:text-[#FF9800] text-[20px] mt-[20px]">
+            No purchased billboards. <br /> but you can buy billboards <br /> by
+            clicking here.
+          </a>
+        ) : (
+          BILLBOARD_TABLE_LIST.map(
+            ({ region, colorClass, percentage, count }, index) => {
+              return (
+                <React.Fragment key={index}>
                   <div
-                    className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}
-                  ></div>
-                  <h2 className="text-black dark:text-white text-xl font-normal cursor-pointer whitespace-nowrap">
-                    {region}, <span>{percentage}%, </span>{" "}
-                    <span className="text-[#D9D9D9] dark:text-[#6F737B]">
-                      {count} billboard
-                    </span>
-                  </h2>
-                </div>
-              </React.Fragment>
-            );
-          }
+                    className={`flex flex-row space-x-[7px] h-[40px] w-[320px] items-center rounded-lg pl-[10px]
+                 `}
+                  >
+                    <div
+                      className={`rounded-full w-[10px] h-[10px] bg-color-${colorClass}`}
+                    ></div>
+                    <h2 className="text-black dark:text-white text-xl font-normal cursor-pointer whitespace-nowrap">
+                      {region}, <span>{percentage}%, </span>{" "}
+                      <span className="text-[#D9D9D9] dark:text-[#6F737B]">
+                        {count} billboard
+                      </span>
+                    </h2>
+                  </div>
+                </React.Fragment>
+              );
+            }
+          )
         )}
       </div>
     </div>

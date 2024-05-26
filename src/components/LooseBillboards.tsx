@@ -46,6 +46,10 @@ export const LooseBillboards = () => {
     };
 
     fetchProcessingItems();
+
+    const intervalId = setInterval(fetchProcessingItems, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -60,6 +64,10 @@ export const LooseBillboards = () => {
     };
 
     fetchBillboards();
+
+    const intervalId = setInterval(fetchBillboards, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleBuy = async (item: Billboard) => {

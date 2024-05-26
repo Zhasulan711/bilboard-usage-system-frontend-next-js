@@ -18,6 +18,7 @@ import { payment } from "@/actions/payment";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { useForm, FormProvider } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 interface Item {
   id: number;
@@ -35,6 +36,7 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
   const methods = useForm();
   const [paymentComplete, setPaymentComplete] = useState(false);
   const [hasVisaCards, setHasVisaCards] = useState<boolean>(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -62,19 +64,23 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
     setTotalPrice(total);
   };
 
+  const handleClickToChecks = () => {
+    router.push("/checks");
+  };
+
   const onSubmit = async () => {
     startTransition(async () => {
       try {
         const visaCardResponse = await fetch("/api/visaCards");
         const visaCards: { id: number }[] = await visaCardResponse.json();
-    
+
         if (visaCards.length === 0) {
           setHasVisaCards(false);
           setError("No Visa cards available in the database.");
           setSuccess(undefined);
           return;
         }
-    
+
         if (user && user.balance !== null && totalPrice > 0) {
           const newBalance = Number(user.balance) - totalPrice;
           await payment({ balance: newBalance.toString() });
@@ -91,7 +97,7 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
         setSuccess(undefined);
       }
     });
-  };  
+  };
 
   const updateItemsToPurchased = async () => {
     try {
@@ -109,16 +115,18 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
         )
       );
 
-      if (response.every(res => res.ok)) {
+      if (response.every((res) => res.ok)) {
         const orderResponse = await fetch("/api/orders", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ billboards: processingItems.map(item => item.id) }),
+          body: JSON.stringify({
+            billboards: processingItems.map((item) => item.id),
+          }),
         });
 
-        if (!orderResponse.ok) throw new Error('Failed to create order');
+        if (!orderResponse.ok) throw new Error("Failed to create order");
 
         setProcessingItems([]);
       }
@@ -140,13 +148,13 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
           </h1>
           <div className="flex flex-row space-x-[20px]">
             <Button
-              onClick={onClose}
+              onClick={handleClickToChecks}
               className="w-20 h-9 rounded-md hover:bg-amber-500"
             >
               Okay
             </Button>
             <Button
-              onClick={onClose}
+              onClick={handleClickToChecks}
               className="w-20 h-9 rounded-md hover:bg-amber-500"
             >
               Cancel
@@ -162,7 +170,7 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
       <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center">
         <Card className="w-[592px] h-[224px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
           <h1 className="text-black dark:text-white text-[26px]">
-            Payment was not successful
+            ❌ Payment was not successful
           </h1>
           <h1 className="text-neutral-600 dark:text-neutral-500 w-[543px] text-base">
             Please check if you have entered your card details correctly or{" "}

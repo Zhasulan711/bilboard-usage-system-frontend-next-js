@@ -32,7 +32,11 @@ export const MenuSideNavBars: React.FC = () => {
     }
   }, [pathname, setClickedIndex]);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>, index: number, href: string) => {
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    index: number,
+    href: string
+  ) => {
     event.preventDefault();
     if (index === 7) {
       localStorage.removeItem("clickedIndex");

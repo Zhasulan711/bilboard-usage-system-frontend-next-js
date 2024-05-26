@@ -39,15 +39,21 @@ export const SmallAddInformationTable = () => {
   useEffect(() => {
     const fetchPurchasedItems = async () => {
       try {
-        const response = await fetch('/api/billboards?status=PURCHASED');
+        const response = await fetch("/api/billboards?status=PURCHASED");
         const data: Billboard[] = await response.json();
-        setPurchasedItems(data.filter(item => item.status === STATUS.PURCHASED));
+        setPurchasedItems(
+          data.filter((item) => item.status === STATUS.PURCHASED)
+        );
       } catch (error) {
         console.error("Error fetching purchased items:", error);
       }
     };
 
     fetchPurchasedItems();
+
+    const intervalId = setInterval(fetchPurchasedItems, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -89,7 +95,13 @@ export const SmallAddInformationTable = () => {
           ) : (
             <tr>
               <td colSpan={7} className="text-center py-[10px]">
-                No purchased billboards. Buy some billboards to fill this table.
+                <a
+                  href="/post-add"
+                  className="hover:text-[#FF9800] text-[20px]"
+                >
+                  No purchased billboards. but you can buy billboards by
+                  clicking here.
+                </a>
               </td>
             </tr>
           )}

@@ -11,7 +11,13 @@ interface Item {
   status: "IN_CART" | "PURCHASED" | "IDLING";
 }
 
-export const PayOrder = ({ onPayStart }: { onPayStart: () => void }) => {
+export const PayOrder = ({
+  onPayStart,
+  onClose,
+}: {
+  onPayStart: () => void;
+  onClose: () => void;
+}) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -50,12 +56,20 @@ export const PayOrder = ({ onPayStart }: { onPayStart: () => void }) => {
           {totalPrice.toLocaleString()}
         </h1>
       </div>
-      <Button
-      onClick={onPayStart}
-        className="w-full h-11 px-[18px] py-2.5 rounded-md hover:bg-amber-500 mt-[16px]"
-      >
-        Pay order
-      </Button>
+      <div className="flex flex-row space-x-[20px]">
+        <Button
+          onClick={onPayStart}
+          className="w-[420px] h-11 px-[18px] py-2.5 rounded-md hover:bg-amber-500 mt-[16px]"
+        >
+          Pay order
+        </Button>
+        <Button
+          onClick={onClose}
+          className="w-[420px] h-11 px-[18px] py-2.5 rounded-md hover:bg-amber-500 mt-[16px]"
+        >
+          Cancel
+        </Button>
+      </div>
     </Card>
   );
 };

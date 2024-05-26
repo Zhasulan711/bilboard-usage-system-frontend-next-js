@@ -43,6 +43,10 @@ export const BuyingTable: React.FC = () => {
     };
 
     fetchBillboards();
+
+    const intervalId = setInterval(fetchBillboards, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleBuy = async (item: Billboard) => {

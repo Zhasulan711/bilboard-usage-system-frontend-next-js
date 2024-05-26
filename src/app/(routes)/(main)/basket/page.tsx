@@ -41,8 +41,12 @@ export default function FinancePage() {
     setShowBillingSummary(true);
   };
 
+  const handleClosePayOrder = () => {
+    setShowOrder(true);
+  };
+
   const handleCloseBillingSummary = () => {
-    setShowBillingSummary(false); // Hide BillingSummary on 'Cancel'
+    setShowBillingSummary(false);
   };
 
   return (
@@ -70,7 +74,10 @@ export default function FinancePage() {
           <div className="h-[910px] overflow-y-auto overflow-x-hidden flex flex-col space-y-[20px]">
             <CardVisa />
             <ShippingAddress />
-            <PayOrder onPayStart={handlePayStart} />
+            <PayOrder
+              onPayStart={handlePayStart}
+              onClose={handleClosePayOrder}
+            />
           </div>
         </div>
       )}
