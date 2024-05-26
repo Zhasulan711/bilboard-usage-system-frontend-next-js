@@ -32,7 +32,7 @@ interface Billboard {
 const SpenderItem = ({ region, maxPrice }: RegionMaxPrice) => (
   <div className="flex flex-row space-x-[155px]">
     <div className="w-[50px]">
-      <h3 className="text-xl font-normal text-[#D9D9D9] dark:text-[#575C65]">
+      <h3 className="text-xl font-normal text-[#464B56] dark:text-[#575C65]">
         {region}
       </h3>
     </div>

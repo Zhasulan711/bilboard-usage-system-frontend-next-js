@@ -82,7 +82,7 @@ export const MenuSideNavBars: React.FC = () => {
                 ${
                   isClicked
                     ? "text-[#F9B13C]"
-                    : "text-[#D9D9D9] dark:text-[#3F454F]"
+                    : "text-black dark:text-[#3F454F]"
                 }`}
               >
                 {title}

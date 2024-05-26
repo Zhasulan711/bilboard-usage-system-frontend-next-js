@@ -35,7 +35,7 @@ export const Icon: FC<IconProps> = ({ type, isClicked, ...props }) => {
   const isDark = StrokeIconTheme();
 
   const additionalProps = {
-    stroke: isClicked ? "#FFB13D" : isDark ? "#4F5664" : "#D9D9D9",
+    stroke: isClicked ? "#FFB13D" : isDark ? "#4F5664" : "#000000",
   };
   return <IconComponent strokeColor={""} {...props} {...additionalProps} />;
 };

@@ -24,7 +24,7 @@ export const HeaderSearchBar = () => {
     checks: "/checks",
     contactWithUs: "/contactWithUs",
     logout: "/",
-    postAdd: "/post-add",
+    buyingadd: "/post-add",
   };
 
   const findFullRouteName = (inputText: string) => {

@@ -1,9 +1,14 @@
 import { FC } from "react";
 import { DefaultIconComponentProps } from "./types";
 
-export const RedTrashIcon: FC<DefaultIconComponentProps> = ({
+interface RedTrashIconProps extends DefaultIconComponentProps {
+  onClick: () => void;
+}
+
+export const RedTrashIcon: FC<RedTrashIconProps> = ({
   width = 28,
   height = 28,
+  onClick,
 }) => {
   const viewBox = `0 0 ${width} ${height}`;
   return (
@@ -13,6 +18,8 @@ export const RedTrashIcon: FC<DefaultIconComponentProps> = ({
       viewBox={viewBox}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="cursor-pointer redTrash-icon"
+      onClick={onClick}
     >
       <path
         d="M3.5 7H24.5"

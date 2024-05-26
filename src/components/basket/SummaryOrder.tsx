@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useTransition } from "react";
 
-// import { RedTrashIcon } from "@/components/Icons";
+import { RedTrashIcon } from "@/components/Icons";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { CompassIcon } from "@/components/Icons";
 
@@ -119,13 +119,14 @@ export const SummaryOrder = () => {
                 </div>
               </div>
               <div className="flex flex-col space-y-[19px] items-end w-[150px]">
-                <button
+                <RedTrashIcon onClick={() => handleRemove(item)} />
+                {/* <button
                   className="text-red-500"
                   onClick={() => handleRemove(item)}
                   disabled={isPending}
                 >
                   Remove
-                </button>
+                </button> */}
                 <h1 className="text-black dark:text-white text-4xl font-normal">
                   {item.price}
                 </h1>
@@ -133,8 +134,12 @@ export const SummaryOrder = () => {
             </div>
           ))
         ) : (
-          <a href="/post-add" className="text-center text-black dark:text-white text-xl font-medium mt-[40px] hover:text-[#FF9800]">
-            You have nothing in orders, <br /> but you can buy choose billboards by clicking here.
+          <a
+            href="/post-add"
+            className="text-center text-black dark:text-white text-xl font-medium mt-[40px] hover:text-[#FF9800]"
+          >
+            You have nothing in orders, <br /> but you can buy choose billboards
+            by clicking here.
           </a>
         )}
       </CardContent>

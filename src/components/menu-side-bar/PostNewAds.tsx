@@ -14,16 +14,16 @@ export const PostNewAds = () => {
   return (
     <Link
       href="/post-add"
-      className={`w-[277px] h-[216px] border-[3px] border-transparent rounded-[18px] mt-[68px] 
+      className={`w-[277px] h-[216px] border-[3px] rounded-[18px] mt-[68px] 
           flex flex-col space-y-[15px] justify-center items-center text-center
-          transition-all duration-500 ease-in-out hover:bg-[#FF9800]
+          transition-all duration-500 ease-in-out hover:bg-[#F9B13C]
           ${
             isActive
               ? isDark
-                ? "bg-[#FF9800]"
-                : "bg-[#FF9800]"
+                ? "bg-[#FF9800] border-transparent"
+                : "bg-[#FF9800] border-transparent"
               : isDark
-              ? "bg-black border-transparent"
+              ? "bg-black border-[#0F1623]"
               : "bg-white border-[#FF9800]"
           }`}
     >
@@ -70,8 +70,8 @@ export const PostNewAds = () => {
                 ? "text-[#D9D9D9]"
                 : "text-[#D9D9D9]"
               : isDark
-              ? "text-[#FF9800]"
-              : "text-[#FF9800]"
+              ? "text-[#464B56]"
+              : "text-[#464B56]"
           }`}
         >
           Click to that box, to buy <br />{" "}

@@ -99,7 +99,7 @@ export default function TransactionPage() {
     <div className="flex flex-col">
       <div className="overflow-y-auto scroll-hidden max-h-[930px] border rounded-lg mt-[16px] border-transparent">
         <table className="table-fixed divide-y-[32px] divide-[#D9D9D9] dark:divide-[#010714] w-[1346px]">
-          <thead className="text-[#D9D9D9] dark:text-[#B7B9BE] font-normal bg-white dark:bg-[#0F1623]">
+          <thead className="text-[#464B56] dark:text-[#B7B9BE] font-normal bg-white dark:bg-[#0F1623]">
             <tr>
               {navTable.map((item, index) => (
                 <th

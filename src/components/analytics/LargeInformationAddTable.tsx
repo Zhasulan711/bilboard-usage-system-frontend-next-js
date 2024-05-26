@@ -79,7 +79,7 @@ export const LargeInformationAddTable = () => {
               </h1>
             </div>
             <table className="w-full table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235] mt-[10px] border-b-2 dark:border-[#182235]">
-              <thead className="text-[#D9D9D9] dark:text-[#6F737B] text-base font-normal">
+              <thead className="text-[#464B56] dark:text-[#6F737B] text-base font-normal">
                 <tr>
                   {headerTable.map((header, idx) => (
                     <th

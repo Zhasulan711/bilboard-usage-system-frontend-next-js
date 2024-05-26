@@ -82,7 +82,7 @@ export const BuyingTable: React.FC = () => {
   return (
     <div className="h-[895px] overflow-y-auto overflow-x-hidden scroll-hidden">
       <table className="table-auto divide-y-[20px] divide-[#D9D9D9] dark:divide-[#010714]">
-        <thead className="text-[#D9D9D9] dark:text-[#575C65] text-base font-normal">
+        <thead className="text-[#464B56] dark:text-[#575C65] text-base font-normal">
           <tr>
             {navTable.map((item, index) => (
               <th key={index} className="py-[20px] px-[54px] text-left">
