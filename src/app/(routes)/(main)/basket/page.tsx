@@ -8,11 +8,30 @@ import { PayOrder } from "@/components/basket/PayOrder";
 import { ShippingAddress } from "@/components/basket/ShippingAddress";
 import { SummaryOrder } from "@/components/basket/SummaryOrder";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FinancePage() {
   const [showOrder, setShowOrder] = useState(true);
   const [showBillingSummary, setShowBillingSummary] = useState(false);
+  const [inCartCount, setInCartCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchInCartCount = async () => {
+      try {
+        const response = await fetch("/api/billboards?status=IN_CART");
+        const data = await response.json();
+        setInCartCount(data.length);
+      } catch (error) {
+        console.error("Error fetching in-cart count", error);
+      }
+    };
+
+    fetchInCartCount();
+
+    const intervalId = setInterval(fetchInCartCount, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleContinue = () => {
     setShowOrder(false);
@@ -29,9 +48,19 @@ export default function FinancePage() {
   return (
     <div className="relative">
       {showOrder ? (
-        <div className="flex flex-col space-y-[20px] ml-[430px]">
-          <SummaryOrder />
-          <ContinueOrder onContinue={handleContinue} />
+        <div className="flex flex-col space-y-[10px] ml-[430px]">
+          <div className="flex flex-row space-x-[230px] items-center">
+            <h1 className="text-black dark:text-white text-4xl font-bold ml-[20px]">
+              Basket
+            </h1>
+            <h2 className="text-neutral-400 text-2xl font-normal mt-[10px]">
+              {inCartCount} billboard's
+            </h2>
+          </div>
+          <div className="flex flex-col space-y-[20px]">
+            <SummaryOrder />
+            <ContinueOrder onContinue={handleContinue} />
+          </div>
         </div>
       ) : (
         <div className="flex flex-col space-y-[20px] ml-[300px]">
@@ -41,11 +70,13 @@ export default function FinancePage() {
           <div className="h-[910px] overflow-y-auto overflow-x-hidden flex flex-col space-y-[20px]">
             <CardVisa />
             <ShippingAddress />
-            <PayOrder onPayStart={handlePayStart}/>
+            <PayOrder onPayStart={handlePayStart} />
           </div>
         </div>
       )}
-      {showBillingSummary && <BillingSummary onClose={handleCloseBillingSummary} />}
+      {showBillingSummary && (
+        <BillingSummary onClose={handleCloseBillingSummary} />
+      )}
     </div>
   );
 }

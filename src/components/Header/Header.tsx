@@ -46,13 +46,10 @@ export const Header: React.FC = () => {
       }
     };
 
-    // Initial fetch
     fetchInCartCount();
 
-    // Polling every 10 seconds
     const intervalId = setInterval(fetchInCartCount, 1000);
 
-    // Cleanup interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 
@@ -91,7 +88,9 @@ export const Header: React.FC = () => {
             strokeColor={isDark ? "white" : "black"}
           />
           <div className="flex flex-row">
-            <h1 className="text-black dark:text-white text-2xl font-normal">({inCartCount})</h1>
+            <h1 className="text-black dark:text-white text-2xl font-normal">
+              ({inCartCount})
+            </h1>
             {/* shoppingBasket icon */}
             <ShoppingBasketIcon
               onClick={handleClickBasket}
