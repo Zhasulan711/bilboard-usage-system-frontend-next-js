@@ -95,7 +95,7 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
 
   const updateItemsToPurchased = async () => {
     try {
-      await Promise.all(
+      const response = await Promise.all(
         processingItems.map((item) =>
           fetch("/api/billboards", {
             method: "POST",
@@ -108,9 +108,22 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
           })
         )
       );
-      setProcessingItems([]);
+
+      if (response.every(res => res.ok)) {
+        const orderResponse = await fetch("/api/orders", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ billboards: processingItems.map(item => item.id) }),
+        });
+
+        if (!orderResponse.ok) throw new Error('Failed to create order');
+
+        setProcessingItems([]);
+      }
     } catch (error) {
-      console.error("Failed to update item status:", error);
+      console.error("Failed to update item status and create order:", error);
     }
   };
 
@@ -227,5 +240,3 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
     </div>
   );
 };
-
-

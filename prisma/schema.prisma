@@ -113,6 +113,8 @@ model Billboard {
   date        String
   colorClass  String
   changed     Boolean @default(false)
+  orderId     Int?
+  order       Order?  @relation(fields: [orderId], references: [id])
 }
 
 model VisaCard {
@@ -122,4 +124,11 @@ model VisaCard {
   cvv            String
   expirationDate String
   cardType       String
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  totalSum   String
+  quantity   Int
+  billboards Billboard[]
 }

@@ -57,7 +57,7 @@ body.light-mode {
 }
 
 /* Colors for Calendar RENAME COLORS!*/
-
+/* 
 .bg-color-midnightCircle {
   background-color: #243253;
 }
@@ -72,7 +72,7 @@ body.light-mode {
 }
 .bg-color-oceanCircle {
   background-color: #5174b9;
-}
+} */
 
 .navBars-icon:hover path {
   stroke: #ffb13d; /* Цвет при наведении */
