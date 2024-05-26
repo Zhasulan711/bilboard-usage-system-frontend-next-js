@@ -2,22 +2,31 @@
 
 import { useState, useEffect } from "react";
 
-import {
-  TengeLargeCurrencyIcon,
-} from "@/components/Icons";
+import { TengeLargeCurrencyIcon } from "@/components/Icons";
 
 export const TotalSpending = () => {
   const [totalSpending, setTotalSpending] = useState(0);
 
   useEffect(() => {
-    const transactionHistory = JSON.parse(
-      localStorage.getItem("transactionHistory") || "[]"
-    );
-    const total = transactionHistory.reduce(
-      (acc: any, amount: any) => acc + amount,
-      0
-    );
-    setTotalSpending(total);
+    const fetchTotalSpending = async () => {
+      try {
+        const response = await fetch("/api/billboards?status=PURCHASED");
+        const billboards = await response.json();
+
+        if (response.ok) {
+          const total = billboards.reduce((acc: number, billboard: any) => {
+            return acc + parseFloat(billboard.price);
+          }, 0);
+          setTotalSpending(total);
+        } else {
+          console.error("Error fetching total spending:", billboards.error);
+        }
+      } catch (error) {
+        console.error("Error fetching total spending:", error);
+      }
+    };
+
+    fetchTotalSpending();
   }, []);
 
   return (

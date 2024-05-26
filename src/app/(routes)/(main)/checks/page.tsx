@@ -75,15 +75,15 @@ export default function OrdersPage() {
                 </h1>
                 <div className="flex flex-col space-y-[10px] text-black dark:text-white text-xl font-normal">
                   <h2>
-                    <span className="text-zinc-500">Sum: </span>
+                    <span className="text-[#464B56]">Sum: </span>
                     {order.totalSum}
                   </h2>
                   <h2>
-                    <span className="text-zinc-500">Quantity: </span>
+                    <span className="text-[#464B56]">Quantity: </span>
                     {order.quantity}
                   </h2>
                   <h2>
-                    <span className="text-zinc-500">Paid for: </span> Kaspi Bank
+                    <span className="text-[#464B56]">Paid for: </span> Visa Card
                   </h2>
                 </div>
               </div>
