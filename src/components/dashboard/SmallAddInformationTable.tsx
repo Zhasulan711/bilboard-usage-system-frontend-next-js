@@ -57,7 +57,10 @@ export const SmallAddInformationTable = () => {
   }, []);
 
   return (
-    <div className="overflow-y-auto h-[300px] mt-[10px] scroll-hidden">
+    <div
+      className="overflow-y-auto mt-[10px] scroll-hidden
+    h-[300px] laptop:h-[435px]"
+    >
       <table className="w-full table-auto divide-y-[3px] divide-[#D9D9D9] dark:divide-[#182235]">
         <thead className="text-[#D9D9D9] dark:text-[#6F737B] text-base font-normal">
           <tr>

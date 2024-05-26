@@ -54,7 +54,8 @@ export default function OrdersPage() {
     <div className="text-black dark:text-white text-4xl font-bold">
       <h1 className="ml-[20px]">Checks of purchased billboards</h1>
 
-      <div className="grid grid-cols-3 h-[920px] gap-[20px] overflow-y-auto overflow-x-hidden scroll-hidden mt-[20px]">
+      <div className="grid grid-cols-3 gap-[20px] overflow-y-auto overflow-x-hidden scroll-hidden mt-[20px]
+      h-[920px] laptop:h-[1070px]">
         {orders.length === 0 ? (
           <a
             href="/post-add"

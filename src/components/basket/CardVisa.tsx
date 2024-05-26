@@ -42,7 +42,7 @@ export const CardVisa = () => {
   
   useEffect(() => {
     fetchCards();
-    const id = setInterval(fetchCards, 6000);
+    const id = setInterval(fetchCards, 3000);
     return () => {
       clearInterval(id);
     };

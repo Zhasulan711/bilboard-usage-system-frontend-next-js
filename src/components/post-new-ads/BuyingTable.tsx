@@ -36,7 +36,11 @@ export const BuyingTable: React.FC = () => {
       try {
         const response = await fetch("/api/billboards");
         const data = await response.json();
-        setBillboards(data);
+        if (Array.isArray(data)) {
+          setBillboards(data);
+        } else {
+          console.error("Unexpected data format:", data);
+        }
       } catch (error) {
         console.error("Ошибка при получении данных:", error);
       }
@@ -80,8 +84,9 @@ export const BuyingTable: React.FC = () => {
   };
 
   return (
-    <div className="h-[895px] overflow-y-auto overflow-x-hidden scroll-hidden">
-      <table className="table-auto divide-y-[20px] divide-[#D9D9D9] dark:divide-[#010714]">
+    <div className="overflow-y-auto overflow-x-hidden scroll-hidden
+    h-[895px] laptop:h-[1045px]">
+      <table className="table-auto divide-y-[20px] divide-[#D9D9D9] dark:divide-[#010714] w-[1350px] laptop:w-[1600px]">
         <thead className="text-[#464B56] dark:text-[#575C65] text-base font-normal">
           <tr>
             {navTable.map((item, index) => (

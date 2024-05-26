@@ -76,36 +76,34 @@ export const Header: React.FC = () => {
     : "black";
 
   return (
-    <header className="w-[1386px] bg-white dark:bg-[#0F1623] h-[68px] ml-auto flex border-l-2 dark:border-[#010714]">
-      <div className="flex flex-row pl-[20px] space-x-[680px] items-center">
-        {/* search bar */}
-        <HeaderSearchBar />
+    <header className="w-full bg-white dark:bg-[#0F1623] h-[68px] ml-auto flex flex-row items-center border-l-2 dark:border-[#010714]">
+      {/* search bar */}
+      <HeaderSearchBar />
 
-        {/* notification and user information */}
-        <div className="flex flex-row space-x-[15px] items-center">
-          <LandingPageIcon
-            isClicked={handleClickLandingPage}
-            strokeColor={isDark ? "white" : "black"}
+      {/* notification and user information */}
+      <div className="flex flex-row space-x-[15px] items-center ml-auto mr-[30px]">
+        <LandingPageIcon
+          isClicked={handleClickLandingPage}
+          strokeColor={isDark ? "white" : "black"}
+        />
+        <div className="flex flex-row">
+          <h1 className="text-black dark:text-white text-2xl font-normal">
+            ({inCartCount})
+          </h1>
+          {/* shoppingBasket icon */}
+          <ShoppingBasketIcon
+            onClick={handleClickBasket}
+            strokeColor={
+              clickedIndex === 4 ? "#F9B13C" : isDark ? "white" : "black"
+            }
           />
-          <div className="flex flex-row">
-            <h1 className="text-black dark:text-white text-2xl font-normal">
-              ({inCartCount})
-            </h1>
-            {/* shoppingBasket icon */}
-            <ShoppingBasketIcon
-              onClick={handleClickBasket}
-              strokeColor={
-                clickedIndex === 4 ? "#F9B13C" : isDark ? "white" : "black"
-              }
-            />
-          </div>
-          <InfoToolTipIcon
-            toggleVisibility={handleToggleTooltipVisibility}
-            strokeColor={tooltipIconColor}
-          />
-
-          <HeaderAccount />
         </div>
+        <InfoToolTipIcon
+          toggleVisibility={handleToggleTooltipVisibility}
+          strokeColor={tooltipIconColor}
+        />
+
+        <HeaderAccount />
       </div>
     </header>
   );

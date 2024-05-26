@@ -14,11 +14,11 @@ const config = {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
     },
     extend: {
+      screens: {
+        laptop: { min: "1750px", max: "2000px" },
+      },
       transitionDuration: {
         "1000": "1000ms",
         "2000": "2000ms",

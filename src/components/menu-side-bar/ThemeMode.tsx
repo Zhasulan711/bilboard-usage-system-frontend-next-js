@@ -21,7 +21,7 @@ export const ThemeMode = () => {
 
   return (
     <button
-      className="flex flex-row space-x-[15px] items-center pl-[10px] hover:bg-[#D9D9D9]
+      className="flex flex-row space-x-[10px] items-center pl-[10px] hover:bg-[#D9D9D9]
       dark:hover:bg-[#182235] transition duration-1000 ease-in-out"
       onClick={toggleTheme}
     >

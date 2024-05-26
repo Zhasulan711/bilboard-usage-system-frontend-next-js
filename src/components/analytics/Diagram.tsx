@@ -81,16 +81,26 @@ export const Diagram = () => {
   });
 
   return (
-    <div className="bg-white dark:bg-[#0F1623] w-[663px] h-[340px] rounded-lg pl-[26px] pt-[13px] flex flex-row -space-x-[60px]">
+    <div
+      className="bg-white dark:bg-[#0F1623] h-[340px] rounded-lg flex flex-row justify-center pt-[20px] 
+    w-[663px] laptop:w-[930px]
+    pl-[20px] laptop:pl-[0px]
+    "
+    >
       {/* Diagram for each Region */}
-      <div className="flex flex-col">
+      <div
+        className="flex flex-col h-[300px]
+      w-[320px] laptop:w-[400px]"
+      >
         <h1 className="text-black dark:text-white text-2xl font-medium">
           Diagram for each region
         </h1>
-        <PieChartComponent data={chartData} />
+        <div className="w-[350px]">
+          <PieChartComponent data={chartData} />
+        </div>
       </div>
-      <div className="flex flex-col">
-        <h2 className="text-[#464B56] dark:text-[#6F737B] text-xl font-normal pl-[80px]">
+      <div className="flex flex-col mt-[5px]">
+        <h2 className="text-[#464B56] dark:text-[#6F737B] text-xl font-normal ">
           All of your billboards {totalBillboards}
         </h2>
         {BILLBOARD_TABLE_LIST.length === 0 ? (

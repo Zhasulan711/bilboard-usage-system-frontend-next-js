@@ -75,7 +75,7 @@ export const HeaderSearchBar = () => {
   return (
     <div
       className="w-[321px] h-[42px] bg-[#D9D9D9] dark:bg-[#182235] rounded-lg pl-[10px]
-        flex flex-row space-x-[6px] items-center "
+        flex flex-row space-x-[6px] items-center ml-[20px]"
     >
       <SearchIcon
         handleSVGClick={() => handleSVGClick(inputRef.current)}

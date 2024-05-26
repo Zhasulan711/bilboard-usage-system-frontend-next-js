@@ -3,7 +3,10 @@ import { SmallAddInformationTable } from "@/components/dashboard/SmallAddInforma
 
 export const SmallAddInformation = () => {
   return (
-    <div className="bg-white dark:bg-[#0F1623] mt-[20px] w-[1346px] h-[365px] rounded-lg pl-[26px] pt-[14px]">
+    <div
+      className="bg-white dark:bg-[#0F1623] mt-[20px] h-[365px] laptop:h-[500px] rounded-lg pl-[26px] pt-[14px]
+    w-[1346px] laptop:w-full"
+    >
       <div className="flex flex-row space-x-[475px]">
         <h1 className="text-black dark:text-white text-[28px] font-medium ml-[10px]">
           Information about your add
