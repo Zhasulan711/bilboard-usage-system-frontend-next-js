@@ -46,7 +46,7 @@ export const Recommendation = () => {
 
     fetchProcessingItems();
 
-    const intervalId = setInterval(fetchProcessingItems, 1000);
+    const intervalId = setInterval(fetchProcessingItems, 3000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -64,7 +64,7 @@ export const Recommendation = () => {
 
     fetchBillboards();
 
-    const intervalId = setInterval(fetchBillboards, 1000);
+    const intervalId = setInterval(fetchBillboards, 3000);
 
     return () => clearInterval(intervalId);
   }, []);

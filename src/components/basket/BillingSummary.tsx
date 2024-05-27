@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { useTransition, useState, useEffect } from "react";
 import { payment } from "@/actions/payment";
@@ -19,6 +19,10 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import {
+  NotSuccessfulPaymentIcon,
+  SuccessfulPaymentIcon,
+} from "@/components/Icons";
 
 interface Item {
   id: number;
@@ -138,10 +142,13 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
   if (paymentComplete) {
     return (
       <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center">
-        <Card className="w-[592px] h-[224px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
-          <h1 className="text-black dark:text-white text-[26px]">
-            ✅ Payment was successful!
-          </h1>
+        <Card className="w-[592px] h-[180px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
+          <div className="flex flex-row space-x-[16px]">
+            <SuccessfulPaymentIcon />
+            <h1 className="text-black dark:text-white text-[26px]">
+              Payment was successful!
+            </h1>
+          </div>
           <h1 className="text-neutral-600 dark:text-neutral-500 w-[543px] text-base">
             The payment was successful, you now own the billboards. <br />
             You can close this window
@@ -168,10 +175,13 @@ export const BillingSummary = ({ onClose }: { onClose: () => void }) => {
   if (!hasVisaCards) {
     return (
       <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center">
-        <Card className="w-[592px] h-[224px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
-          <h1 className="text-black dark:text-white text-[26px]">
-            ❌ Payment was not successful
-          </h1>
+        <Card className="w-[592px] h-[200px] bg-white dark:bg-[#0F1623] border-transparent p-[20px] flex flex-col space-y-[8px]">
+          <div className="flex flex-row space-x-[16px]">
+            <NotSuccessfulPaymentIcon />
+            <h1 className="text-black dark:text-white text-[26px]">
+              Payment was not successful
+            </h1>
+          </div>
           <h1 className="text-neutral-600 dark:text-neutral-500 w-[543px] text-base">
             Please check if you have entered your card details correctly or{" "}
             <br />

@@ -1,4 +1,4 @@
-import { Parameters } from "@/components/post-new-ads/Parameters";
+// import { Parameters } from "@/components/post-new-ads/Parameters";
 import { Buying } from "@/components/post-new-ads/Buying";
 
 export default function PostAddPage() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDownParametersIcon } from "@/components/Icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const places = [
   { place: "City", district: "Almaty" },

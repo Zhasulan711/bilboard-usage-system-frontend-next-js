@@ -2,9 +2,7 @@ import { TotalSpending } from "@/components/analytics/TotalSpending";
 import { BiggestSpenders } from "@/components/analytics/BiggestSpenders";
 import { Diagram } from "@/components/analytics/Diagram";
 import { Recommendation } from "@/components/analytics/Recommendation";
-// import { LooseBillboards } from "@/components/LooseBillboards";
 import { LargeInformationAddTable } from "@/components/analytics/LargeInformationAddTable";
-// import { Graphs } from "@/components/analytics/Graphs";
 
 export default function AnalyticsPage() {
   return (

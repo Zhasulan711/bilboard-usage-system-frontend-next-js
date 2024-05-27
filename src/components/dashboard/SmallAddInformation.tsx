@@ -1,4 +1,3 @@
-import { CalendarDaysIcon, ChevronDownAddIcon } from "@/components/Icons";
 import { SmallAddInformationTable } from "@/components/dashboard/SmallAddInformationTable";
 
 export const SmallAddInformation = () => {

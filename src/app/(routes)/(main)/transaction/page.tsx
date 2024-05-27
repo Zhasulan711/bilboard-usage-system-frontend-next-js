@@ -2,19 +2,19 @@
 
 import React, { useEffect, useState } from "react";
 
-import { SearchIcon } from "@/components/Icons";
-import { BillboardTableList } from "@/constants/billboardTableList";
-import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
+// import { SearchIcon } from "@/components/Icons";
+// import { BillboardTableList } from "@/constants/billboardTableList";
+// import { StrokeIconTheme } from "@/hooks/StrokeIconTheme";
 
-const navItems = [
-  { name: "All", width: "53px" },
-  { name: "Region", width: "91px" },
-  { name: "Price", width: "75px" },
-  { name: "Size", width: "68px" },
-  { name: "Category", width: "110px" },
-  { name: "Date", width: "72px" },
-  { name: "Status", width: "86px" },
-];
+// const navItems = [
+//   { name: "All", width: "53px" },
+//   { name: "Region", width: "91px" },
+//   { name: "Price", width: "75px" },
+//   { name: "Size", width: "68px" },
+//   { name: "Category", width: "110px" },
+//   { name: "Date", width: "72px" },
+//   { name: "Status", width: "86px" },
+// ];
 
 const navTable = [
   "Address",

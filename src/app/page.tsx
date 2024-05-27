@@ -1,5 +1,5 @@
 import { Poppins } from "next/font/google";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LoginButton } from "@/components/auth/login-button";
 import { RegisterButton } from "@/components/auth/register-button";
@@ -15,8 +15,8 @@ const font = Poppins({
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center relative">
-      <div className=" flex flex-row items-center mt-[32px] space-x-[1328px] ml-[20px] absolute z-40">
+    <main className="flex h-full flex-col items-center relative w-full">
+      <div className=" flex flex-row items-center mt-[32px] justify-between absolute z-40 w-full pl-[60px] pr-[60px]">
         <h1 className="text-black text-2xl font-normal">HAPPY CLIENT</h1>
 
         <div className="flex flex-row space-x-[16px]">

@@ -54,6 +54,8 @@ export * from "./TransactionIcon";
  * Finance page
  */
 export * from "./RedTrashIcon";
+export * from "./SuccessfulPaymentIcon";
+export * from "./NotSuccessfulPaymentIcon";
 
 /***
  * / page

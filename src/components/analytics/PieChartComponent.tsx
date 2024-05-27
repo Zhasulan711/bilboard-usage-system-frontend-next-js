@@ -15,8 +15,6 @@ const COLORS = [
 ];
 
 export const PieChartComponent = ({ data }: any) => {
-  // Define the colors for each section of the pie chart
-
   return (
     <div className="flex justify-center items-center">
       <PieChart width={400} height={400}>

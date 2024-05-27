@@ -3,7 +3,7 @@
 import { Card } from "../ui/card";
 import { Button } from "@/components/ui/button";
 
-import { useTransition, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 interface Item {
   id: number;

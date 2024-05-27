@@ -37,7 +37,16 @@ export const BuyingTable: React.FC = () => {
         const response = await fetch("/api/billboards");
         const data = await response.json();
         if (Array.isArray(data)) {
-          setBillboards(data);
+          // Define the order of statuses
+          const statusOrder = ["IDLING", "IN_CART", "PURCHASED"];
+
+          // Sort billboards based on status order
+          const sortedBillboards = data.sort(
+            (a, b) =>
+              statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status)
+          );
+
+          setBillboards(sortedBillboards);
         } else {
           console.error("Unexpected data format:", data);
         }
@@ -48,7 +57,7 @@ export const BuyingTable: React.FC = () => {
 
     fetchBillboards();
 
-    const intervalId = setInterval(fetchBillboards, 1000);
+    const intervalId = setInterval(fetchBillboards, 3000);
 
     return () => clearInterval(intervalId);
   }, []);
