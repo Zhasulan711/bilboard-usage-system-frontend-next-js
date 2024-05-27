@@ -130,9 +130,13 @@ export default function TransactionPage() {
                 ))}
               </tbody>
             ) : (
-              <h1 className="text-center text-black dark:text-white text-xl font-medium ml-[500px] mt-[20px] whitespace-nowrap">
-                You have no billboards transaction.
-              </h1>
+              <a
+                href="/post-add"
+                className="hover:text-[#FF9800] text-xl font-medium text-black dark:text-white ml-[500px] mt-[20px] whitespace-nowrap text-center"
+              >
+                You have no billboards transaction. but you can buy billboards
+                by clicking here.
+              </a>
             ))}
         </table>
       </div>
