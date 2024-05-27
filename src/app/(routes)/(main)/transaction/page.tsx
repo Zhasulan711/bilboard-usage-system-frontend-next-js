@@ -80,7 +80,7 @@ export default function TransactionPage() {
 
     const statusLabels = {
       [STATUS.PURCHASED]: "PURCHASED",
-      [STATUS.IN_CART]: "IN_CART",
+      [STATUS.IN_CART]: "IN BASKET",
       [STATUS.IDLING]: "CANCELED",
     };
 
@@ -122,22 +122,27 @@ export default function TransactionPage() {
               ))}
             </tr>
           </thead>
-          {isClient &&
-            (billboards.length > 0 ? (
-              <tbody className="text-black dark:text-white text-lg font-normal bg-white dark:bg-[#0F1623] divide-y-[16px] divide-[#D9D9D9] dark:divide-[#010714]">
-                {billboards.map((item, index) => (
+
+          <tbody className="text-black dark:text-white text-lg font-normal bg-white dark:bg-[#0F1623] divide-y-[16px] divide-[#D9D9D9] dark:divide-[#010714]">
+            {isClient &&
+              (billboards.length > 0 ? (
+                billboards.map((item, index) => (
                   <TableRow key={index} item={item} />
-                ))}
-              </tbody>
-            ) : (
-              <a
-                href="/post-add"
-                className="hover:text-[#FF9800] text-xl font-medium text-black dark:text-white ml-[500px] mt-[20px] whitespace-nowrap text-center"
-              >
-                You have no billboards transaction. but you can buy billboards
-                by clicking here.
-              </a>
-            ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={7} className="text-center py-[10px]">
+                    <a
+                      href="/post-add"
+                      className="hover:text-[#FF9800] text-xl font-medium text-black dark:text-white whitespace-nowrap"
+                    >
+                      You have no billboards transaction. but you can buy
+                      billboards by clicking here.
+                    </a>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
         </table>
       </div>
     </div>
