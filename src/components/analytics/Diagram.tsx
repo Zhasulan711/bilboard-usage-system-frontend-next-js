@@ -83,25 +83,27 @@ export const Diagram = () => {
   return (
     <div
       className="bg-white dark:bg-[#0F1623] h-[340px] rounded-lg flex flex-row justify-center pt-[20px] 
-    w-[530px] ipad:w-[663px] laptop:w-[930px] QHD:w-[1280px]
-     ipad:pl-[20px] laptop:pl-[0px]
+    w-[475px] ipad:w-[615px] laptop:w-[855px] QHD:w-[1185px]
+      space-x-[40px] ipad:space-x-[0px] laptop:space-x-[0px] QHD:space-x-[0px]
     "
     >
       {/* Diagram for each Region */}
       <div
         className="flex flex-col h-[300px]
-      w-[180px] ipad:w-[320px] laptop:w-[400px] QHD:w-[400px]"
+      w-[120px] ipad:w-[280px] laptop:w-[400px] QHD:w-[400px]
+      -space-y-[50px] ipad:space-y-[0px] laptop:space-y-[0px] QHD:space-y-[0px]"
       >
-        <h1 className="text-black dark:text-white text-2xl font-medium">
+        <h1 className="text-black dark:text-white text-2xl font-medium ">
           Diagram for each region
         </h1>
-        <div className="w-[250px] ipad:w-[350px] laptop:w-[350px] QHD:w-[350px]">
+        <div className="w-[220px] ipad:w-[300px] laptop:w-[350px] QHD:w-[350px]
+        ">
           <PieChartComponent data={chartData} />
         </div>
       </div>
       <div
         className="flex flex-col mt-[5px] 
-      pl-[50px]"
+      "
       >
         <h2 className="text-[#464B56] dark:text-[#6F737B] text-xl font-normal w-[200px]">
           All of your billboards {totalBillboards}
@@ -117,7 +119,7 @@ export const Diagram = () => {
               return (
                 <React.Fragment key={index}>
                   <div
-                    className={`flex flex-row space-x-[7px] h-[40px] w-[280px] items-center rounded-lg pl-[10px]
+                    className={`flex flex-row space-x-[7px] h-[40px] w-[300px] items-center rounded-lg pl-[10px]
                  `}
                   >
                     <div

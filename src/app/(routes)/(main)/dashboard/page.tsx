@@ -8,7 +8,9 @@ import { Tooltip } from "@/components/dashboard/ToolTip";
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col 
+    h-[600px] ipad:h-[660px] laptop:h-[770px] QHD:h-[925px]
+    overflow-y-auto">
       <div className="flex flex-row">
         <AmountAdsDistrict />
 

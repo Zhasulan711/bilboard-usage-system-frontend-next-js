@@ -68,7 +68,10 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex flex-row space-x-[184px]">
+    <div
+      className="flex flex-row space-x-[184px]
+    overflow-y-auto h-[600px] ipad:h-full laptop:h-full QHD:h-full"
+    >
       <SettingsNavbar />
       <div className="flex flex-col space-y-[20px]">
         <Card className="w-[600px] bg-white dark:bg-[#0F1623] border-transparent text-black dark:text-white">

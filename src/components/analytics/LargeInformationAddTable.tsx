@@ -63,8 +63,8 @@ export const LargeInformationAddTable = () => {
   return (
     <div
       className="bg-white dark:bg-[#0F1623] px-6 py-6 border-b-2 dark:border-[#182235] rounded-lg overflow-y-auto scroll-hidden 
-    max-h-[525px] ipad:max-h-[600px] laptop:max-h-[780px] QHD:max-h-[970px]
-    w-[1214px] ipad:w-[1346px] laptop:w-[1600px] QHD:w-[1962px]"
+    max-h-[245px] ipad:max-h-[300px] laptop:max-h-[420px] QHD:max-h-[570px]
+    w-[1158px] ipad:w-[1300px] laptop:w-[1540px] QHD:w-[1870px]"
     >
       <div className="flex flex-row space-x-[600px]">
         <h1 className="text-black dark:text-white text-[28px] font-medium ml-[10px]">

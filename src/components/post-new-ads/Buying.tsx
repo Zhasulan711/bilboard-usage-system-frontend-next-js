@@ -19,7 +19,7 @@ export const Buying = () => {
   return (
     <div
       className="rounded-[14px] bg-white dark:bg-[#0F1623]
-    h-[880px] ipad:h-[980px] laptop:h-[1130px] QHD:h-[1340px]"
+    h-[600px] ipad:h-[660px] laptop:h-[770px] QHD:h-[930px]"
     >
       <div className="flex flex-row space-x-[620px] px-[54px] py-[13px] items-center border-b-[12px] border-[#D9D9D9] dark:border-[#010714]">
         {/* Buying navBars */}

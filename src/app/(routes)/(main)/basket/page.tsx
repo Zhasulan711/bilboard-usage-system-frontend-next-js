@@ -50,7 +50,8 @@ export default function FinancePage() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative overflow-y-auto 
+    h-[600px] ipad:h-[660px] laptop:h-[770px] QHD:h-[930px]">
       {showOrder ? (
         <div className="flex flex-col space-y-[10px] ml-[430px]">
           <div className="flex flex-row space-x-[230px] items-center">

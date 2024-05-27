@@ -103,8 +103,8 @@ export default function TransactionPage() {
     <div className="flex flex-col">
       <div
         className="overflow-y-auto scroll-hidden border rounded-lg mt-[16px] border-transparent
-      max-h-[870px] ipad:max-h-[930px] laptop:max-h-[1100px] QHD:max-h-[1320px]
-      w-[1220px] ipad:w-[1346px] laptop:w-[1600px] QHD:w-[1962px]"
+      max-h-[585px] ipad:max-h-[650px] laptop:max-h-[760px] QHD:max-h-[910px]
+      w-[1165px] ipad:w-[1290px] laptop:w-[1550px] QHD:w-[1885px]"
       >
         <table
           className="table-fixed divide-y-[32px] divide-[#D9D9D9] dark:divide-[#010714] 
