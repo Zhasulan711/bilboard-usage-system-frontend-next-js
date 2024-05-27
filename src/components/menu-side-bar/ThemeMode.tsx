@@ -9,21 +9,25 @@ export const ThemeMode = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const appliedTheme =
-      theme === "system"
-        ? window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        : theme;
+    // Ensure theme is defined
+    const currentTheme = theme || "light";
+    const appliedTheme = currentTheme === "system" ? "light" : currentTheme;
+    console.log("Applied Theme: ", appliedTheme); // For debugging
     setIsDark(appliedTheme === "dark");
-    document.body.className =
-      appliedTheme === "dark" ? "dark-mode" : "light-mode";
+    document.body.className = appliedTheme === "dark" ? "dark-mode" : "light-mode";
+
+    // Update local storage
+    localStorage.setItem("theme", appliedTheme);
   }, [theme]);
+
 
   const toggleTheme = () => {
     const newTheme = isDark ? "light" : "dark";
     setTheme(newTheme);
     setIsDark(!isDark);
+
+    // Update local storage
+    localStorage.setItem("theme", newTheme);
   };
 
   return (
