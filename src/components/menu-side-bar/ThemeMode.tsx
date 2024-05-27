@@ -9,8 +9,15 @@ export const ThemeMode = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    setIsDark(theme === "dark");
-    document.body.className = theme === "dark" ? "dark-mode" : "light-mode";
+    const appliedTheme =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme;
+    setIsDark(appliedTheme === "dark");
+    document.body.className =
+      appliedTheme === "dark" ? "dark-mode" : "light-mode";
   }, [theme]);
 
   const toggleTheme = () => {
