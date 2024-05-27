@@ -95,7 +95,7 @@ export const BuyingTable: React.FC = () => {
   return (
     <div
       className="overflow-y-auto overflow-x-hidden scroll-hidden
-    h-[795px] ipad:h-[895px] laptop:h-[1045px] QHD:h-[1350px]
+    h-[795px] ipad:h-[895px] laptop:h-[1045px] QHD:h-[1245px]
     w-[1214px] ipad:w-[1350px] laptop:w-[1600px] QHD:w-[1962px]"
     >
       <table className="table-auto divide-y-[20px] divide-[#D9D9D9] dark:divide-[#010714] w-full">

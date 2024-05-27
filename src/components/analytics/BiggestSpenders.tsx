@@ -93,7 +93,7 @@ export const BiggestSpenders = () => {
         <TengeSmallCurrencyIcon />
       </div>
       {maxPrices.length === 0 ? (
-        <a className="hover:text-[#FF9800] text-[20px]">
+        <a className="hover:text-[#FF9800] text-[20px] cursor-pointer">
           No purchased billboards. but you can buy billboards by clicking here.
         </a>
       ) : (

@@ -107,7 +107,7 @@ export const Diagram = () => {
           All of your billboards {totalBillboards}
         </h2>
         {BILLBOARD_TABLE_LIST.length === 0 ? (
-          <a className="hover:text-[#FF9800] text-[20px] mt-[20px]">
+          <a className="hover:text-[#FF9800] text-[20px] mt-[20px] cursor-pointer">
             No purchased billboards. <br /> but you can buy billboards <br /> by
             clicking here.
           </a>
