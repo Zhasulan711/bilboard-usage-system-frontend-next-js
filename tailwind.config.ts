@@ -19,7 +19,7 @@ const config = {
       screens: {
         ipad: { min: "1650px", max: "1749px" },
         laptop: { min: "1750px", max: "2000px" },
-        QHD: { min: "2001px", max: "2400px" },
+        QHD: { min: "2100px", max: "2600px" },
       },
       transitionDuration: {
         "1000": "1000ms",
